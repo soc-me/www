@@ -2,7 +2,7 @@ import { useAuth } from "@/hooks/useAuth";
 
 
 const authTest = () => {
-    const {user} = useAuth({middleware: 'auth')
+    const {user} = useAuth({middleware: 'auth'})
     return (
         <div>
             Protected

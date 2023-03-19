@@ -1,6 +1,29 @@
+import { useAuth } from '@/hooks/useAuth'
 import Head from 'next/head'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
+  const { register } = useAuth({
+      middleware: 'guest',
+      redirectIfAuthenticated: '/authtest',
+  })
+  const name = 'thenu'
+  const email  = 'thenu@thenu.com'
+  const password = '12345678'
+  const [errors, setErrors] = useState('No errors')
+  const registerUser = () => {
+    register({
+        name,
+        email,
+        password,
+        password_confirmation: true,
+        setErrors
+    })
+  }
+  useEffect(() => {
+    console.log(errors)
+  }, [errors])
+  
   return (
     <>
       <Head>
@@ -10,7 +33,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head> 
       <>
-        Home
+        <p>Home</p>
+        <button onClick={registerUser}>Register</button>
       </>
     </>
   )
