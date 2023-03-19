@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const { register } = useAuth({
+  const { login } = useAuth({
       middleware: 'guest',
       redirectIfAuthenticated: '/authtest',
   })
@@ -11,18 +11,19 @@ export default function Home() {
   const email  = 'thenu@thenu.com'
   const password = '12345678'
   const [errors, setErrors] = useState('No errors')
+  const [status, setStatus] = useState('No status')
   const registerUser = () => {
-    register({
-        name,
-        email,
-        password,
-        password_confirmation: true,
-        setErrors
-    })
+    login({
+      email,
+      password,
+      remember: true,
+      setErrors,
+      setStatus,
+  })
   }
   useEffect(() => {
-    console.log(errors)
-  }, [errors])
+    console.log(errors, status)
+  }, [errors, status])
   
   return (
     <>
@@ -34,7 +35,7 @@ export default function Home() {
       </Head> 
       <>
         <p>Home</p>
-        <button onClick={registerUser}>Register</button>
+        <button onClick={registerUser}>Login</button>
       </>
     </>
   )
