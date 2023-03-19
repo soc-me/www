@@ -22,9 +22,6 @@ export default function Home() {
       setStatus,
   })
   }
-  useEffect(() => {
-    console.log(errors, status)
-  }, [errors, status])
 
   if(user){
     axios
