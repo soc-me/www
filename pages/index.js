@@ -1,11 +1,12 @@
 import { useAuth } from '@/hooks/useAuth'
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
+import axios from '@/lib/axios'
 
 export default function Home() {
-  const { login } = useAuth({
+  const {user,  login } = useAuth({
       middleware: 'guest',
-      redirectIfAuthenticated: '/authtest',
+      //redirectIfAuthenticated: '/authtest',
   })
   const name = 'thenu'
   const email  = 'thenu@thenu.com'
@@ -16,7 +17,7 @@ export default function Home() {
     login({
       email,
       password,
-      remember: true,
+      remember: false,
       setErrors,
       setStatus,
   })
@@ -24,6 +25,16 @@ export default function Home() {
   useEffect(() => {
     console.log(errors, status)
   }, [errors, status])
+
+  if(user){
+    axios
+    .get('/api/posts')
+    .then(response => console.log(response.data))
+    .catch(error => {
+        if (error.response.status !== 422) throw error
+        console.log(error)
+    })
+  }
   
   return (
     <>
