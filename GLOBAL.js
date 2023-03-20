@@ -10,5 +10,14 @@ export const GLOBAL = {
             PRIMARY: '#444444', SECONDARY: '#555555', 
         }
     ],
-    LOADER_COLOR: '#2f59ff'
+    LOADER_COLOR: '#2f59ff',
+
+    //URLS
+    RESOURSE:{
+        POST:{
+            ALL: '/api/post/all',
+            FOLLOWING: '/api/post/following',
+            SINGLE: (postID)=>{return `/api/post/${postID}`},
+        }
+    }
 }
