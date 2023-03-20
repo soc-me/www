@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+*{
+    margin: 0; border: 0; padding: 0;
+    font-size: 17px; list-style: none; text-decoration: none; 
+    font-weight: normal;
+    font-family: 'Inter', sans-serif;
+}
+
+html, body, #__next{
+    width: 100%;
+    background-color: white;
+}
+
+.center{
+    display: flex; align-items: center; justify-content: center;
+}
+
+span{
+    font-size: inherit; font-family: inherit; font-weight: inherit; color: inherit; background-color: inherit;
+}
+
+/* Progress bar blur */
+#nprogress .peg {
+    display: none !important;
+}
