@@ -15,7 +15,7 @@ export const PostListContainer = styled.div`
             padding: 20px;
             display: flex; align-items: flex-start;
             margin-bottom: 20px;
-            cursor: pointer;
+            /* cursor: pointer; */
             & .imageContainer{
                 width: 50px; height: 50px;
                 border-radius: 9999px;
@@ -37,8 +37,9 @@ export const PostListContainer = styled.div`
                 margin-left: 10px;
                 margin-top: 5px;
                 & .meta{
-                    margin-bottom: 10px;
+                    margin-bottom: 15px;
                     display: flex; align-items: center;
+                    & *{font-size: 0.9em;}
                     & .username{
                         font-weight: 600;
                     }
@@ -48,8 +49,59 @@ export const PostListContainer = styled.div`
                         background-color: ${GLOBAL.BUTTON_COLORS[0].SECONDARY};
                         margin: 0 10px;
                     }
+                    & button{
+                        margin-left: auto;
+                        background-color: ${GLOBAL.BUTTON_COLORS[0].PRIMARY};
+                        overflow: hidden;
+                        height: 20px; width: 20px;
+                        border-radius: 9999px;
+                        cursor: pointer;
+                        &:hover{
+                            background-color: ${GLOBAL.BUTTON_COLORS[0].SECONDARY};
+                        }
+                        & .image{
+                            width: 70%; height: 70%;
+                            background-image: url('/dotsIcon.png');
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            border-radius: 9999px;
+                            transform: translateY(3%) translateX(3%);
+                        }
+                    }
                 }
-            }
+                & .buttonControls{
+                    width: 100%;
+                    border-top: 1px solid ${GLOBAL.ACCENT_COLOR};
+                    display: flex; align-items: center;
+                    margin-top: 15px;
+                    & .item{
+                        display: flex; align-items: center;
+                        color: #DDDDDD;
+                        background-color: transparent;
+                        margin-top: 10px;
+                        cursor: pointer;
+                        &.comment{margin-right: 0; margin-left: auto;}
+                        & span{
+                            font-weight: 500;
+                            font-size: 0.9em;
+                        }
+                        & .image{
+                            width: 20px; height: 20px;
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                            margin-right: 15px;
+                            &.likeIcon{
+                                background-image: url('/heartOn.png');
+                            }
+                            &.commentIcon{  
+                                background-image: url('/commentsIcon.png');
+                            }
+                        }
+                    }
+                }
+            }   
         }
     }
 `

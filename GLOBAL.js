@@ -7,7 +7,7 @@ export const GLOBAL = {
     },
     BUTTON_COLORS: [
         {
-            PRIMARY: '#444444', SECONDARY: '#555555', 
+            PRIMARY: '#444444', SECONDARY: '#555555', LIKED: '#FA5252'
         }
     ],
     LOADER_COLOR: '#2f59ff',

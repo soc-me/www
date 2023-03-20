@@ -1,7 +1,7 @@
 import { GLOBAL } from "@/GLOBAL";
 import { useEffect, useState } from "react";
 
-const useFetchPosts = ({ onlyFollowing }) => {
+const useFetchPosts = ({ onlyFollowing }={}) => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [postObjects, setPostObjects] = useState([]);
@@ -15,13 +15,13 @@ const useFetchPosts = ({ onlyFollowing }) => {
         }
         setTimeout(() => {
             setIsLoading(false)
-        },1000);
+        },500);
     }
-
     useEffect(() => {
         setIsLoading(true);
         asyncFetchPosts(GLOBAL.RESOURCE.POST.ALL, true);
     }, [onlyFollowing])
+
     return {
         postObjects, isLoading, error
     }
