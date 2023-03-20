@@ -4,5 +4,11 @@ export const GLOBAL = {
     ACCENT_COLOR: '#444444',
     SITE_NAME: {
         normal: 'Socme', uppercase: 'SOCME', lowercase: 'socme'
-    }
+    },
+    BUTTON_COLORS: [
+        {
+            PRIMARY: '#444444', SECONDARY: '#555555', 
+        }
+    ],
+    LOADER_COLOR: '#2f59ff'
 }

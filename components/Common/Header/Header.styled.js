@@ -33,3 +33,46 @@ export const HeaderContainer = styled.header`
         }
     }
 `
+
+export const NavContainer = styled.nav`
+    height: 100%;
+    margin-left: auto;
+    &  ul{
+        height: 100%;
+        display: flex;  align-items: center;
+        & li{
+            display: flex; align-items: center; justify-content: center;
+            margin-right: 10px;
+            &:last-of-type{margin-right: 0px;}
+            & a{
+                height: 40px; width: 40px;
+                background-color: ${GLOBAL.BUTTON_COLORS[0].PRIMARY};
+                border-radius: 9999px;
+                display: flex; align-items: center; justify-content: center;
+                & .image{
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    height: 70%; width: 70%;
+                }
+                overflow: hidden;
+                box-sizing: border-box;
+                border: 1px solid ${GLOBAL.ACCENT_COLOR};
+                cursor: pointer;
+                &:hover{
+                    background-color: ${GLOBAL.BUTTON_COLORS[0].SECONDARY};
+                }
+            }
+            &.homeLink a .image{background-image: url('/homeIcon.png');}
+            &.accountsLink a .image{background-image: url('/accountsIcon.png');}
+            &.profileLink a{
+                & .image{
+                    height: 100%; width: 100%;
+                }
+                &:hover{
+                    border-color: ${GLOBAL.LOADER_COLOR};
+                }
+            }
+        }
+    }
+`
