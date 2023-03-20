@@ -8,6 +8,9 @@ export const HeaderContainer = styled.header`
     border-bottom: 1px solid ${GLOBAL.ACCENT_COLOR};
     box-shadow: 0 0 3px #222222;
     & *{height: inherit}
+    position: fixed;
+    z-index: 999;
+    top: 0; left: 0%;
     & .headerInner{
         width: 95%;
         display: flex;
