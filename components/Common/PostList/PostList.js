@@ -2,23 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { PostListContainer } from "./PostList.styled";
 
-const PostList = ({resourceURL}) => {
-    //Post Objects
-    const [postObjects, setPostObjects] = useState([]);
-    
-    //Add posts to postElements
-    const addPosts = (newPostObjects) => {
-        setPostObjects([...postObjects, ...newPostObjects]);
-    }
-
-    //Fetch posts
-    const asyncFetchPosts = async () => {
-        addPosts(test_postObjects)
-    }
-    useEffect(() => {
-        asyncFetchPosts();
-    }, [])
-
+const PostList = ({postObjects}) => {
     return (
         <PostListContainer>
             <div className="postListInner">
@@ -44,21 +28,5 @@ const PostList = ({resourceURL}) => {
     );
 }
 
-const test_postObjects = [
-    {
-        'id': 1,
-        'name': 'Thenu_K',
-        'text': 'This is a test post.',
-        'date': '2021-08-01',
-        'likeCount': 12,
-    },
-    {
-        'id': 1,
-        'name': 'Thenu_K',
-        'text': 'This is a second test post.',
-        'date': '2021-08-01',
-        'likeCount': 12,
-    }
-]
 
 export default PostList;

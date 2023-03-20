@@ -1,10 +1,12 @@
 import PostList from "@/components/Common/PostList/PostList";
 import { GLOBAL } from "@/GLOBAL";
+import useFetchPosts from "@/hooks/useFetchPosts";
 import { useEffect, useState } from "react";
 import { IndexContainer } from "./IndexPage.styled";
 
 const IndexPage = () => {
     const [onlyFollowing, setOnlyFollowing] = useState(false);
+    const {postObjects, isLoading, error} = useFetchPosts({onlyFollowing});
     return (
         <IndexContainer className="center">
             <div className="indexInner">
@@ -18,7 +20,11 @@ const IndexPage = () => {
                             <span>Following</span>
                         </button>
                     </div>
-                    <PostList resourceURL={GLOBAL.RESOURSE.POST.ALL}/>
+                    {
+                    (!isLoading)
+                    ? <PostList postObjects={postObjects} />
+                    : <div className="loading">Loading...</div>
+                    }
                 </div>
             </div>
         </IndexContainer>

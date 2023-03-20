@@ -13,7 +13,7 @@ export const GLOBAL = {
     LOADER_COLOR: '#2f59ff',
 
     //URLS
-    RESOURSE:{
+    RESOURCE:{
         POST:{
             ALL: '/api/post/all',
             FOLLOWING: '/api/post/following',
