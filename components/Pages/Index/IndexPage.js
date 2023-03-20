@@ -10,7 +10,6 @@ const IndexPage = () => {
     return (
         <IndexContainer className="center">
             <div className="indexInner">
-                {/*To do: Add side bar  */}
                 <div className="postsOuter">
                     <div className="typeSelect">
                         <button className={`all selected-${!onlyFollowing}`} onClick={() => setOnlyFollowing(false)} >

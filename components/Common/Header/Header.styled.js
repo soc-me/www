@@ -13,6 +13,7 @@ export const HeaderContainer = styled.header`
     top: 0; left: 0%;
     & .headerInner{
         width: 95%;
+        max-width: 2000px;
         display: flex;
         & .logo{
             display: flex;

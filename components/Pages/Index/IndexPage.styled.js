@@ -2,16 +2,19 @@ import { GLOBAL } from "@/GLOBAL";
 import styled from "styled-components";
 
 export const IndexContainer = styled.div`
-    width: 100%;
+    flex-grow: 1;
+    flex-shrink: 0;
     margin-top: 30px;
+    overflow-y: auto;
+    align-items: flex-start;
     & .indexInner{
+        //height: 2000px;
         width: 100%;
         display: flex; align-items: flex-start;
-        //remove
-        justify-content: center;
+        justify-content: flex-start;
         & .postsOuter{
             display: flex; flex-direction: column;
-            width: clamp(300px, 55%, 1000px);
+            width: clamp(500px, 65%, 1000px);
             & .typeSelect{
                 display: flex; align-items: center;
                 margin-bottom: 20px;
