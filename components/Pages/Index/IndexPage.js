@@ -20,11 +20,7 @@ const IndexPage = () => {
                             <span>Following</span>
                         </button>
                     </div>
-                    {
-                        (!isLoading)
-                        ? <PostList postObjects={postObjects} />
-                        : <div className="loading">Loading...</div>
-                    }
+                    <PostList postObjects={postObjects} isLoading={isLoading} />
                 </div>
             </div>
         </IndexContainer>
