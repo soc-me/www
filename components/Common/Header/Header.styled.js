@@ -31,7 +31,7 @@ export const HeaderContainer = styled.header`
                 margin-left: 20px;
                 font-size: 1.5em;
                 letter-spacing: 2px;
-                font-family: 'Monoton', cursive;
+                font-family: 'Monoton', 'intern';
             }
         }
     }

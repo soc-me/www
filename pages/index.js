@@ -14,7 +14,7 @@ export default function Home() {
   }else{
     axios
       .get('/api/post/all')
-      .then(response => console.log(response.data))
+      .then(response => null)
       .catch(error => {
           console.log(error)
       })

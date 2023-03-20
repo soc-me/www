@@ -1,3 +1,4 @@
+import PostList from "@/components/Common/PostList/PostList";
 import { useEffect, useState } from "react";
 import { IndexContainer } from "./IndexPage.styled";
 
@@ -16,10 +17,28 @@ const IndexPage = () => {
                             <span>Following</span>
                         </button>
                     </div>
+                    <PostList postObjects={testPosts}/>
                 </div>
             </div>
         </IndexContainer>
     );
 }
+
+const testPosts = [
+    {
+        'id': 1,
+        'name': 'Thenu_K',
+        'text': 'This is a test post.',
+        'date': '2021-08-01',
+        'likeCount': 12,
+    },
+    {
+        'id': 1,
+        'name': 'Thenu_K',
+        'text': 'This is a second test post.',
+        'date': '2021-08-01',
+        'likeCount': 12,
+    }
+]
 
 export default IndexPage;

@@ -14,6 +14,7 @@ export const IndexContainer = styled.div`
             width: clamp(300px, 55%, 1000px);
             & .typeSelect{
                 display: flex; align-items: center;
+                margin-bottom: 20px;
                 & button{
                     background-color: transparent;
                     cursor: pointer;
