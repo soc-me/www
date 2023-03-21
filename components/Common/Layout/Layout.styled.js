@@ -19,7 +19,7 @@ export const LayoutContainer = styled.div`
             margin-top: calc(30px);  /* margin of page*/ 
             border-right: 0px solid ${GLOBAL.ACCENT_COLOR};   
             overflow-y:scroll;
-            min-height: calc(100vh - 55px);
+            display: none;
             & >div{
                 width: 100%;
             }

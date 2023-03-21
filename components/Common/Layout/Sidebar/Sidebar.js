@@ -1,12 +1,13 @@
 import { SidebarContainer } from "./Sidebar.styled";
 import Link from "next/link";
+import { GLOBAL } from "@/GLOBAL";
 
 const Sidebar = () => {
     return (
         <SidebarContainer>
             <ul>
                 <li>
-                    <Link href='/'>
+                    <Link href={`/post/${null}`}>
                         <div className="image profile"></div>
                         <span>Profile</span>
                     </Link>
@@ -18,19 +19,19 @@ const Sidebar = () => {
                     </Link>
                 </li>
                 <li>
-                    <Link href='/'>
+                    <Link href='/search'>
                         <div className="image search"></div>
                         <span>Search</span>
                     </Link>
                 </li>
                 <li>
-                    <Link href='/'>
-                        <div className="image explore"></div>
-                        <span>Explore</span>
+                    <Link href='/post/create'>
+                        <div className="image create"></div>
+                        <span>Create</span>
                     </Link>
                 </li>
                 <li>
-                    <Link href='/'>
+                    <Link href={GLOBAL.REPO_LINK}>
                         <div className="image github"></div>
                         <span>Github</span>
                     </Link>

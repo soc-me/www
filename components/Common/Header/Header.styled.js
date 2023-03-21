@@ -32,7 +32,7 @@ export const HeaderContainer = styled.header`
                 margin-left: 20px;
                 font-size: 1.5em;
                 letter-spacing: 2px;
-                font-family: 'Monoton', 'intern';
+                font-family: 'Tilt Warp', 'intern';
             }
         }
     }
@@ -61,7 +61,7 @@ export const NavContainer = styled.nav`
                 }
                 overflow: hidden;
                 box-sizing: border-box;
-                border: 1px solid ${GLOBAL.ACCENT_COLOR};
+                border: 2px solid ${GLOBAL.ACCENT_COLOR};
                 cursor: pointer;
                 &:hover{
                     background-color: ${GLOBAL.BUTTON_COLORS[0].SECONDARY};

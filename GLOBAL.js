@@ -19,5 +19,6 @@ export const GLOBAL = {
             FOLLOWING: '/api/post/following',
             SINGLE: (postID)=>{return `/api/post/${postID}`},
         }
-    }
+    },
+    REPO_LINK: 'https://github.com/orgs/soc-me/repositories'
 }

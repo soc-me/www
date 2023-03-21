@@ -33,7 +33,7 @@ export const SidebarContainer = styled.div`
                     &.profile{background-image: url('/userIcon.png');}
                     &.home{background-image: url('/homeIcon.png');}
                     &.search{background-image: url('/searchIcon.png');}
-                    &.explore{background-image: url('/exploreIcon.png');}
+                    &.create{background-image: url('/createIcon.png');}
                     &.github{background-image: url('/githubIcon.png');}
                 }
                 & span{

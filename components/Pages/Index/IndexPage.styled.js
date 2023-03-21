@@ -11,10 +11,10 @@ export const IndexContainer = styled.div`
         //height: 2000px;
         width: 100%;
         display: flex; align-items: flex-start;
-        justify-content: flex-start;
+        justify-content: center;
         & .postsOuter{
             display: flex; flex-direction: column;
-            width: clamp(500px, 65%, 1000px);
+            width: clamp(500px, 55%, 1000px);
             & .typeSelect{
                 display: flex; align-items: center;
                 margin-bottom: 20px;
