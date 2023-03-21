@@ -14,7 +14,8 @@ const Auth = ({isLogin}) => {
     useEffect(()=>{
         setInputValues({
             email: !isLogin ? emailRef.current.value : null,
-            name: nameRef.current.value, password: passwordRef.current.value
+            name: nameRef.current ? nameRef.current.value : null,
+            password: passwordRef.current ? passwordRef.current.value : null
         })
     },[])
     const {user, login, register } = useAuth({
