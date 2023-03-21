@@ -6,9 +6,6 @@ import Auth from '@/components/Pages/Auth/Auth'
 
 
 const login = () => {
-    const {user } = useAuth({
-        middleware: 'guest', redirectIfAuthenticated: false
-    })
     return (
         <AuthLayout>
             <Head>

@@ -38,16 +38,25 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         await csrf()
 
         setErrors([])
-        setStatus(null)
-
-        axios
+        setStatus({loading: true})
+        setTimeout(()=>{
+            axios
             .post('/login', props)
-            .then(() => mutate())
+            .then(() => mutate(), setStatus({loading: false}))
             .catch(error => {
                 if (error.response.status !== 422) throw error
 
                 setErrors(error.response.data.errors)
             })
+        }, 2000)
+        // axios
+        //     .post('/login', props)
+        //     .then(() => mutate())
+        //     .catch(error => {
+        //         if (error.response.status !== 422) throw error
+
+        //         setErrors(error.response.data.errors)
+        //     })
     }
 
     const forgotPassword = async ({ setErrors, setStatus, email }) => {

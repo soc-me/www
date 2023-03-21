@@ -52,6 +52,10 @@ export const AuthContainer = styled.div`
                         font-weight: 700;
                         font-size: 1em;
                         /* letter-spacing: 1px; */
+                        cursor: pointer;
+                        &:hover{
+                            opacity: 0.9;
+                        }
                     }
                 }
             }
