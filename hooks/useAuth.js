@@ -48,7 +48,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
                 setErrors(error.response.data.errors)
             })
-        }, 2000)
+        }, 1000)
         // axios
         //     .post('/login', props)
         //     .then(() => mutate())
@@ -109,7 +109,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
     useEffect(() => {
         if (middleware === 'guest' && redirectIfAuthenticated && user)
-            router.push(redirectIfAuthenticated)
+            setTimeout(() => {router.push(redirectIfAuthenticated)}, 2000)
         if (
             window.location.pathname === '/verify-email' &&
             user?.email_verified_at

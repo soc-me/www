@@ -1,3 +1,4 @@
+import Spinner from "@/components/Common/Spinner/Spinner";
 import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
@@ -13,29 +14,31 @@ const Auth = ({isLogin}) => {
     useEffect(()=>{
         setInputValues({
             email: !isLogin ? emailRef.current.value : null,
-            name: nameRef.current.value,
-            password: passwordRef.current.value
+            name: nameRef.current.value, password: passwordRef.current.value
         })
     },[])
-    const { login, register } = useAuth({
-        middleware: 'guest'
+    const {user, login, register } = useAuth({
+        middleware: 'guest', redirectIfAuthenticated: '/'
     })
     const handleAuth = (e) => {
         e.preventDefault()
+        setStatus({loading: true})
         if(isLogin){
             login({setErrors: setErrors, setStatus: setStatus, name: inputValues.name, password: inputValues.password})
         }else{
             register({setErrors: setErrors,setStatus: setStatus,email: inputValues.email,name: inputValues.name,password: inputValues.password})
         }
     }
-    useEffect(()=>{
-        console.log(errors, status)
-    },[errors, status])
     return (
         <AuthContainer>
             <div className="authInner">
                 <h1 className="title">{isLogin ? "Login" : "Register"}</h1>
                 <p className="meta">By continuing, you agree to our <Link href='/'>rules and regulations.</Link></p>
+                {(user || status.loading===false)
+                ?(
+                <p className="redirection">You are signed in and will be redirected.</p>
+                )
+                :(
                 <form onSubmit={(event)=>{handleAuth(event)}}>
                     {
                         (!isLogin) 
@@ -65,7 +68,9 @@ const Auth = ({isLogin}) => {
                         <button type="submit">
                             {
                                 (status.loading===true)
-                                ? 'Loading...'
+                                ? (
+                                    <div className="spinnerOuter center"><Spinner/></div>
+                                )
                                 :  isLogin ? "Login" : "Register"
                             }
                         </button>
@@ -74,6 +79,9 @@ const Auth = ({isLogin}) => {
                         <p className="meta">{isLogin ? "Don't have an account?" : "Already have an account?"} <Link href={isLogin ? "/register" : "/login"}>{isLogin ? "Sign Up." : "Login."}</Link></p>
                     </div>
                 </form>
+                )
+                }
+                
             </div>
         </AuthContainer>
     );

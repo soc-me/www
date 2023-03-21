@@ -18,6 +18,11 @@ export const AuthContainer = styled.div`
                 color: ${GLOBAL.LOADER_COLOR};
             }
         }
+        & .redirection{
+            margin: 40px 0;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
         & form{
             margin-top: 30px;
             display: flex; flex-direction: column;
@@ -56,6 +61,9 @@ export const AuthContainer = styled.div`
                         &:hover{
                             opacity: 0.9;
                         }
+                    }
+                    & .spinnerOuter{
+                        width: 100%; height: 100%;
                     }
                 }
             }
