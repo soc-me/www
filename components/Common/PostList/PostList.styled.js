@@ -8,7 +8,7 @@ export const PostListContainer = styled.div`
         display: flex; flex-direction: column;
         & .post{
             width: 100%;
-            border-radius: 10px;
+            border-radius: 5px;
             background-color: ${GLOBAL.PRIMARY_COLOR};
             border: 1px solid ${GLOBAL.ACCENT_COLOR};
             box-sizing: border-box;
@@ -39,7 +39,7 @@ export const PostListContainer = styled.div`
                 & .meta{
                     margin-bottom: 15px;
                     display: flex; align-items: center;
-                    & *{font-size: 0.9em;}
+                    & *{font-size: 0.8em;}
                     & .username{
                         font-weight: 600;
                     }
@@ -84,7 +84,7 @@ export const PostListContainer = styled.div`
                         &.comment{margin-right: 0; margin-left: auto;}
                         & span{
                             font-weight: 500;
-                            font-size: 0.9em;
+                            font-size: 0.8em;
                         }
                         & .image{
                             width: 20px; height: 20px;

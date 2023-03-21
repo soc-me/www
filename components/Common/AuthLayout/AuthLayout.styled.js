@@ -13,7 +13,7 @@ export const AuthLayoutContainer = styled.div`
         & .backgroundImage{
             height: 100%; 
             width: 20%;
-            margin-right: 10%;
+            margin-right: 5vw;
             & .image{
                 height: 100%; width: 100%;
                 background-image: url("/authBg.jpg");
