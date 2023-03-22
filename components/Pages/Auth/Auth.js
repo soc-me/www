@@ -19,17 +19,19 @@ const Auth = ({isLogin}) => {
             password: passwordRef.current ? passwordRef.current.value : null
         })
     },[])
-    const {user, login, register } = useAuth({
+    const {user, login, register, pauseSWR, resumeSWR } = useAuth({
         middleware: 'guest', redirectIfAuthenticated: '/'
     })
     const handleAuth = (e) => {
         e.preventDefault()
         setStatus({loading: true})
+        pauseSWR()
         if(isLogin){
             login({setErrors: setErrors, setStatus: setStatus, name: inputValues.name, password: inputValues.password})
         }else{
             register({setErrors: setErrors,setStatus: setStatus,email: inputValues.email,name: inputValues.name,password: inputValues.password})
         }
+        resumeSWR()
     }
     return (
         <AuthContainer>

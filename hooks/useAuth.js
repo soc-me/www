@@ -1,12 +1,13 @@
 import useSWR from 'swr'
 import axios from '@/lib/axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
     const router = useRouter()
+    const [paused, setPaused] = useState(false)
 
-    const { data: user, error, mutate } = useSWR('/api/user', () =>
+    const { data: user, error, mutate } = useSWR( paused ? null : '/api/user', () =>
         axios
             .get('/api/user')
             .then(res => res.data)
@@ -119,5 +120,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
         resetPassword,
         resendEmailVerification,
         logout,
+        pauseSWR: () => setPaused(true),
+        resumeSWR: () => setPaused(false),
     }
 }

@@ -44,6 +44,9 @@ export const PostElContainer = styled.div`
                 background-color: ${GLOBAL.BUTTON_COLORS[0].SECONDARY};
                 margin: 0 10px;
             }
+            & .date{
+                font-weight: 500;
+            }
             & button{
                 margin-left: auto;
                 background-color: ${GLOBAL.BUTTON_COLORS[0].PRIMARY};

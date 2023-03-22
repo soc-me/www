@@ -68,7 +68,10 @@ export const NavContainer = styled.nav`
                 }
             }
             &.homeLink a .image{background-image: url('/homeIcon.png');}
-            &.accountsLink a .image{background-image: url('/accountsIcon.png');}
+            &.accountsLink a .image{
+                background-image: url('/searchIcon.png');
+                height: 60%; width: 60%;
+            }
             &.profileLink a{
                 & .image{
                     height: 100%; width: 100%;

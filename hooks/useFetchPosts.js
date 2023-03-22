@@ -22,14 +22,14 @@ const useFetchPosts = ({ onlyFollowing }={}) => {
         .then(response => {
             if(nullify){
                 setPostObjects([...response.data.posts]);
-                setIsLoading(false)
             }else{
                 setPostObjects([...postObjects, ...response.data]);
-                setIsLoading(false)
             }
+            setIsLoading(false);
         })
         .catch(error => {
             if (error) throw error
+            setIsLoading(false);
         })
     }
     useEffect(() => {
