@@ -18,7 +18,7 @@ const PostEl = ({postObject}) => {
                         <div className="image"></div>
                     </button>
                 </div>
-                <div className="text">{postObject.text}</div>
+                <div className="text">{postObject.content}</div>
                 <div className="buttonControls">
                     <button className="like item">
                         {/* Todo: create reusable like button */}

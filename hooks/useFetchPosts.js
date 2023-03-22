@@ -1,4 +1,5 @@
 import { GLOBAL } from "@/GLOBAL";
+import axios from "@/lib/axios";
 import { useEffect, useState } from "react";
 
 const useFetchPosts = ({ onlyFollowing }={}) => {
@@ -7,12 +8,23 @@ const useFetchPosts = ({ onlyFollowing }={}) => {
     const [postObjects, setPostObjects] = useState([]);
 
     const asyncFetchPosts = async (resourceURL, nullify) => {
-        // to do: fetch posts from resourceURL
-        if(nullify){
-            setPostObjects([...test_postObjects]);
-        }else{
-            setPostObjects([...postObjects, ...test_postObjects]);
-        }
+        axios
+        .get('/api/post/all')
+        .then(response => {
+            if(nullify){
+                setPostObjects([...response.data.posts]);
+            }else{
+                setPostObjects([...postObjects, ...response.data]);
+            }
+        })
+        .catch(error => {
+            if (error) throw error
+        })
+        // if(nullify){
+        //     setPostObjects([...test_postObjects]);
+        // }else{
+        //     setPostObjects([...postObjects, ...test_postObjects]);
+        // }
         setTimeout(() => {
             setIsLoading(false)
         },500);
