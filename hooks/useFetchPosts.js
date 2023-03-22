@@ -7,6 +7,15 @@ const useFetchPosts = ({ onlyFollowing }={}) => {
     const [error, setError] = useState(null);
     const [postObjects, setPostObjects] = useState([]);
 
+    const refreshList = () => {
+        setIsLoading(true);
+        asyncFetchPosts(GLOBAL.RESOURCE.POST.ALL, true);
+    }
+
+    const addToPostObjects = (newPost) => {
+        setPostObjects([newPost, ...postObjects]);
+    }
+
     const asyncFetchPosts = async (resourceURL, nullify) => {
         axios
         .get('/api/post/all')
@@ -22,14 +31,6 @@ const useFetchPosts = ({ onlyFollowing }={}) => {
         .catch(error => {
             if (error) throw error
         })
-        // if(nullify){
-        //     setPostObjects([...test_postObjects]);
-        // }else{
-        //     setPostObjects([...postObjects, ...test_postObjects]);
-        // }
-        // setTimeout(() => {
-        //     setIsLoading(false)
-        // },500);
     }
     useEffect(() => {
         setIsLoading(true);
@@ -37,7 +38,7 @@ const useFetchPosts = ({ onlyFollowing }={}) => {
     }, [onlyFollowing])
 
     return {
-        postObjects, isLoading, error
+        postObjects, isLoading, error, refreshList, addToPostObjects
     }
 }
 

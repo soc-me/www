@@ -4,7 +4,7 @@ import createIcon from '@/public/createIcon.png';
 import { useState } from "react";
 import axios from "@/lib/axios";
 
-const New = ({uploadToURL}) => {
+const New = ({uploadToURL, addToList}) => {
     const [text, setText] = useState(null);
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -12,7 +12,7 @@ const New = ({uploadToURL}) => {
         form.append('content', text);
         try { 
             const res = await axios.post(uploadToURL, form);
-            console.log(res);
+            addToList(res.data.postObject)
         } catch (err) {
             console.log(err);
         }

@@ -8,7 +8,7 @@ import New from "./New/New";
 
 const IndexPage = () => {
     const [onlyFollowing, setOnlyFollowing] = useState(false);
-    const {postObjects, isLoading, error} = useFetchPosts({onlyFollowing});
+    const {postObjects, isLoading, error, refreshList, addToPostObjects} = useFetchPosts({onlyFollowing});
     const {user} = useAuth({middleware: 'guest'});
     return (
         <IndexContainer className="center">
@@ -29,7 +29,7 @@ const IndexPage = () => {
                         )}
                     </div>
                     <div className="newOuter">
-                        <New uploadToURL={'/api/post/create'}/>
+                        <New uploadToURL={'/api/post/create'} addToList={addToPostObjects}/>
                     </div>
                     <PostList postObjects={postObjects} isLoading={isLoading} />
                 </div>
