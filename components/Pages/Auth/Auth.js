@@ -81,7 +81,7 @@ const Auth = ({isLogin}) => {
                     </div>
                     {
                         (errors)    
-                        ? <p>{errors.error}</p>
+                        ? <p>{JSON.stringify(errors)}</p>
                         : null
                     }
                     <div className="alt">
