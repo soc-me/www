@@ -71,7 +71,7 @@ const Auth = ({isLogin}) => {
                             {
                                 (status.loading===true)
                                 ? (
-                                    <div className="spinnerOuter center"><Spinner/></div>
+                                    <div className="spinnerOuter center"><Spinner size={25} border={3}/></div>
                                 )
                                 :  isLogin ? "Login" : "Register"
                             }

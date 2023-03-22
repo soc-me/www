@@ -1,45 +1,31 @@
 import styled from "styled-components";
 
-const Spinner = () => {
+const Spinner = ({size, border}) => {
     return (
-        <SpinnerContainer></SpinnerContainer>
+        <SpinnerContainer size={size} border={border}></SpinnerContainer>
     );
 }
 
 const SpinnerContainer = styled.div`
 &{
-  width: 25px;
-  height: 25px;
-  border: 3px solid #FFF;
-  border-radius: 9999px;
-  display: inline-block;
-  box-sizing: border-box;
-  position: relative;
-  animation: pulse 1s linear infinite;
-}
-&:after {
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  border: 3px solid #FFF;
-  border-radius: 9999px;
-  display: inline-block;
-  box-sizing: border-box;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  animation: scaleUp 1s linear infinite;
-}
+    width: ${props => props.size}px;
+    height: ${props => props.size}px;
+    border: ${props => props.border}px solid #FFF;
+    border-bottom-color: transparent;
+    border-radius: 9999px;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
 
-@keyframes scaleUp {
-  0% { transform: translate(-50%, -50%) scale(0) }
-  60% , 100% { transform: translate(-50%, -50%)  scale(1)}
-}
-@keyframes pulse {
-  0% , 60% , 100%{ transform:  scale(1) }
-  80% { transform:  scale(1.2)}
-}
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
 
 `
 export default Spinner;
