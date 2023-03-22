@@ -30,7 +30,7 @@ const Auth = ({isLogin}) => {
             login({setErrors: setErrors, setStatus: setStatus, name: inputValues.name, password: inputValues.password})
         }else{
             register({setErrors: setErrors,setStatus: setStatus,email: inputValues.email,name: inputValues.name,password: inputValues.password})
-        }
+        }   
         resumeSWR()
     }
     return (
@@ -38,7 +38,7 @@ const Auth = ({isLogin}) => {
             <div className="authInner">
                 <h1 className="title">{isLogin ? "Login" : "Register"}</h1>
                 <p className="meta">By continuing, you agree to our <Link href='/'>rules and regulations.</Link></p>
-                {(user || (status.loading===false && errors.error==null))
+                {(user || (status.loading===false && errors==null))
                 ?(
                 <p className="redirection">You will be redirected momentarily.</p>
                 )

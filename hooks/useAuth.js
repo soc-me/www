@@ -23,34 +23,37 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
     const register = async ({ setErrors, ...props }) => {
         await csrf()
 
-        setErrors([])
-
+        setStatus({loading: true})
         axios
             .post('/register', props)
-            .then(() => mutate())
+            .then(() => {
+                mutate(); 
+                setStatus({loading: false})
+            })
             .catch(error => {
-                if (error.response.status !== 422) throw error
-
                 setErrors(error.response.data.errors)
+                setStatus({loading: false})
             })
     }
 
     const login = async ({ setErrors, setStatus, ...props }) => {
         await csrf()
 
-        setErrors([])
         setStatus({loading: true})
         setTimeout(()=>{
             axios
             .post('/login', props)
-            .then(() => mutate(), setStatus({loading: false}))
+            .then(() => {
+                mutate(); 
+                setStatus({loading: false})
+            })
             .catch(error => {
                 //if (error.response.status !== 422) throw error
                 // order matters as the the user will be shown a logged in screen if the status is set to false before the error is set
                 setErrors(error.response.data.errors)
                 setStatus({loading: false})
             })
-        }, 1000)
+        }, 200)
     }
 
     const forgotPassword = async ({ setErrors, setStatus, email }) => {
