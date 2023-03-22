@@ -4,6 +4,7 @@ import { useAuth } from "@/hooks/useAuth";
 import useFetchPosts from "@/hooks/useFetchPosts";
 import { useEffect, useState } from "react";
 import { IndexContainer } from "./IndexPage.styled";
+import New from "./New/New";
 
 const IndexPage = () => {
     const [onlyFollowing, setOnlyFollowing] = useState(false);
@@ -26,6 +27,9 @@ const IndexPage = () => {
                             )
                             : null
                         )}
+                    </div>
+                    <div className="newOuter">
+                        <New uploadToURL={'/api/post/create'}/>
                     </div>
                     <PostList postObjects={postObjects} isLoading={isLoading} />
                 </div>

@@ -37,6 +37,10 @@ export const IndexContainer = styled.div`
                     }
                 }
             }
+            & .newOuter{
+                width: 100%;
+                margin-bottom: 20px;
+            }
         }
     }
 `

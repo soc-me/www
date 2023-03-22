@@ -36,7 +36,7 @@ export const PostElContainer = styled.div`
             display: flex; align-items: center;
             & *{font-size: 0.8em;}
             & .username{
-                font-weight: 600;
+                font-weight: 500;
             }
             & .seperator{
                 width: 5px; height: 5px;
@@ -72,7 +72,7 @@ export const PostElContainer = styled.div`
             width: 100%;
             //border-top: 1px solid ${GLOBAL.ACCENT_COLOR};
             display: flex; align-items: center;
-            margin-top: 15px;
+            margin-top: 10px;
             & .item{
                 display: flex; align-items: center;
                 color: #DDDDDD;
