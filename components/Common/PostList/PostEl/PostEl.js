@@ -11,7 +11,7 @@ const PostEl = ({postObject}) => {
             </Link>
             <div className="content">
                 <div className="meta">
-                    <Link href={`/account/1`} className="username">{postObject.name}</Link>
+                    <Link href={`/account/${postObject.user_id}`} className="username">{postObject.name}</Link>
                     <div className="seperator"></div>
                     <span className="date">2 hr</span>
                     <button className="menu center">
