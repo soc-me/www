@@ -1,6 +1,7 @@
 import Spinner from "@/components/Common/Spinner/Spinner";
 import { useAuth } from "@/hooks/useAuth";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { AuthContainer } from "./Auth.styled";
 
@@ -19,7 +20,7 @@ const Auth = ({isLogin}) => {
         })
     },[])
     const {user, login, register } = useAuth({
-        middleware: 'guest', redirectIfAuthenticated:'/'
+        middleware: 'guest', redirectIfAuthenticated: '/'
     })
     const handleAuth = (e) => {
         e.preventDefault()
@@ -35,9 +36,9 @@ const Auth = ({isLogin}) => {
             <div className="authInner">
                 <h1 className="title">{isLogin ? "Login" : "Register"}</h1>
                 <p className="meta">By continuing, you agree to our <Link href='/'>rules and regulations.</Link></p>
-                {(user || status.loading===false)
+                {(user || (status.loading===false && errors.error==null))
                 ?(
-                <p className="redirection">You are signed in and will be redirected momentarily.</p>
+                <p className="redirection">You will be redirected momentarily.</p>
                 )
                 :(
                 <form onSubmit={(event)=>{handleAuth(event)}}>
@@ -76,6 +77,11 @@ const Auth = ({isLogin}) => {
                             }
                         </button>
                     </div>
+                    {
+                        (errors)    
+                        ? <p>{errors.error}</p>
+                        : null
+                    }
                     <div className="alt">
                         <p className="meta">{isLogin ? "Don't have an account?" : "Already have an account?"} <Link href={isLogin ? "/register" : "/login"}>{isLogin ? "Sign Up." : "Login."}</Link></p>
                     </div>

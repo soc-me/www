@@ -44,19 +44,12 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             .post('/login', props)
             .then(() => mutate(), setStatus({loading: false}))
             .catch(error => {
-                if (error.response.status !== 422) throw error
-
+                //if (error.response.status !== 422) throw error
+                // order matters as the the user will be shown a logged in screen if the status is set to false before the error is set
                 setErrors(error.response.data.errors)
+                setStatus({loading: false})
             })
         }, 1000)
-        // axios
-        //     .post('/login', props)
-        //     .then(() => mutate())
-        //     .catch(error => {
-        //         if (error.response.status !== 422) throw error
-
-        //         setErrors(error.response.data.errors)
-        //     })
     }
 
     const forgotPassword = async ({ setErrors, setStatus, email }) => {
@@ -109,7 +102,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
 
     useEffect(() => {
         if (middleware === 'guest' && redirectIfAuthenticated && user)
-            setTimeout(() => {router.push(redirectIfAuthenticated)}, 1000)
+            setTimeout(() => {router.push(redirectIfAuthenticated)}, 200)
         if (
             window.location.pathname === '/verify-email' &&
             user?.email_verified_at

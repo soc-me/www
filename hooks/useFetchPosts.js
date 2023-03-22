@@ -13,8 +13,10 @@ const useFetchPosts = ({ onlyFollowing }={}) => {
         .then(response => {
             if(nullify){
                 setPostObjects([...response.data.posts]);
+                setIsLoading(false)
             }else{
                 setPostObjects([...postObjects, ...response.data]);
+                setIsLoading(false)
             }
         })
         .catch(error => {
@@ -25,9 +27,9 @@ const useFetchPosts = ({ onlyFollowing }={}) => {
         // }else{
         //     setPostObjects([...postObjects, ...test_postObjects]);
         // }
-        setTimeout(() => {
-            setIsLoading(false)
-        },500);
+        // setTimeout(() => {
+        //     setIsLoading(false)
+        // },500);
     }
     useEffect(() => {
         setIsLoading(true);
