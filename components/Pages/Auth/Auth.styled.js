@@ -9,18 +9,19 @@ export const AuthContainer = styled.div`
         & h1{
             font-size: 1.3em;
             font-weight: 500;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
         & .meta{
-            font-size: 1em;
+            font-size: 0.9em;
+            font-weight: 500;
             & a{
                 font-size: inherit; font-weight: inherit;
                 color: ${GLOBAL.LOADER_COLOR};
             }
         }
         & .redirection{
-            margin: 40px 0;
-            font-size: 0.8em;
+            margin-top: 40px;
+            font-size: 0.9em;
             font-weight: 500;
         }
         & form{
@@ -38,7 +39,7 @@ export const AuthContainer = styled.div`
                     border: 1px solid ${GLOBAL.ACCENT_COLOR};
                     border-radius: 3px;
                     align-items: flex-end;
-                    font-size: 1em;
+                    font-size: 0.9em;
                     &:focus{
                         outline: 0;
                         border: 1px solid ${GLOBAL.LOADER_COLOR};
@@ -46,7 +47,8 @@ export const AuthContainer = styled.div`
                 }
                 & label{
                     margin-bottom: 5px;
-                    font-size: 0.8em;
+                    font-size: 0.9em;
+                    font-weight: 500;
                 }
                 &.submit{
                     margin-top: 20px;
@@ -55,7 +57,7 @@ export const AuthContainer = styled.div`
                         background-color: ${GLOBAL.LOADER_COLOR};
                         border-radius: 3px;
                         font-weight: 700;
-                        font-size: 1em;
+                        font-size: 0.9em;
                         /* letter-spacing: 1px; */
                         cursor: pointer;
                         &:hover{

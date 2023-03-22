@@ -13,13 +13,13 @@ const Auth = ({isLogin}) => {
     const [status, setStatus] = useState({loading: null})
     useEffect(()=>{
         setInputValues({
-            email: !isLogin ? emailRef.current.value : null,
+            email: (!isLogin && !emailRef.current===null) ? emailRef.current.value : null,
             name: nameRef.current ? nameRef.current.value : null,
             password: passwordRef.current ? passwordRef.current.value : null
         })
     },[])
     const {user, login, register } = useAuth({
-        middleware: 'guest', redirectIfAuthenticated: '/'
+        middleware: 'guest', redirectIfAuthenticated:'/'
     })
     const handleAuth = (e) => {
         e.preventDefault()
@@ -37,7 +37,7 @@ const Auth = ({isLogin}) => {
                 <p className="meta">By continuing, you agree to our <Link href='/'>rules and regulations.</Link></p>
                 {(user || status.loading===false)
                 ?(
-                <p className="redirection">You are signed in and will be redirected.</p>
+                <p className="redirection">You are signed in and will be redirected momentarily.</p>
                 )
                 :(
                 <form onSubmit={(event)=>{handleAuth(event)}}>

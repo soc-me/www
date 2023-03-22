@@ -65,9 +65,12 @@ export const PostElContainer = styled.div`
                 }
             }
         }
+        & .text{
+            font-size: 1em;
+        }
         & .buttonControls{
             width: 100%;
-            border-top: 1px solid ${GLOBAL.ACCENT_COLOR};
+            //border-top: 1px solid ${GLOBAL.ACCENT_COLOR};
             display: flex; align-items: center;
             margin-top: 15px;
             & .item{

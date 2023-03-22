@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { HeaderContainer, NavContainer } from "./Header.styled";
 import { GLOBAL } from "@/GLOBAL";
+import { useAuth } from "@/hooks/useAuth";
 
 const Header = () => {
+    const { user } = useAuth({middleware: 'guest'});
     return (
         <HeaderContainer className="center">
             <div className="headerInner">
@@ -18,9 +20,15 @@ const Header = () => {
                         <li className="accountsLink">
                             <Link href='/accounts' aria-label="Link to account search"><div className="image"></div></Link>
                         </li>
-                        <li className="profileLink">
-                            <Link href='/account/1' aria-label="Link to profile page"><div className="image" style={{backgroundImage: `url('/logo3.jpg')`}}></div></Link>
-                        </li>
+                        {(
+                            (user) 
+                            ? (
+                                <li className="profileLink">
+                                    <Link href='/account/1' aria-label="Link to profile page"><div className="image" style={{backgroundImage: `url('/logo3.jpg')`}}></div></Link>
+                                </li>
+                            )
+                            : null
+                        )}
                     </ul>
                 </NavContainer>
             </div>
