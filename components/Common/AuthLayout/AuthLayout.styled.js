@@ -1,3 +1,4 @@
+import { GLOBAL } from "@/GLOBAL";
 import styled from "styled-components";
 
 export const AuthLayoutContainer = styled.div`
@@ -12,8 +13,11 @@ export const AuthLayoutContainer = styled.div`
         display: flex; align-items: center;
         & .backgroundImage{
             height: 100%; 
-            width: 30%;
-            margin-right: 2.5%;
+            width: 20%;
+            margin-right: 5%;
+            overflow: hidden;
+            border-radius: 0 40% 40% 0;
+            border-right: 1px solid ${GLOBAL.ACCENT_COLOR};
             & .image{
                 height: 100%; width: 100%;
                 background-image: url("/authBg.jpg");
