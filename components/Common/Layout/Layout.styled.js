@@ -8,7 +8,6 @@ export const LayoutContainer = styled.div`
     & .layoutInner{
         width: 95%;
         max-width: 2000px;
-        display: flex; flex-direction: row; align-items: flex-start;
         margin-top: 55px;
         & .sidebarOuter{
             margin-right: 5vw;
@@ -27,8 +26,7 @@ export const LayoutContainer = styled.div`
     }
     & .childContainer{
         width: 100%;
-        display: flex; flex-direction: column;
-        justify-content: flex-start;
+        display: flex; flex-direction: column; align-items: center;
         min-height: calc(100vh - 55px);
     }
 `

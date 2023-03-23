@@ -7,14 +7,15 @@ export const IndexContainer = styled.div`
     margin-top: 30px;
     overflow-y: auto;
     align-items: flex-start;
+    width: clamp(500px, 55%, 1000px);
     & .indexInner{
         //height: 2000px;
         width: 100%;
         display: flex; align-items: flex-start;
         justify-content: center;
         & .postsOuter{
+            width: 100%;
             display: flex; flex-direction: column;
-            width: clamp(500px, 55%, 1000px);
             & .typeSelect{
                 display: flex; align-items: center;
                 margin-bottom: 20px;
