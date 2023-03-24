@@ -1,6 +1,10 @@
 import axios from "@/lib/axios";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AccountPageContainer } from "./AccountPage.styled";
+import logo3 from '@/public/logo3.jpg'
+import settingsIconDark from '@/public/settingsIconDark.png'
+import PostList from "@/components/Common/PostList/PostList";
 
 const AccountPage = ({minimalUserObject}) => {
     const [postObjects, setPostObjects] = useState(null)
@@ -9,7 +13,6 @@ const AccountPage = ({minimalUserObject}) => {
     const fetchData = async() => {
         try{
             const response = await axios.get(`/api/post/user/${minimalUserObject.id}`)
-            console.log(response.data)
             if(response.data.isPrivate){
                 setIsPrivate(true)
             }else{
@@ -25,7 +28,47 @@ const AccountPage = ({minimalUserObject}) => {
     }, [])
     return (
         <AccountPageContainer>
-            Account Page
+            <div className="info">
+                <div className="imageOuter center">
+                    <Image src={logo3} alt="profile picture"/>
+                </div>
+                <div className="meta">
+                    <div className="row top">
+                        <h1 className="username">{minimalUserObject.name}</h1>
+                        <div className="buttons">
+                            <button className="follow">Follow</button>      
+                            <button className="settings center">
+                                {/* <Image src={settingsIconDark} alt="settings"/> */}
+                                <span>Edit Profile</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="row followersList">
+                        <div className="posts">
+                            <span className="number">10</span>
+                            <span className="text">posts</span>
+                        </div>
+                        <div className="following">
+                            <span className="number">10</span>
+                            <span className="text">following</span>
+                        </div>
+                        <div className="followers">
+                            <span className="number">10</span>
+                            <span className="text">followers</span>
+                        </div>
+                    </div>
+                    <div className="row bio">
+                        <p>{minimalUserObject.bio}</p>
+                    </div>
+                </div>
+            </div>
+            <div className="postListOuter">
+                {
+                    postObjects
+                    ?  <PostList postObjects={postObjects} />
+                    :  <>Nothing</>
+                }
+            </div>
         </AccountPageContainer>
     );
 }
