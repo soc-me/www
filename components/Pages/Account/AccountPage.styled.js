@@ -18,7 +18,7 @@ export const AccountPageContainer = styled.div`
                 height: 100%;
             }
         }
-        padding-bottom: 80px;
+        padding-bottom: 50px;
         border-bottom: 1px solid ${GLOBAL.ACCENT_COLOR};
         & .meta{
             margin-left: 100px;
@@ -37,18 +37,25 @@ export const AccountPageContainer = styled.div`
                     & .buttons{
                         flex-grow: 1;
                         display: flex; align-items: center;
-                        & button{
+                        & .button{
                             height: 35px;
                             width: 120px;
                             border: 0;
-                            border-radius: 5px;
-                            color: black;
-                            background-color: white;
+                            color: white;
+                            margin-left: 30px;
+                            cursor: pointer;
+                        }
+                        & .followButtonContainer{
                             margin-left: 30px;
                         }
-                        & .follow{display: none}
                         & .settings{
+                            border-radius: 5px;
                             display: flex; align-items: center;
+                            background-color: ${GLOBAL.BUTTON_COLORS[0].PRIMARY};
+                            color: white;
+                            &:hover{
+                                background-color: ${GLOBAL.BUTTON_COLORS[0].SECONDARY};
+                            }
                             & span{
                                 font-size: 1em;
                                 font-weight: 500;

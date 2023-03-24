@@ -5,7 +5,6 @@ import axios from "@/lib/axios";
 import Head from "next/head";
 
 const Account = ({user_id, minimalUserObject}) => {
-    const {user} = useAuth({middleware: 'guest'})
     return (
         <Layout>
             <Head>
