@@ -24,6 +24,9 @@ export const NewContainer = styled.form`
             outline: 0;
         }
     }
+    & .textEditorContainer{
+        flex-grow:1 ;
+    }
     & button{
         display: flex; align-items: center; justify-content: center;
         flex-direction: row-reverse;

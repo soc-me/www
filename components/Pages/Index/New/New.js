@@ -4,6 +4,7 @@ import createIcon from '@/public/createIcon.png';
 import { useState } from "react";
 import axios from "@/lib/axios";
 import Spinner from "@/components/Common/Spinner/Spinner";
+import TextEditor from "@/components/Common/TextEditor/TextEditor";
 
 const New = ({uploadToURL, addToList}) => {
     const [text, setText] = useState('');
@@ -14,6 +15,7 @@ const New = ({uploadToURL, addToList}) => {
         form.append('content', text);
         setLoading(true);
         try { 
+            console.log(text)
             const res = await axios.post(uploadToURL, form);
             console.log(res.data.postObject)
             addToList(res.data.postObject)
@@ -26,9 +28,12 @@ const New = ({uploadToURL, addToList}) => {
         }
     }
     return (
-        <NewContainer onSubmit={(e)=>{handleSubmit(e)}}>
-            <textarea name="" id="" placeholder="What's on your mind?" required onChange={(e)=>{setText(e.target.value)}} value={text}></textarea>
-            <button type="submit">
+        <NewContainer onSubmit={event => event.preventDefault()}>
+            {/* <textarea name="" id="" placeholder="What's on your mind?" required onChange={(e)=>{setText(e.target.value)}} value={text}></textarea> */}
+            <div className="textEditorContainer">
+                <TextEditor text={text} setText={setText}/>
+            </div>
+            <button onClick={(e)=>{handleSubmit(e)}}>
                 {
                     loading
                     ? <Spinner size={20} border={3}/>
