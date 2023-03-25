@@ -11,27 +11,27 @@ export const PostElContainer = styled.div`
     display: flex; align-items: flex-start;
     margin-bottom: 20px;
     /* cursor: pointer; */
-    & .imageContainer{
-        width: 50px; height: 50px;
-        border-radius: 9999px;
-        background-color: ${GLOBAL.SECONDARY_COLOR};
-        cursor: pointer;
-        & .image{
-            width: 100%; height: 100%;
-            border-radius: 9999px;
-            box-sizing: border-box;
-            /* border: 2px solid ${GLOBAL.ACCENT_COLOR}; */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-    }
     & .content{
-        flex-grow: 1;
-        flex-shrink: 0;
+        width: 100%;
         margin-left: 10px;
         margin-top: 5px;
         & .meta{
+            & .imageContainer{
+                width: 30px; height: 30px;
+                margin-right: 20px;
+                border-radius: 9999px;
+                background-color: ${GLOBAL.SECONDARY_COLOR};
+                cursor: pointer;
+                & .image{
+                    width: 100%; height: 100%;
+                    border-radius: 9999px;
+                    box-sizing: border-box;
+                    /* border: 2px solid ${GLOBAL.ACCENT_COLOR}; */
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
             margin-bottom: 15px;
             display: flex; align-items: center;
             & *{font-size: 0.8em;}

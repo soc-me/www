@@ -5,7 +5,7 @@ export const TextEditorContainer = styled.div`
     width: 100%;
     display: flex; flex-direction: column;
     & .menuBar{
-        margin-top: 10px;
+        margin-top: 20px;
         width: 100%;
         display: flex; flex-wrap: wrap;
         & button{
@@ -40,7 +40,7 @@ export const TextEditorContainer = styled.div`
     // editor
     .ProseMirror {
         outline: 0;
-        min-height: 30px;
+        /* min-height: 30px; */
         padding: 0px;
         box-sizing: border-box;
         max-width: 100%;

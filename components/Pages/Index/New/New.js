@@ -31,7 +31,7 @@ const New = ({uploadToURL, addToList}) => {
         <NewContainer onSubmit={event => event.preventDefault()}>
             {/* <textarea name="" id="" placeholder="What's on your mind?" required onChange={(e)=>{setText(e.target.value)}} value={text}></textarea> */}
             <div className="textEditorContainer">
-                <TextEditor text={text} setText={setText} isEditable={true}/>
+                <TextEditor text={text} setText={setText} isEditable={true} placeholder={"What's on your mind?"}/>
             </div>
             <button onClick={(e)=>{handleSubmit(e)}}>
                 {

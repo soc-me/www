@@ -55,7 +55,7 @@ const MenuBar = ({ editor }) => {
   )
 }
 
-const TextEditor = ({text, setText, isEditable}) => {
+const TextEditor = ({text, setText, isEditable, placeholder}) => {
   const editor = useEditor({
     extensions: [
       Color.configure({ types: [TextStyle.name, ListItem.name] }),
@@ -76,7 +76,7 @@ const TextEditor = ({text, setText, isEditable}) => {
         }
       }),
       Placeholder.configure({
-        placeholder: "What's on your mind?",
+        placeholder: placeholder,
       }),
     ],
     content: text,
