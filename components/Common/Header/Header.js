@@ -24,7 +24,7 @@ const Header = () => {
                             (user) 
                             ? (
                                 <li className="profileLink">
-                                    <Link href='/account/1' aria-label="Link to profile page"><div className="image" style={{backgroundImage: `url('/logo3.jpg')`}}></div></Link>
+                                    <Link href='/account/1' aria-label="Link to profile page" className="profContainer"><div className="image" style={{backgroundImage: `url('/logo3.jpg')`}}></div></Link>
                                 </li>
                             )
                             : null

@@ -4,24 +4,61 @@ import createIcon from '@/public/createIcon.png';
 import { useState } from "react";
 import axios from "@/lib/axios";
 import Spinner from "@/components/Common/Spinner/Spinner";
-import TextEditor from "@/components/Common/TextEditor/TextEditor";
+import { MenuBar } from "@/components/Common/TextEditor/TextEditor";
+import { Color } from '@tiptap/extension-color'
+import ListItem from '@tiptap/extension-list-item'
+import TextStyle from '@tiptap/extension-text-style'
+import { EditorContent, useEditor } from '@tiptap/react'
+import StarterKit from '@tiptap/starter-kit'
+import React, { useEffect } from 'react'
+import Placeholder from '@tiptap/extension-placeholder'
+import { TextEditorContainer } from "@/components/Common/TextEditor/TextEditor.styled";
 
 const New = ({uploadToURL, addToList}) => {
     const [text, setText] = useState(null);
     const [loading, setLoading] = useState(null);
-    const [clearEditor, setClearEditor] = useState(0);  // set this to any value to refresh the editor
+    //editor config
+    const editor = useEditor({
+        extensions: [
+          Color.configure({ types: [TextStyle.name, ListItem.name] }),
+          TextStyle.configure({ types: [ListItem.name] }),
+          StarterKit.configure({
+            bulletList: {
+              keepMarks: true,
+              keepAttributes: false, 
+            },
+            orderedList: {
+              keepMarks: true,
+              keepAttributes: false,
+            },
+            history: true,
+            italic: false,
+            heading:{
+              levels: [1],
+            }
+          }),
+          Placeholder.configure({
+            placeholder: "What's on your mind?",
+          }),
+        ],
+        content: text,
+        onUpdate: (({editor}) => {
+          const html = editor.getHTML()
+          setText(html)
+        }),
+        editable: true,
+    })
     const handleSubmit = async(e) => {
         e.preventDefault();
+        if(!text) return;
         const form = new FormData();
         form.append('content', text);
         setLoading(true);
         try { 
             console.log(text)
             const res = await axios.post(uploadToURL, form);
-            console.log(res.data.postObject)
             addToList(res.data.postObject)
-            //setText('');  this is not needed because we are using the clearEditor state
-            setClearEditor(clearEditor+1);  // set this to any value to refresh the editor
+            editor.commands.clearContent(true);   
         } catch (err) {
             console.log(err);
         }
@@ -29,11 +66,16 @@ const New = ({uploadToURL, addToList}) => {
             setLoading(false);
         }
     }
+
     return (
         <NewContainer onSubmit={event => event.preventDefault()}>
-            {/* <textarea name="" id="" placeholder="What's on your mind?" required onChange={(e)=>{setText(e.target.value)}} value={text}></textarea> */}
             <div className="textEditorContainer">
-                <TextEditor text={text} setText={setText} isEditable={true} placeholder={"What's on your mind?"} clearEditor={clearEditor}/>
+                <TextEditorContainer>
+                    <EditorContent editor={editor}/>
+                    <div className="menuBar">
+                        <MenuBar editor={editor} />
+                    </div>
+                </TextEditorContainer>
             </div>
             <button onClick={(e)=>{handleSubmit(e)}}>
                 {

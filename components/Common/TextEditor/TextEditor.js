@@ -8,7 +8,7 @@ import React, { useEffect } from 'react'
 import { TextEditorContainer } from './TextEditor.styled'
 import Placeholder from '@tiptap/extension-placeholder'
 
-const MenuBar = ({ editor }) => {
+export const MenuBar = ({ editor }) => {
   if (!editor) {
     return null
   }
@@ -92,7 +92,7 @@ const TextEditor = ({text, setText, isEditable, placeholder, clearEditor}) => {
   }, [clearEditor])
   return (
     <TextEditorContainer>
-      <EditorContent editor={editor} placeholder={"What's on your mind?"}/>
+      <EditorContent editor={editor} placeholder={"What's on your mind?"} required={true}/>
       {
         isEditable
         ? (

@@ -28,9 +28,15 @@ const IndexPage = () => {
                             : null
                         )}
                     </div>
-                    <div className="newOuter">
-                        <New uploadToURL={'/api/post/create'} addToList={addToPostObjects}/>
-                    </div>
+                    {
+                        !user
+                        ? null
+                        : (
+                            <div className="newOuter">
+                                <New uploadToURL={'/api/post/create'} addToList={addToPostObjects}/>
+                            </div>
+                        )
+                    }
                     <PostList postObjects={postObjects} isLoading={isLoading} />
                 </div>
             </div>

@@ -53,15 +53,27 @@ export const NavContainer = styled.nav`
                 background-color: ${GLOBAL.BUTTON_COLORS[0].PRIMARY};
                 border-radius: 9999px;
                 display: flex; align-items: center; justify-content: center;
+                border: 2px solid ${GLOBAL.ACCENT_COLOR};
                 & .image{
                     background-size: cover;
                     background-repeat: no-repeat;
                     background-position: center;
                     height: 70%; width: 70%;
                 }
+                &.profContainer{
+                    border: 0px solid transparent;
+                    &:hover{
+                        /* transition: all 50ms ease-in-out; */
+                        border:2px  solid ${GLOBAL.LOADER_COLOR};
+                        border: 0;
+                        opacity: 0.9;
+                    }
+                    & .image{
+                        height: 100%; width: 100%;
+                    }
+                }
                 overflow: hidden;
                 box-sizing: border-box;
-                border: 2px solid ${GLOBAL.ACCENT_COLOR};
                 cursor: pointer;
                 &:hover{
                     background-color: ${GLOBAL.BUTTON_COLORS[0].SECONDARY};
