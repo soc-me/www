@@ -60,7 +60,7 @@ export const TextEditorContainer = styled.div`
 
         h1,
         h2{
-            line-height: 1.1;
+            line-height: 1.5;
         }
         h1{
             font-size: 1.3em;

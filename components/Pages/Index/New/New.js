@@ -9,6 +9,7 @@ import TextEditor from "@/components/Common/TextEditor/TextEditor";
 const New = ({uploadToURL, addToList}) => {
     const [text, setText] = useState(null);
     const [loading, setLoading] = useState(null);
+    const [clearEditor, setClearEditor] = useState(0);  // set this to any value to refresh the editor
     const handleSubmit = async(e) => {
         e.preventDefault();
         const form = new FormData();
@@ -19,7 +20,8 @@ const New = ({uploadToURL, addToList}) => {
             const res = await axios.post(uploadToURL, form);
             console.log(res.data.postObject)
             addToList(res.data.postObject)
-            setText('')
+            //setText('');  this is not needed because we are using the clearEditor state
+            setClearEditor(clearEditor+1);  // set this to any value to refresh the editor
         } catch (err) {
             console.log(err);
         }
@@ -31,7 +33,7 @@ const New = ({uploadToURL, addToList}) => {
         <NewContainer onSubmit={event => event.preventDefault()}>
             {/* <textarea name="" id="" placeholder="What's on your mind?" required onChange={(e)=>{setText(e.target.value)}} value={text}></textarea> */}
             <div className="textEditorContainer">
-                <TextEditor text={text} setText={setText} isEditable={true} placeholder={"What's on your mind?"}/>
+                <TextEditor text={text} setText={setText} isEditable={true} placeholder={"What's on your mind?"} clearEditor={clearEditor}/>
             </div>
             <button onClick={(e)=>{handleSubmit(e)}}>
                 {

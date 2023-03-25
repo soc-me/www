@@ -4,7 +4,7 @@ import TextStyle from '@tiptap/extension-text-style'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { TextEditorContainer } from './TextEditor.styled'
 import Placeholder from '@tiptap/extension-placeholder'
 
@@ -55,7 +55,7 @@ const MenuBar = ({ editor }) => {
   )
 }
 
-const TextEditor = ({text, setText, isEditable, placeholder}) => {
+const TextEditor = ({text, setText, isEditable, placeholder, clearEditor}) => {
   const editor = useEditor({
     extensions: [
       Color.configure({ types: [TextStyle.name, ListItem.name] }),
@@ -87,7 +87,9 @@ const TextEditor = ({text, setText, isEditable, placeholder}) => {
     }),
     editable: isEditable,
   })
-
+  useEffect(()=>{
+    editor?.commands.clearContent(true)
+  }, [clearEditor])
   return (
     <TextEditorContainer>
       <EditorContent editor={editor} placeholder={"What's on your mind?"}/>
