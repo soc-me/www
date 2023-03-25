@@ -5,15 +5,13 @@ import { FollowButtonContainer } from "./FollowButton.styled";
 
 const FollowButton = ({currUser, compareToUser}) => {   
     // Get current follow status
-    const [status, setStatus] = useState({
-        isFollowing: null, requested: null
-    });
+    const [status, setStatus] = useState('null');
     const [isLoading, setIsLoading] = useState(true);
     const getFollowStatus = async() => {
         try{
             const {data}  = await axios(`http://localhost:8000/api/follow/status/${compareToUser.id}`);
             console.log(data)
-            setStatus(data);
+            setStatus(data.response);
         }catch(err){
             console.log(err);
         }finally{
@@ -23,14 +21,16 @@ const FollowButton = ({currUser, compareToUser}) => {
     const setFollow = async(isFollowRequest) => {
         try{    
             if(isFollowRequest){
+                setStatus('requested')
                 const {data} = await axios.post(`http://localhost:8000/api/follow/create/${compareToUser.id}`);
                 console.log(data)
-                setStatus(data);
+                setStatus(data.response);
             }
             else{
+                setStatus('null')
                 const {data} = await axios.delete(`http://localhost:8000/api/follow/delete/${compareToUser.id}`);
                 console.log(data)
-                setStatus(data);
+                setStatus(data.response);
             }
         }catch(err){
             console.log(err);
@@ -46,12 +46,12 @@ const FollowButton = ({currUser, compareToUser}) => {
         return (
             <FollowButtonContainer>
                 {
-                    !status.requested&&status.isFollowing===0
-                    ? <span onClick={cancelRequest}>Reqeusted</span>
+                    status==='following'
+                    ? <span onClick={()=> setFollow(false)}>Unfollow</span> 
                     : (
-                        status.isFollowing===1
-                        ? <span onClick={()=> setFollow(false)}>Unfollow</span>
-                        : <span onClick={()=>setFollow(true)}>Follow</span>                       
+                        status==='requested'
+                        ? <span onClick={cancelRequest}>Reqeusted</span>                
+                        : <span onClick={()=>setFollow(true)}>Follow</span>   
                     )
                 }
             </FollowButtonContainer>

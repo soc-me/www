@@ -14,4 +14,9 @@ export const FollowButtonContainer = styled.button`
     &:hover{
         opacity: 0.9;
     }
+    & span{
+        background-color: transparent;
+        height: 100%; width: 100%;
+        display: flex; justify-content: center; align-items: center;
+    }
 `
