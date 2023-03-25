@@ -8,7 +8,8 @@ export const NewContainer = styled.form`
     border: 1px solid ${GLOBAL.ACCENT_COLOR};
     box-sizing: border-box;
     padding: 20px;
-    display: flex; align-items: flex-start;
+    display: flex; align-items: flex-end;
+    justify-content: space-between;
     & textarea{
         flex-grow:1 ;
         background-color: ${GLOBAL.PRIMARY_COLOR};
@@ -25,17 +26,18 @@ export const NewContainer = styled.form`
         }
     }
     & .textEditorContainer{
-        flex-grow:1 ;
+        width: 90%;
+        margin-top: 10px;
     }
-    & button{
+    &> button{
         display: flex; align-items: center; justify-content: center;
         flex-direction: row-reverse;
         background-color: ${GLOBAL.LOADER_COLOR};
         border-radius: 5px;
         cursor:pointer;
-        height: 1em; padding: 10px 10px;
+        height: 1em; 
+        width: 40px; height: 40px;
         box-sizing: content-box;
-        width: 50px;
         & span{
             font-weight: 500;
             font-size: 0.9em;

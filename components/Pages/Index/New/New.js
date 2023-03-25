@@ -7,7 +7,7 @@ import Spinner from "@/components/Common/Spinner/Spinner";
 import TextEditor from "@/components/Common/TextEditor/TextEditor";
 
 const New = ({uploadToURL, addToList}) => {
-    const [text, setText] = useState('');
+    const [text, setText] = useState(null);
     const [loading, setLoading] = useState(null);
     const handleSubmit = async(e) => {
         e.preventDefault();
@@ -31,7 +31,7 @@ const New = ({uploadToURL, addToList}) => {
         <NewContainer onSubmit={event => event.preventDefault()}>
             {/* <textarea name="" id="" placeholder="What's on your mind?" required onChange={(e)=>{setText(e.target.value)}} value={text}></textarea> */}
             <div className="textEditorContainer">
-                <TextEditor text={text} setText={setText}/>
+                <TextEditor text={text} setText={setText} isEditable={true}/>
             </div>
             <button onClick={(e)=>{handleSubmit(e)}}>
                 {

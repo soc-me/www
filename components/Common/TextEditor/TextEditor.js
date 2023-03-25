@@ -3,8 +3,10 @@ import ListItem from '@tiptap/extension-list-item'
 import TextStyle from '@tiptap/extension-text-style'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
+import Image from 'next/image'
 import React from 'react'
 import { TextEditorContainer } from './TextEditor.styled'
+import Placeholder from '@tiptap/extension-placeholder'
 
 const MenuBar = ({ editor }) => {
   if (!editor) {
@@ -13,16 +15,22 @@ const MenuBar = ({ editor }) => {
   return (
     <>
       <button
+        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+        className={editor.isActive('codeBlock') ? 'is-active' : ''}
+      >
+        <Image src='/codeIcon.png' alt='Code Icon' width={20} height={20}/>
+      </button>
+      <button
         onClick={() => editor.chain().focus().setParagraph().run()}
         className={editor.isActive('paragraph') ? 'is-active paragraph' : 'paragraph'}
       >
-        P
+        <Image src='/paragraphIcon.png' alt='Paragraph Icon' width={20} height={20}/>
       </button>
       <button
         onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
         className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
       >
-        H
+        <Image src='/headingIcon.png' alt='Heading Icon' width={20} height={20}/>
       </button>
       <button
         onClick={() => editor.chain().focus().toggleBold().run()}
@@ -35,25 +43,19 @@ const MenuBar = ({ editor }) => {
         }
         className={editor.isActive('bold') ? 'is-active' : ''}
       >
-        B
+        <Image src='/boldIcon.png' alt='Bold Icon' width={20} height={20}/>
       </button>
       <button
         onClick={() => editor.chain().focus().toggleBulletList().run()}
         className={editor.isActive('bulletList') ? 'is-active' : ''}
       >
-        L
-      </button>
-      <button
-        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-        className={editor.isActive('codeBlock') ? 'is-active' : ''}
-      >
-        C
+        <Image src='/listIcon.png' alt='Bullet List Icon' width={20} height={20}/>
       </button>
     </>
   )
 }
 
-const TextEditor = ({text, setText}) => {
+const TextEditor = ({text, setText, isEditable}) => {
   const editor = useEditor({
     extensions: [
       Color.configure({ types: [TextStyle.name, ListItem.name] }),
@@ -73,20 +75,31 @@ const TextEditor = ({text, setText}) => {
           levels: [1],
         }
       }),
+      Placeholder.configure({
+        placeholder: "What's on your mind?",
+      }),
     ],
     content: text,
     onUpdate: (({editor}) => {
+      if(!isEditable) return;
       const html = editor.getHTML()
       setText(html)
-    })
+    }),
+    editable: isEditable,
   })
 
   return (
     <TextEditorContainer>
-      <div className="menuBar">
-        <MenuBar editor={editor} />
-      </div>
-      <EditorContent editor={editor} />
+      <EditorContent editor={editor} placeholder={"What's on your mind?"}/>
+      {
+        isEditable
+        ? (
+          <div className="menuBar">
+            <MenuBar editor={editor} />
+          </div>
+        ) 
+        : null
+      }
     </TextEditorContainer>
   )
 }

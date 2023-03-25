@@ -5,6 +5,7 @@ export const TextEditorContainer = styled.div`
     width: 100%;
     display: flex; flex-direction: column;
     & .menuBar{
+        margin-top: 10px;
         width: 100%;
         display: flex; flex-wrap: wrap;
         & button{
@@ -20,12 +21,29 @@ export const TextEditorContainer = styled.div`
                 }
             }
             width: fit-content; height: fit-content;
-            padding: 10px 20px;
+            padding: 5px 5px;
             margin-right: 10px;
+            & img{
+                height: 20px; width: 20px;
+            }
+            border-radius: 3px;
         }
     }
+    //placeholder text
+    .ProseMirror p.is-editor-empty:first-child::before {
+        color: #DDDDDD;
+        content: attr(data-placeholder);
+        float: left;
+        height: 0;
+        pointer-events: none;
+    }
+    // editor
     .ProseMirror {
         outline: 0;
+        min-height: 30px;
+        padding: 0px;
+        box-sizing: border-box;
+        max-width: 100%;
         & *{
             font-size: inherit;
         }

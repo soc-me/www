@@ -12,6 +12,7 @@
     "@lexical/react": "^0.9.1",
     "@tiptap/extension-color": "^2.0.0-beta.220",
     "@tiptap/extension-list-item": "^2.0.0-beta.220",
+    "@tiptap/extension-placeholder": "^2.0.0-beta.220",
     "@tiptap/extension-text-style": "^2.0.0-beta.220",
     "@tiptap/react": "^2.0.0-beta.220",
     "@tiptap/starter-kit": "^2.0.0-beta.220",
