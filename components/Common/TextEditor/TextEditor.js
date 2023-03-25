@@ -55,6 +55,8 @@ export const MenuBar = ({ editor }) => {
   )
 }
 
+
+// deprecated
 const TextEditor = ({text, setText, isEditable, placeholder, clearEditor}) => {
   const editor = useEditor({
     extensions: [

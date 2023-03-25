@@ -13,7 +13,6 @@ export const PostElContainer = styled.div`
     /* cursor: pointer; */
     & .content{
         width: 100%;
-        margin-left: 10px;
         margin-top: 5px;
         & .meta{
             & .imageContainer{
@@ -69,7 +68,7 @@ export const PostElContainer = styled.div`
             }
         }
         & .text{
-            font-size: 1em;
+            width: 100%;
         }
         & .buttonControls{
             width: 100%;

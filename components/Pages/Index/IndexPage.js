@@ -30,10 +30,14 @@ const IndexPage = () => {
                     </div>
                     {
                         !user
-                        ? null
+                        ? (
+                            <div className="newOuter">
+                                <New uploadToURL={'/api/post/create'} addToList={addToPostObjects} loggedIn={false}/>
+                            </div>
+                        )
                         : (
                             <div className="newOuter">
-                                <New uploadToURL={'/api/post/create'} addToList={addToPostObjects}/>
+                                <New uploadToURL={'/api/post/create'} addToList={addToPostObjects} loggedIn={true}/>
                             </div>
                         )
                     }

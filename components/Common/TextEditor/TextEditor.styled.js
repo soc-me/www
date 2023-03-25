@@ -80,6 +80,7 @@ export const TextEditorContainer = styled.div`
             font-family: 'JetBrainsMono', monospace;
             padding: 0.75rem 1rem;
             border-radius: 0.5rem;
+            /* width: 100%; */
 
             code {
             color: inherit;

@@ -13,8 +13,9 @@ import StarterKit from '@tiptap/starter-kit'
 import React, { useEffect } from 'react'
 import Placeholder from '@tiptap/extension-placeholder'
 import { TextEditorContainer } from "@/components/Common/TextEditor/TextEditor.styled";
+import { useRouter } from "next/router";
 
-const New = ({uploadToURL, addToList}) => {
+const New = ({uploadToURL, addToList, loggedIn}) => {
     const [text, setText] = useState(null);
     const [loading, setLoading] = useState(null);
     //editor config
@@ -48,7 +49,12 @@ const New = ({uploadToURL, addToList}) => {
         }),
         editable: true,
     })
+    const router = useRouter();
     const handleSubmit = async(e) => {
+        if (!loggedIn) {
+            router.push('/login');
+            return;
+        }
         e.preventDefault();
         if(!text) return;
         const form = new FormData();
