@@ -16,13 +16,13 @@ export const AuthLayoutContainer = styled.div`
             width: 20%;
             margin-right: 5%;
             overflow: hidden;
-            border-radius: 0 40% 40% 0;
-            border-right: 1px solid ${GLOBAL.ACCENT_COLOR};
+            border-radius: 0 0% 0% 0;
+            /* border-right: 1px solid ${GLOBAL.ACCENT_COLOR}; */
             & .image{
                 height: 100%; width: 100%;
                 background-image: url("/authBg.jpg");
                 background-size: cover;
-                background-position: center;
+                background-position: center center;
                 background-repeat: no-repeat;
             }
         }

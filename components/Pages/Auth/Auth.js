@@ -57,8 +57,8 @@ const Auth = ({isLogin}) => {
                         : null
                     }
                     <div className="inputElement username">
-                        <label htmlFor="name">Username</label>
-                        <input type="username" name="name" id="name" ref={nameRef}
+                        <label htmlFor="username">Username</label>
+                        <input type="text" autoComplete="username"to name="username" id="username" ref={nameRef}
                          onChange={(e)=>{setInputValues(prevState => ({...prevState, name: e.target.value}))}}
                         />
                     </div>

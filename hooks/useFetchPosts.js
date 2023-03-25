@@ -2,7 +2,7 @@ import { GLOBAL } from "@/GLOBAL";
 import axios from "@/lib/axios";
 import { useEffect, useState } from "react";
 
-const useFetchPosts = ({ onlyFollowing }={}) => {
+const useFetchPosts = ({ onlyFollowing, router }={}) => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
     const [postObjects, setPostObjects] = useState([]);
@@ -18,23 +18,29 @@ const useFetchPosts = ({ onlyFollowing }={}) => {
 
     const asyncFetchPosts = async (resourceURL, nullify) => {
         axios
-        .get('/api/post/all')
+        .get(resourceURL)
         .then(response => {
             if(nullify){
-                setPostObjects([...response.data.posts]);
+                setPostObjects([...response.data.postObjects]);
             }else{
-                setPostObjects([...postObjects, ...response.data]);
+                setPostObjects([...postObjects, ...response.data.postObjects]);
             }
             setIsLoading(false);
         })
         .catch(error => {
-            if (error) throw error
-            setIsLoading(false);
+            //if 401 error, redirect to login page
+            if(error.response.status === 401){
+                router.push('/login')
+            }
         })
     }
     useEffect(() => {
         setIsLoading(true);
-        asyncFetchPosts(GLOBAL.RESOURCE.POST.ALL, true);
+        if(onlyFollowing){
+            asyncFetchPosts(GLOBAL.RESOURCE.POST.FOLLOWING, true);
+        }else{
+            asyncFetchPosts(GLOBAL.RESOURCE.POST.ALL, true);
+        }
     }, [onlyFollowing])
 
     return {

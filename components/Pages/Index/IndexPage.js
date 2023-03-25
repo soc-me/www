@@ -2,26 +2,42 @@ import PostList from "@/components/Common/PostList/PostList";
 import { GLOBAL } from "@/GLOBAL";
 import { useAuth } from "@/hooks/useAuth";
 import useFetchPosts from "@/hooks/useFetchPosts";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { IndexContainer } from "./IndexPage.styled";
 import New from "./New/New";
 
-const IndexPage = () => {
-    const [onlyFollowing, setOnlyFollowing] = useState(false);
-    const {postObjects, isLoading, error, refreshList, addToPostObjects} = useFetchPosts({onlyFollowing});
+const IndexPage = ({isOnlyFollowing}) => {
     const {user} = useAuth({middleware: 'guest'});
+    const [onlyFollowing, setOnlyFollowing] = useState(isOnlyFollowing);
+    const router = useRouter();
+    const {postObjects, isLoading, error, refreshList, addToPostObjects} = useFetchPosts({onlyFollowing, router});
+    const toggleFollowing = async() =>{
+        if(onlyFollowing){
+            setOnlyFollowing(false);
+        }else{
+            setOnlyFollowing(true);
+        }
+        //upadate url without reloading page
+        router.push({
+            pathname: '/',
+            query: {
+                following: !onlyFollowing
+            }
+        }, undefined, {shallow: true})
+    }
     return (
         <IndexContainer className="center">
             <div className="indexInner">
                 <div className="postsOuter">
                     <div className="typeSelect">
-                        <button className={`all selected-${!onlyFollowing}`} onClick={() => setOnlyFollowing(false)} >
+                        <button className={`all selected-${!onlyFollowing}`} onClick={toggleFollowing} >
                             <span>All Posts</span>
                         </button>
                         {(
                             user
                             ? (
-                                <button className={`true selected-${onlyFollowing}`} onClick={() => setOnlyFollowing(true)}>
+                                <button className={`true selected-${onlyFollowing}`} onClick={toggleFollowing}>
                                 <span>Following</span>
                             </button>
                             )

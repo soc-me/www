@@ -6,7 +6,7 @@ import { GLOBAL } from '@/GLOBAL'
 export default function App({ Component, pageProps }) {
   return (
   <>
-    <NextNProgress color={GLOBAL.LOADER_COLOR} startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={true} />
+    <NextNProgress color={GLOBAL.LOADER_COLOR} startPosition={0.3} stopDelayMs={200} height={3} showOnShallow={false} />
     <Component {...pageProps} />
   </>
   )

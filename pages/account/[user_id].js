@@ -22,7 +22,6 @@ export async function getServerSideProps(context) {
     const {user_id} = context.params
     try{
         const response = await axios.get(`/api/user/minimal/${user_id}`)
-        console.log(response.data)
         return {
             props: {
                 minimalUserObject: response.data,
