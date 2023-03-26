@@ -12,12 +12,12 @@ const IndexPage = ({initialFollowing}) => {
     const router = useRouter();
     const [onlyFollowing, setOnlyFollowing] = useState(initialFollowing);
     const {postObjects, isLoading, error, refreshList, addToPostObjects} = useFetchPosts({onlyFollowing, router});
-    const toggleFollowing = async() =>{
-        setOnlyFollowing(!onlyFollowing);
+    const toggleFollowing = async(currState) =>{
+        setOnlyFollowing(!currState);
         router.push({
             pathname: '/',
             query: {
-                following: !onlyFollowing
+                following: !currState
             }
         }, undefined, {shallow: true})
     }
@@ -35,13 +35,13 @@ const IndexPage = ({initialFollowing}) => {
             <div className="indexInner">
                 <div className="postsOuter">
                     <div className="typeSelect">
-                        <button className={`all selected-${!onlyFollowing}`} onClick={toggleFollowing} >
+                        <button className={`all selected-${!onlyFollowing}`} onClick={()=>toggleFollowing(true)} >
                             <span>All Posts</span>
                         </button>
                         {(
                             user
                             ? (
-                                <button className={`true selected-${onlyFollowing}`} onClick={toggleFollowing}>
+                                <button className={`true selected-${onlyFollowing}`} onClick={()=>toggleFollowing(false)}>
                                 <span>Following</span>
                             </button>
                             )

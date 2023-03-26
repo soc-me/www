@@ -8,6 +8,7 @@ import PostList from "@/components/Common/PostList/PostList";
 import FollowButton from "@/components/Common/Buttons/FollowButton/FollowButton";
 import { useAuth } from "@/hooks/useAuth";
 import { GLOBAL } from "@/GLOBAL";
+import Link from "next/link";
 
 const AccountPage = ({minimalUserObject}) => {
     const {user} = useAuth({middleware: 'guest'})
@@ -37,7 +38,8 @@ const AccountPage = ({minimalUserObject}) => {
         <AccountPageContainer>
             <div className="info">
                 <div className="imageOuter center">
-                    <Image src={GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, minimalUserObject.imageURL)} alt="profile picture" fill={true}/>
+                    {/* This requires us to know the image size beforehand */}
+                    <Image src={GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, minimalUserObject.imageURL)} alt="profile picture" fill={'contain'}/>
                 </div>
                 <div className="meta">
                     <div className="row top">
@@ -48,10 +50,10 @@ const AccountPage = ({minimalUserObject}) => {
                                 ? (
                                     (user.id === minimalUserObject.id)
                                     ? (
-                                        <button className="button settings center">
+                                        <Link href='/account/settings' className="button settings center">
                                             {/* <Image src={settingsIconDark} alt="settings"/> */}
                                             <span>Edit Profile</span>
-                                        </button>
+                                        </Link>
                                     )
                                     : (
                                         <div className="followButtonContainer button">

@@ -17,6 +17,7 @@ export const AccountPageContainer = styled.div`
             position: relative;
             & img{
                 height: 100%;
+                width: auto;
             }
         }
         padding-bottom: 50px;

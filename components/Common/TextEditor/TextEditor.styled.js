@@ -46,6 +46,7 @@ export const TextEditorContainer = styled.div`
         max-width: 100%;
         & *{
             font-size: inherit;
+            list-style: unset;
         }
         > * + * {
             margin-top: 0.75em;
@@ -55,7 +56,10 @@ export const TextEditorContainer = styled.div`
         ol {
             padding: 0 1em;
             // add standard list styles
-            list-style: disc;
+            list-style: circle;
+        }
+        *{
+            list-style: circle;
         }
 
         h1,
