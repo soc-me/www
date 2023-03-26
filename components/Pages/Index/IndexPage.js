@@ -21,7 +21,7 @@ const IndexPage = ({initialFollowing}) => {
             }
         }, undefined, {shallow: true})
     }
-    // check initial url params
+    // this makes sure that the state changes when the url changes
     useEffect(()=>{
         const {following} = router.query;
         if(following==='true'){
