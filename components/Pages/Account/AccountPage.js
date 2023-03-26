@@ -7,6 +7,7 @@ import settingsIconDark from '@/public/settingsIconDark.png'
 import PostList from "@/components/Common/PostList/PostList";
 import FollowButton from "@/components/Common/Buttons/FollowButton/FollowButton";
 import { useAuth } from "@/hooks/useAuth";
+import { GLOBAL } from "@/GLOBAL";
 
 const AccountPage = ({minimalUserObject}) => {
     const {user} = useAuth({middleware: 'guest'})
@@ -36,7 +37,7 @@ const AccountPage = ({minimalUserObject}) => {
         <AccountPageContainer>
             <div className="info">
                 <div className="imageOuter center">
-                    <Image src={logo3} alt="profile picture"/>
+                    <Image src={GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, minimalUserObject.imageURL)} alt="profile picture" fill={true}/>
                 </div>
                 <div className="meta">
                     <div className="row top">

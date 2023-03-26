@@ -14,6 +14,7 @@ export const AccountPageContainer = styled.div`
             overflow: hidden;
             box-sizing: border-box;
             /* border: 2px solid ${GLOBAL.ACCENT_COLOR}}; */
+            position: relative;
             & img{
                 height: 100%;
             }
