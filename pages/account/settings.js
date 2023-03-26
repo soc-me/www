@@ -1,4 +1,5 @@
 import Layout from "@/components/Common/Layout/Layout";
+import SettingsPage from "@/components/Pages/Settings/SettingsPage";
 import { GLOBAL } from "@/GLOBAL";
 import { useAuth } from "@/hooks/useAuth";
 import axios from "@/lib/axios";
@@ -7,35 +8,6 @@ import { useEffect, useRef, useState } from "react";
 
 const AccountSettings = () => {
     const {user} = useAuth({middleware: 'auth'});
-    const [imgSrc, setImgSrc] = useState('');
-
-    function handleFileChange(e) {
-      const file = e.target.files[0];
-  
-      if (file) {
-        const reader = new FileReader();
-  
-        reader.addEventListener("load", function () {
-          setImgSrc(this.result);
-        });
-  
-        reader.readAsDataURL(file);
-      }
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData();
-        formData.append('bio', user.bio);
-        const file = document.querySelector('input[type="file"]').files[0];
-        formData.append('image', file);
-        try{
-            const response = await axios.post('/api/user/update', formData);
-            console.log(response);
-        }catch(error){
-            console.log(error);
-        }
-    }
     return (
         <Layout>
             <Head>
@@ -44,27 +16,7 @@ const AccountSettings = () => {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
             </Head>
-            <form className="settings" onSubmit={(e) => handleSubmit(e)}>
-                {
-                    (user)
-                    ?  (<div>
-                        <div>
-                        <input type="text" placeholder="bio" value={user.bio}/>
-                        <input type="file" onChange={handleFileChange} />
-                        <img src={imgSrc} alt="Preview" />
-                        </div>
-                    </div>)
-                    : null
-                }
-            </form>
-            <style>
-                {`
-                    .settings input{
-                        height: 50px;
-                        width: 100px;
-                    }
-                `}
-            </style>
+            <SettingsPage user={user}/>
       </Layout>
     );
 }
