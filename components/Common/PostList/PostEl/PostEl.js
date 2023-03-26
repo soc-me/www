@@ -1,3 +1,4 @@
+import { parseTime } from "@/hooks/general";
 import Color from "@tiptap/extension-color";
 import ListItem from "@tiptap/extension-list-item";
 import TextStyle from "@tiptap/extension-text-style";
@@ -32,6 +33,7 @@ const PostEl = ({postObject}) => {
         content: postObject.content,
         editable: false,
     })
+    console.log('rendered')
     return (
         <PostElContainer>
             <div className="content">
@@ -43,7 +45,7 @@ const PostEl = ({postObject}) => {
                     </Link>
                     <Link href={`/account/${postObject.user_id}`} className="username">{postObject.name}</Link>
                     <div className="seperator"></div>
-                    <span className="date">2 hr</span>
+                    <span className="date">{parseTime(postObject.created_at)}</span>
                     <button className="menu center">
                         <div className="image"></div>
                     </button>

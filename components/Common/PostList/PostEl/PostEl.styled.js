@@ -17,7 +17,7 @@ export const PostElContainer = styled.div`
         & .meta{
             & .imageContainer{
                 width: 30px; height: 30px;
-                margin-right: 10px;
+                margin-right: 15px;
                 border-radius: 9999px;
                 background-color: ${GLOBAL.SECONDARY_COLOR};
                 cursor: pointer;
