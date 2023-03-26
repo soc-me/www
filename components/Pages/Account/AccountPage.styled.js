@@ -9,6 +9,7 @@ export const AccountPageContainer = styled.div`
         width: 100%;
         display: flex; align-items: center;
         & .imageOuter{
+            flex-shrink: 0;
             height: 120px; width: 120px;
             border-radius: 9999px;
             overflow: hidden;
@@ -20,10 +21,10 @@ export const AccountPageContainer = styled.div`
                 width: auto;
             }
         }
-        padding-bottom: 50px;
+        padding-bottom: 30px;
         border-bottom: 1px solid ${GLOBAL.ACCENT_COLOR};
         & .meta{
-            margin-left: 100px;
+            margin-left: 50px;
             flex-grow: 1;
             display: flex; justify-content: flex-start;
             flex-direction: column;

@@ -46,7 +46,7 @@ export const SettingsContainer = styled.div`
                     }
                     &.bioInput{
                         min-height: 100px;
-                        resize: vertical;
+                        resize: none;
                         padding: 10px;
                         background-color: ${GLOBAL.SECONDARY_COLOR};
                     }
@@ -56,9 +56,10 @@ export const SettingsContainer = styled.div`
                     border-radius: 9999px;
                     position: relative;
                     background-color: ${GLOBAL.SECONDARY_COLOR};
+                    overflow: hidden;
                     cursor: pointer;
                     & img{
-                        width: 100%; height: 100%;
+                        width: auto; height: 100%;
                         border-radius: 9999px;
                         position: absolute;
                         z-index: 9;

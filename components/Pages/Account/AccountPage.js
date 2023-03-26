@@ -9,6 +9,7 @@ import FollowButton from "@/components/Common/Buttons/FollowButton/FollowButton"
 import { useAuth } from "@/hooks/useAuth";
 import { GLOBAL } from "@/GLOBAL";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const AccountPage = ({minimalUserObject}) => {
     const {user} = useAuth({middleware: 'guest'})
@@ -17,6 +18,7 @@ const AccountPage = ({minimalUserObject}) => {
     const [isLoading, setIsLoading] = useState(true)
     //getting the complete user object
     const fetchData = async() => {
+        console.log(minimalUserObject)
         try{
             const response = await axios.get(`/api/post/user/${minimalUserObject.id}`)
             if(response.data.isPrivate){
@@ -31,15 +33,17 @@ const AccountPage = ({minimalUserObject}) => {
             setIsLoading(false)
         }
     }
+    const router = useRouter()
     useEffect(() => {
+        setIsLoading(true)
         fetchData()
-    }, [])
+    }, [router.asPath])
     return (
         <AccountPageContainer>
             <div className="info">
                 <div className="imageOuter center">
                     {/* This requires us to know the image size beforehand */}
-                    <Image src={GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, minimalUserObject.imageURL)} alt="profile picture" fill={'contain'}/>
+                    <img src={GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, minimalUserObject.imageURL)} alt="profile picture"/>
                 </div>
                 <div className="meta">
                     <div className="row top">
