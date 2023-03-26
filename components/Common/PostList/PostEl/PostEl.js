@@ -1,3 +1,4 @@
+import { GLOBAL } from "@/GLOBAL";
 import { parseTime } from "@/hooks/general";
 import Color from "@tiptap/extension-color";
 import ListItem from "@tiptap/extension-list-item";
@@ -39,7 +40,7 @@ const PostEl = ({postObject}) => {
                 <div className="meta">
                     <Link href={`/account/${postObject.user_id}`} className="imageContainer">
                         <div className="image"
-                            style={{backgroundImage: `url('/logo3.jpg')`}}
+                            style={{backgroundImage: `url('${GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, postObject.imageURL)}')`}}
                         ></div>
                     </Link>
                     <Link href={`/account/${postObject.user_id}`} className="username">{postObject.name}</Link>

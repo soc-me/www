@@ -1,4 +1,5 @@
 export const GLOBAL = {
+    APP_URL: 'http://localhost:8000',
     PRIMARY_COLOR: '#242526',
     SECONDARY_COLOR: '#18191A',
     ACCENT_COLOR: '#444444',
@@ -18,6 +19,9 @@ export const GLOBAL = {
             ALL: '/api/post/all',
             FOLLOWING: '/api/post/following',
             SINGLE: (postID)=>{return `/api/post/${postID}`},
+        },
+        IMAGE:{
+            PROFILE: (APP_URL, imageURL)=>{return `${APP_URL}${imageURL}`},
         }
     },
     REPO_LINK: 'https://github.com/orgs/soc-me/repositories'
