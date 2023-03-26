@@ -7,18 +7,13 @@ import { useEffect, useState } from "react";
 import { IndexContainer } from "./IndexPage.styled";
 import New from "./New/New";
 
-const IndexPage = ({isOnlyFollowing}) => {
+const IndexPage = ({initialFollowing}) => {
     const {user} = useAuth({middleware: 'guest'});
-    const [onlyFollowing, setOnlyFollowing] = useState(isOnlyFollowing);
     const router = useRouter();
+    const [onlyFollowing, setOnlyFollowing] = useState(initialFollowing);
     const {postObjects, isLoading, error, refreshList, addToPostObjects} = useFetchPosts({onlyFollowing, router});
     const toggleFollowing = async() =>{
-        if(onlyFollowing){
-            setOnlyFollowing(false);
-        }else{
-            setOnlyFollowing(true);
-        }
-        //upadate url without reloading page
+        setOnlyFollowing(!onlyFollowing);
         router.push({
             pathname: '/',
             query: {
@@ -26,6 +21,15 @@ const IndexPage = ({isOnlyFollowing}) => {
             }
         }, undefined, {shallow: true})
     }
+    // check initial url params
+    useEffect(()=>{
+        const {following} = router.query;
+        if(following==='true'){
+            setOnlyFollowing(true);
+        }else{
+            setOnlyFollowing(false);
+        }
+    }, [router.query])
     return (
         <IndexContainer className="center">
             <div className="indexInner">

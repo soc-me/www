@@ -37,7 +37,7 @@ const Auth = ({isLogin}) => {
         <AuthContainer>
             <div className="authInner">
                 <h1 className="title">{isLogin ? "Login" : "Register"}</h1>
-                <p className="meta">By continuing, you agree to our <Link href='/'>rules and regulations.</Link></p>
+                <p className="meta">By continuing, you agree to our <Link href='https://youtu.be/dQw4w9WgXcQ'>rules and regulations.</Link></p>
                 {(user || (status.loading===false && errors==null))
                 ?(
                 <p className="redirection">You will be redirected momentarily.</p>

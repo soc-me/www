@@ -4,7 +4,7 @@ import axios from '@/lib/axios'
 import Layout from '@/components/Common/Layout/Layout'
 import IndexPage from '@/components/Pages/Index/IndexPage'
 
-export default function Home({isOnlyFollowing}) {
+export default function Home({initialFollowing}) {
   const {user } = useAuth({
       middleware: 'guest',
   })
@@ -27,7 +27,7 @@ export default function Home({isOnlyFollowing}) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <IndexPage isOnlyFollowing={isOnlyFollowing}/>
+      <IndexPage initialFollowing={initialFollowing}/>
     </Layout>
   )
 }
@@ -47,7 +47,7 @@ export async function getServerSideProps(context) {
   //send params to page
   return {
     props: {
-      isOnlyFollowing
+      initialFollowing: isOnlyFollowing
     }
   }
 }

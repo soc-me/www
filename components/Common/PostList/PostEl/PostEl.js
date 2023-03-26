@@ -33,7 +33,6 @@ const PostEl = ({postObject}) => {
         content: postObject.content,
         editable: false,
     })
-    console.log('rendered')
     return (
         <PostElContainer>
             <div className="content">
