@@ -18,7 +18,6 @@ const AccountPage = ({minimalUserObject}) => {
     const [isLoading, setIsLoading] = useState(true)
     //getting the complete user object
     const fetchData = async() => {
-        console.log(minimalUserObject)
         try{
             const response = await axios.get(`/api/post/user/${minimalUserObject.id}`)
             if(response.data.isPrivate){
@@ -75,12 +74,12 @@ const AccountPage = ({minimalUserObject}) => {
                             <span className="text">posts</span>
                         </div>
                         <div className="following">
-                            <span className="number">10</span>
+                            <span className="number">{minimalUserObject.following}</span>
                             <span className="text">following</span>
                         </div>
                         <div className="followers">
-                            <span className="number">10</span>
-                            <span className="text">followers</span>
+                            <span className="number">{minimalUserObject.followers}</span>
+                            <span className="text">follower{minimalUserObject.followers!==1 ? 's' : null}</span>
                         </div>
                     </div>
                     <div className="row bio">

@@ -8,6 +8,7 @@ import StarterKit from "@tiptap/starter-kit";
 import Link from "next/link";
 import TextEditor from "../../TextEditor/TextEditor";
 import { TextEditorContainer } from "../../TextEditor/TextEditor.styled";
+import LikeButton from "./LikeButton/LikeButton";
 import { PostElContainer } from "./PostEl.styled";
 
 const PostEl = ({postObject}) => {
@@ -56,11 +57,9 @@ const PostEl = ({postObject}) => {
                     </TextEditorContainer>
                 </div>
                 <div className="buttonControls">
-                    <button className="like item">
-                        {/* Todo: create reusable like button */}
-                        <div className="image likeIcon"></div>
-                        <span className="likeCount">10</span>
-                    </button>
+                    <div className="likeOuter item">
+                        <LikeButton initialLikeCount={postObject.likeCount} postID={postObject.id} userLiked={postObject.liked}/>
+                    </div>
                     <Link className="comment item" href={`/post/${postObject.id}`}>
                         <div className="image commentIcon"></div>
                         <span>Comments</span>

@@ -58,6 +58,9 @@ export const SettingsContainer = styled.div`
                     background-color: ${GLOBAL.SECONDARY_COLOR};
                     overflow: hidden;
                     cursor: pointer;
+                    &:hover{
+                        outline: 2px solid ${GLOBAL.LOADER_COLOR};
+                    }
                     & img{
                         width: auto; height: 100%;
                         border-radius: 9999px;

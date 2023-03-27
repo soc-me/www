@@ -21,18 +21,25 @@ export const HeaderContainer = styled.header`
             & .image{
                 height: 40px; width: 40px;
                 border-radius: 9999px;
-                background-image: url('/logo4.jpg');
+                background-image: url('/logo5.jpg');
                 background-size: cover;
                 background-position: center;
                 background-repeat: no-repeat;
                 border: 0px solid ${GLOBAL.ACCENT_COLOR};
+                display: none;
             }
             & h2{
-                font-weight: 700;
-                margin-left: 20px;
-                font-size: 1.5em;
-                letter-spacing: 2px;
+                font-weight: 800;
+                /* margin-left: 10px; */
+                font-size: 1.3em;
+                letter-spacing: 1px;
                 font-family: 'Tilt Warp', 'intern';
+                /* color: ${GLOBAL.PRIMARY_COLOR}; */
+                color: white;
+                background-color: ${GLOBAL.BUTTON_COLORS[0].PRIMARY};
+                padding: 0 10px;
+                height: 35px;
+                border-radius: 5px;
             }
         }
     }

@@ -86,15 +86,12 @@ export const PostElContainer = styled.div`
                     font-weight: 500;
                     font-size: 0.8em;
                 }
-                & .image{
+                & > .image{
                     width: 20px; height: 20px;
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;
                     margin-right: 10px;
-                    &.likeIcon{
-                        background-image: url('/heartOff.png');
-                    }
                     &.commentIcon{  
                         background-image: url('/commentsIcon.png');
                     }

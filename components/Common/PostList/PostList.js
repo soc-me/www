@@ -5,16 +5,18 @@ import PostEl from "./PostEl/PostEl";
 import { LoadingContainer, PostListContainer } from "./PostList.styled";
 
 const PostList = ({postObjects, isLoading}) => {
+    console.log(postObjects)
     if(!isLoading){
         return (
             <PostListContainer>
                 <div className="postListInner">
                 {postObjects.map((postObject) => (
-                    <PostEl key={postObject.id} postObject={postObject} />
+                    <PostEl key={postObject.id} postObject={postObject}/>
                 ))}
                 </div>
             </PostListContainer>
         );
+        console.log('rednered')
     }else{
         return(
             <LoadingContainer>

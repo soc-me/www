@@ -37,6 +37,7 @@ export const LoadingContainer = styled.div`
 
     .loading {
         background: linear-gradient(45deg,  ${GLOBAL.SECONDARY_COLOR}, ${GLOBAL.PRIMARY_COLOR});
+        background: -moz-linear-gradient(45deg,  ${GLOBAL.SECONDARY_COLOR}, ${GLOBAL.SECONDARY_COLOR});
         background-size: 400% 400%;
         animation: sweep 2s ease-in-out infinite;
     }
