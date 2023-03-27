@@ -84,7 +84,7 @@ export const PostElContainer = styled.div`
                 &.comment{margin-right: 0; margin-left: auto;}
                 & span{
                     font-weight: 500;
-                    font-size: 0.8em;
+                    font-size: 0.9em;
                 }
                 & > .image{
                     width: 20px; height: 20px;
