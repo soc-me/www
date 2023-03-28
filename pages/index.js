@@ -5,20 +5,6 @@ import Layout from '@/components/Common/Layout/Layout'
 import IndexPage from '@/components/Pages/Index/IndexPage'
 
 export default function Home({initialFollowing}) {
-  const {user } = useAuth({
-      middleware: 'guest',
-  })
-  if(user){
-    // get following posts
-    null
-  }else{
-    axios
-      .get('/api/post/all')
-      .then(response => null)
-      .catch(error => {
-          console.log(error)
-      })
-  }
   return (
     <Layout>
       <Head>
