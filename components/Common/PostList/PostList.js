@@ -5,7 +5,7 @@ import PostEl from "./PostEl/PostEl";
 import { LoadingContainer, PostListContainer } from "./PostList.styled";
 
 const PostList = ({postObjects, isLoading}) => {
-    if(!isLoading){
+    if(!isLoading && postObjects){
         return (
             <PostListContainer>
                 <div className="postListInner">

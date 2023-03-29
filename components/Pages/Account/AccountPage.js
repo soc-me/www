@@ -28,7 +28,7 @@ const AccountPage = ({minimalUserObject}) => {
                 setPostObjects(response.data.postObjects)
             }
         }catch(error){
-            console.log(error)
+            setNotAllowed(true)
         }finally{
             setIsLoading(false)
         }

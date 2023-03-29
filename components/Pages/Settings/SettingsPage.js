@@ -5,22 +5,22 @@ import Image from 'next/image';
 import saveIcon from '@/public/saveIcon.png'
 import Spinner from "@/components/Common/Spinner/Spinner";
 import axios from "@/lib/axios";
+import { useRouter } from "next/router";
 
 const SettingsPage = ({user}) => {
     const [imgSrc, setImgSrc] = useState('');
     const [bio, setBio] = useState('');
     const [loading, setLoading] = useState(false);
     const imageRef = useRef(null);
+    const router = useRouter();
     function handleFileChange(e) {
       const file = e.target.files[0];
   
       if (file) {
         const reader = new FileReader();
-  
         reader.addEventListener("load", function () {
           setImgSrc(this.result);
         });
-  
         reader.readAsDataURL(file);
       }
     }
@@ -40,10 +40,8 @@ const SettingsPage = ({user}) => {
             formData.append('bio', bio);
         }
         try {
-            console.log(formData)
             const res  = await axios.post(`/api/user/update/${user.id}`, formData)
-            console.log(res.data)
-            window.location.reload()
+            window.location.href = `/account/${user.id}`
         } catch (error) {
             console.log(error)
         }finally{
@@ -53,7 +51,7 @@ const SettingsPage = ({user}) => {
     return (
         <SettingsContainer>
             <div className="settingsInner">
-                <h1>Account Settings</h1>
+                <h1>Account Details</h1>
                 <form className="editProfile" onSubmit={(e)=> handleAccountUpdate(e)}>
                     <div className="formEl profPic">
                         <label htmlFor="profPic">Click on the image to change your profile picture</label>
@@ -74,15 +72,11 @@ const SettingsPage = ({user}) => {
                             }
                         </div>
                     </div>
-                    <div className="formEl username">
-                        <label htmlFor="name">You cannot change your username</label>
-                        <input  className="username" type="text" id="name" value={user ? user.name : ''} disabled={true}/>
-                    </div>
                     <div className="formEl bio">
                         <label htmlFor="bio">Write something about yourself</label>
                         {
                             user
-                            ? <textarea className="bioInput" type="text" id="bio" required onChange={(e)=>setBio(e.target.value)} defaultValue={user.bio}/>
+                            ? <textarea className="bioInput" type="text" id="bio" required onChange={(e)=>setBio(e.target.value)} defaultValue={user.bio} placeholder='About'/>
                             : <textarea className="bioInput" type="text" id="bio" disabled/>
                         }
                     </div>
@@ -100,6 +94,40 @@ const SettingsPage = ({user}) => {
                     </div>
                 </form>
             </div>
+            {
+                !user
+                ? null
+                : (
+            <div className="privacyInner">
+                <h1>Account Settings</h1>
+                <div className="el privacy">
+                    <h3>Privacy</h3>
+                    {
+                        user.is_private
+                        ? (<>
+                            <p>Your account is currently private. This means only your followers can view and interact with your posts.</p>
+                            <button className="privacyControl center">Set Public</button>
+                        </>
+                        )
+                        : (<>
+                            <p>Your account is currently public. This means that anyone can view your posts.</p>
+                            <button className="privacyControl center">Set Private</button>
+                        </>)
+                    }
+                </div>
+                <div className="el logout">
+                    <h3>Log out</h3>
+                    <p>You are currently logged in. Click on the log out button to delete your session.</p>
+                    <button className="logout center">Logout</button>
+                </div>
+                <div className="el delete">
+                    <h3>Delete Account</h3>
+                    <p>Permantly delete your entire account. This will delete also delete your posts, your comments and your likes. This action is permanent and cannot be reversed.</p>
+                    <button className="delete center">Delete</button>
+                </div>
+            </div>
+                )
+            }
         </SettingsContainer>
     );
 }

@@ -13,12 +13,13 @@ export const SettingsContainer = styled.div`
         border: 1px solid ${GLOBAL.ACCENT_COLOR};
         min-height: 200px;
         box-sizing: border-box;
-        padding: 30px 30px;
+        padding: 40px 40px;
         display: flex; flex-direction: column; align-items: flex-start;
         & h1{
             font-size: 1.3em;
             font-weight: 600;
             width: fit-content;
+            margin-bottom: 20px;
         }
         & .editProfile{
             margin-top: 20px;
@@ -29,7 +30,7 @@ export const SettingsContainer = styled.div`
                 &:last-of-type{margin-bottom: 0}
                 display: flex; flex-direction: column;
                 & label{
-                    margin-bottom: 15px;
+                    margin-bottom: 20px;
                     font-weight: 500;
                 }
                 & input.username, & textarea{
@@ -45,10 +46,11 @@ export const SettingsContainer = styled.div`
                         border: 1px solid ${GLOBAL.LOADER_COLOR};
                     }
                     &.bioInput{
-                        min-height: 100px;
+                        min-height: 80px;
                         resize: none;
                         padding: 10px;
-                        background-color: ${GLOBAL.SECONDARY_COLOR};
+                        width: 300px;
+                        /* background-color: ${GLOBAL.SECONDARY_COLOR}; */
                     }
                 }
                 & .imageInputContainer {
@@ -58,8 +60,10 @@ export const SettingsContainer = styled.div`
                     background-color: ${GLOBAL.SECONDARY_COLOR};
                     overflow: hidden;
                     cursor: pointer;
+                    border: 2px solid ${GLOBAL.ACCENT_COLOR};
+                    box-sizing: border-box;
                     &:hover{
-                        outline: 2px solid ${GLOBAL.LOADER_COLOR};
+                        border: 2px solid ${GLOBAL.LOADER_COLOR};
                     }
                     & img{
                         width: auto; height: 100%;
@@ -81,20 +85,78 @@ export const SettingsContainer = styled.div`
                         background-color: ${GLOBAL.SECONDARY_COLOR};
                     }
                 }
+                &.submit{
+                    margin-top: 20px;
+                }
                 & button{
-                    width: 120px;
+                    width: 150px;
                     height: 50px;
                     border-radius: 5px;
+                    font-size: 0.9em;
                     background-color: ${GLOBAL.LOADER_COLOR};
                     cursor: pointer;
                     font-weight: 500;
                     display: flex; align-items: center;
                     & img{
-                        width: 25px; height: 25px;
+                        width: 20px; height: 20px;
+                        display: none;
                     }
                     & span{
-                        margin-left: 10px;
+                        margin-left: 0px;
                     }
+                    &:hover{
+                        opacity: 0.9;
+                    }
+                }
+            }
+        }
+    }
+    & .privacyInner{
+        margin-top: 40px;
+        width: 100%;
+        border-radius: 5px;
+        background-color: ${GLOBAL.PRIMARY_COLOR};
+        border: 1px solid ${GLOBAL.ACCENT_COLOR};
+        /* min-height: 200px; */
+        box-sizing: border-box;
+        padding: 40px 40px;
+        display: flex; flex-direction: column; align-items: flex-start;
+        & h1{
+            font-size: 1.3em;
+            font-weight: 600;
+            width: fit-content;
+            margin-bottom: 40px;
+        }
+        & .el{
+            width: 100%;
+            display: flex; flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            &:last-of-type{margin-bottom: 0}
+            & h3{
+                font-size: 1.1em;
+                font-weight: 500;
+                margin-bottom: 20px;
+            }
+            & p{
+                width: fit-content;
+                margin-bottom: 30px;
+            }
+            & button{
+                width: 150px;
+                height: 50px;
+                border-radius: 5px;
+                font-weight: 500;
+                font-size: 0.9em;
+                cursor: pointer;
+                &.delete{
+                    background-color: #ba0000;
+                    &:hover{
+                        opacity: 0.9;
+                    }
+                }
+                &.privacyControl, &.logout{
+                    background-color: ${GLOBAL.LOADER_COLOR};
                     &:hover{
                         opacity: 0.9;
                     }
