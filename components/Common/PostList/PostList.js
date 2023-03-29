@@ -15,17 +15,29 @@ const PostList = ({postObjects, isLoading}) => {
                 </div>
             </PostListContainer>
         );
-        console.log('rednered')
     }else{
         return(
             <LoadingContainer>
-                <div className="loading"></div>
-                <div className="loading"></div>
-                <div className="loading"></div>
-                <div className="loading"></div>
+                <SkeletonPost/>
+                <SkeletonPost/>
+                <SkeletonPost/>
             </LoadingContainer>
         );
     }
+}
+
+const SkeletonPost = () => {
+    return (
+        <div className="loading">
+            <div className="row top">
+                <div className="skeleton image"></div>
+                <div className="skeleton meta"></div>
+            </div>
+            <div className="row bottom">
+                <div className="skeleton content"></div>
+            </div>
+        </div>
+    );
 }
 
 

@@ -5,6 +5,7 @@ export const AccountPageContainer = styled.div`
     width: clamp(500px, 55%, 1000px);
     margin-top: 30px;
     display: flex; flex-direction: column;
+    margin-bottom: 40px;
     & .info{
         width: 100%;
         display: flex; align-items: center;
@@ -94,8 +95,9 @@ export const AccountPageContainer = styled.div`
         }
     }
     & .postListOuter{
-        margin-top: 50px;
+        margin-top: 30px;
         & .privateError{
+            margin-top: 50px;
             width: 100%;
             display: flex; align-items: center;
             flex-direction: column;
@@ -113,7 +115,7 @@ export const AccountPageContainer = styled.div`
                 display: flex; flex-direction: column;
                 align-items: center;
                 & h3{
-                    font-weight: 500;
+                    font-weight: 400;
                     color: ${GLOBAL.ACCENT_COLOR};
                     color: white;
                     font-size: 1.2em;
@@ -121,7 +123,7 @@ export const AccountPageContainer = styled.div`
                     width: fit-content;
                 }
                 & p{
-                    font-weight: 500;
+                    font-weight: 400;
                     width: fit-content;
                     text-align: center;
                     color: ${GLOBAL.ACCENT_COLOR};
