@@ -4,7 +4,6 @@ import axios from "@/lib/axios";
 import Head from "next/head";
 
 const Post = ({data}) => {
-    console.log(data)
     return (
         <Layout>
             <Head>

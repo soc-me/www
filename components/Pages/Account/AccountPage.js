@@ -94,7 +94,17 @@ const AccountPage = ({minimalUserObject}) => {
                     ? <PostList postObjects={null} isLoading={true}/>
                     : (!notAllowed)
                         ? <PostList postObjects={postObjects} isLoading={false}/>
-                        : <>Not Allowed</>
+                        : (
+                            <div className="privateError">
+                                <div className="imageContainer">
+                                    <img src="/privateIcon2.png" alt="" />
+                                </div>
+                                <div className="text">
+                                    <h3>This Account Is Private</h3>
+                                    <p>You must follow this account to see its posts</p>
+                                </div>
+                            </div>
+                        )
                 }
             </div>
         </AccountPageContainer>

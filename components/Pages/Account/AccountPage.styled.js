@@ -94,6 +94,39 @@ export const AccountPageContainer = styled.div`
         }
     }
     & .postListOuter{
-        margin-top: 40px;
+        margin-top: 50px;
+        & .privateError{
+            width: 100%;
+            display: flex; align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            & .imageContainer{
+                height: 80px; 
+                & img{
+                    height: 100%;
+                    opacity: 0.8;
+                }
+                /* margin-right: 40px; */
+                margin-bottom: 20px;
+            }
+            & .text{
+                display: flex; flex-direction: column;
+                align-items: center;
+                & h3{
+                    font-weight: 500;
+                    color: ${GLOBAL.ACCENT_COLOR};
+                    color: white;
+                    font-size: 1.2em;
+                    margin-bottom: 15px;
+                    width: fit-content;
+                }
+                & p{
+                    font-weight: 500;
+                    width: fit-content;
+                    text-align: center;
+                    color: ${GLOBAL.ACCENT_COLOR};
+                }
+            }
+        }
     }
 `
