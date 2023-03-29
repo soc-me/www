@@ -48,6 +48,35 @@ const SettingsPage = ({user}) => {
             setLoading(false)
         }
     }
+    // Account privacy
+    const makePrivate = async(changeToPrivate)=>{
+        try{
+            const formData  = new FormData();
+            formData.append('is_private', changeToPrivate ? 1 : 0)
+            const res = await axios.post(`/api/user/update/${user.id}`, formData)
+            router.push(`/account/${user.id}`)
+        }catch(err){
+            console.log(err)
+        }
+    }
+    // Logout
+    const logout = async() => {
+        try{
+            const res = await axios.post('/logout')
+            window.location.href = '/'
+        }catch(err){
+            console.log(err)
+        }
+    }
+    // Delete Account
+    const deleteAccount = async() => {
+        try{
+            const res = await axios.delete(`/delete_account`)
+            window.location.href = '/'
+        }catch{
+            console.log(err)
+        }
+    }
     return (
         <SettingsContainer>
             <div className="settingsInner">
@@ -106,24 +135,24 @@ const SettingsPage = ({user}) => {
                         user.is_private
                         ? (<>
                             <p>Your account is currently private. This means only your followers can view and interact with your posts.</p>
-                            <button className="privacyControl center">Set Public</button>
+                            <button className="privacyControl center" onClick={()=>makePrivate(false)}>Set Public</button>
                         </>
                         )
                         : (<>
                             <p>Your account is currently public. This means that anyone can view your posts.</p>
-                            <button className="privacyControl center">Set Private</button>
+                            <button className="privacyControl center" onClick={()=>makePrivate(true)}>Set Private</button>
                         </>)
                     }
                 </div>
                 <div className="el logout">
                     <h3>Log out</h3>
                     <p>You are currently logged in. Click on the log out button to delete your session.</p>
-                    <button className="logout center">Logout</button>
+                    <button className="logout center" onClick={logout}>Logout</button>
                 </div>
                 <div className="el delete">
                     <h3>Delete Account</h3>
                     <p>Permantly delete your entire account. This will delete also delete your posts, your comments and your likes. This action is permanent and cannot be reversed.</p>
-                    <button className="delete center">Delete</button>
+                    <button className="delete center" onClick={deleteAccount}>Delete</button>
                 </div>
             </div>
                 )
