@@ -14,16 +14,17 @@ import { useRouter } from "next/router";
 const AccountPage = ({minimalUserObject}) => {
     const {user} = useAuth({middleware: 'guest'})
     const [postObjects, setPostObjects] = useState(null)
-    const [isPrivate, setIsPrivate] = useState(null)
+    const [notAllowed, setNotAllowed] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
     //getting the complete user object
     const fetchData = async() => {
         try{
             const response = await axios.get(`/api/post/user/${minimalUserObject.id}`)
-            if(response.data.isPrivate){
-                setIsPrivate(true)
+            console.log(response.data)
+            if(response.data.notAllowed){
+                setNotAllowed(true)
             }else{
-                setIsPrivate(false)
+                setNotAllowed(false)
                 setPostObjects(response.data.postObjects)
             }
         }catch(error){
@@ -70,8 +71,8 @@ const AccountPage = ({minimalUserObject}) => {
                     </div>
                     <div className="row followersList">
                         <div className="posts">
-                            <span className="number">10</span>
-                            <span className="text">posts</span>
+                            <span className="number">{minimalUserObject.postCount}</span>
+                            <span className="text">post{minimalUserObject.postCount!==1 ? 's' : null}</span>
                         </div>
                         <div className="following">
                             <span className="number">{minimalUserObject.following}</span>
@@ -88,7 +89,13 @@ const AccountPage = ({minimalUserObject}) => {
                 </div>
             </div>
             <div className="postListOuter">
-                <PostList postObjects={postObjects} isLoading={isLoading}/>
+                {
+                    (isLoading)
+                    ? <PostList postObjects={null} isLoading={true}/>
+                    : (!notAllowed)
+                        ? <PostList postObjects={postObjects} isLoading={false}/>
+                        : <>Not Allowed</>
+                }
             </div>
         </AccountPageContainer>
     );

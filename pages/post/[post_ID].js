@@ -3,7 +3,8 @@ import PostPage from "@/components/Pages/Post/PostPage";
 import axios from "@/lib/axios";
 import Head from "next/head";
 
-const Post = ({minimalPostData}) => {
+const Post = ({data}) => {
+    console.log(data)
     return (
         <Layout>
             <Head>
@@ -12,7 +13,7 @@ const Post = ({minimalPostData}) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <PostPage minimalPostData={minimalPostData}/>
+            <PostPage data={data}/>
         </Layout>
     );
 }
@@ -24,7 +25,7 @@ export async function getServerSideProps({params}){
         const res = await axios.get(`/api/post/minimal/${params.post_ID}`);
         return {
             props: {
-                minimalPostData: res.data.postObject
+                data: res.data
             }
         }
     }catch(err){
