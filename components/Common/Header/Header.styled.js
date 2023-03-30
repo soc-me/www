@@ -91,6 +91,9 @@ export const NavContainer = styled.nav`
                 background-image: url('/searchIcon.png');
                 height: 60%; width: 60%;
             }
+            &.requestsLink a .image{
+                background-image: url('/accountsIcon.png');
+            }
             &.profileLink a{
                 & .image{
                     height: 100%; width: 100%;

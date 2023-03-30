@@ -2,9 +2,26 @@ import Link from "next/link";
 import { HeaderContainer, NavContainer } from "./Header.styled";
 import { GLOBAL } from "@/GLOBAL";
 import { useAuth } from "@/hooks/useAuth";
+import axios from "@/lib/axios";
+import { useEffect, useState } from "react";
 
 const Header = () => {
     const { user } = useAuth({middleware: 'guest'});
+    const [requestCount, setRequestCount] = useState(null);
+    const getReqeustCount = async () => {        
+        //get follow request count
+        try{
+            const res = await axios(`/api/follow/followrequests_count/${user.id}`);
+            setRequestCount(res.data.requestCount);
+        }catch(err){
+            console.log(err);
+        }
+    }
+    useEffect(()=>{
+        if(user&&user.is_private){
+            getReqeustCount();
+        }
+    },[user])
     return (
         <HeaderContainer className="center">
             <div className="headerInner">
@@ -23,9 +40,20 @@ const Header = () => {
                         {(
                             (user) 
                             ? (
+                                <>
+                                {
+                                    user.is_private
+                                    ? (
+                                        <li className="requestsLink">
+                                            <Link href={`/account/requests`} aria-label="Link to follow requests"><div className="image"></div></Link>
+                                        </li>
+                                    )
+                                    : null
+                                }
                                 <li className="profileLink">
                                     <Link href={`/account/${user.id}`} aria-label="Link to profile page" className="profContainer"><div className="image" style={{backgroundImage: `url('${GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, user.imageURL)}')`}}></div></Link>
                                 </li>
+                                </>
                             )
                             : null
                         )}
