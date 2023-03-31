@@ -10,9 +10,11 @@ export const SettingsContainer = styled.div`
         width: 100%;
         border-radius: 5px;
         background-color: ${GLOBAL.PRIMARY_COLOR};
-        border: 1px solid ${GLOBAL.ACCENT_COLOR};
+        border: 1px solid ${GLOBAL.ACCENT_COLOR}; 
         min-height: 200px;
         box-sizing: border-box;
+        /* margin-bottom: 80px; */
+        /* padding:  40px; */
         padding: 40px 40px;
         display: flex; flex-direction: column; align-items: flex-start;
         & h1{
@@ -89,8 +91,8 @@ export const SettingsContainer = styled.div`
                     margin-top: 20px;
                 }
                 & button{
-                    width: 150px;
-                    height: 50px;
+                    width: 120px;
+                    height: 40px;
                     border-radius: 5px;
                     font-size: 0.9em;
                     background-color: ${GLOBAL.LOADER_COLOR};
@@ -143,8 +145,8 @@ export const SettingsContainer = styled.div`
                 margin-bottom: 30px;
             }
             & button{
-                width: 150px;
-                height: 50px;
+                width: 120px;
+                height: 40px;
                 border-radius: 5px;
                 font-weight: 500;
                 font-size: 0.9em;

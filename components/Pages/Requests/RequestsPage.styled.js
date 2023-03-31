@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const RequestsPageContainer = styled.div`
     width: clamp(500px, 55%, 1000px);
     margin-top: 30px;
+    margin-bottom: 40px;
     & .requestsPageInner{
         width:  100%;
         display: flex; 
