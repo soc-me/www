@@ -1,0 +1,18 @@
+import { GLOBAL } from "@/GLOBAL";
+import styled from "styled-components";
+
+export const RequestsPageContainer = styled.div`
+    width: clamp(500px, 55%, 1000px);
+    margin-top: 30px;
+    & .requestsPageInner{
+        width:  100%;
+        display: flex; 
+        flex-direction: column;
+        & h1{
+            font-size: 1.3em;
+            font-weight: 600;
+            margin-bottom: 40px;
+            width: fit-content;
+        }
+    }
+`
