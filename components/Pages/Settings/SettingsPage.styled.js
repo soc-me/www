@@ -28,6 +28,7 @@ export const SettingsContainer = styled.div`
             width: 100%;
             display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
             & .formEl{
+                width: 100%;
                 margin-bottom: 20px;
                 &:last-of-type{margin-bottom: 0}
                 display: flex; flex-direction: column;
@@ -36,7 +37,7 @@ export const SettingsContainer = styled.div`
                     font-weight: 500;
                 }
                 & input.username, & textarea{
-                    width: 300px;
+                    width: 100%;
                     height: 30px;
                     border: 1px solid ${GLOBAL.ACCENT_COLOR};
                     background-color: ${GLOBAL.PRIMARY_COLOR};
@@ -49,10 +50,11 @@ export const SettingsContainer = styled.div`
                     }
                     &.bioInput{
                         min-height: 80px;
-                        resize: none;
-                        padding: 10px;
+                        resize: vertical;
+                        padding: 20px 10px;
                         width: 300px;
-                        /* background-color: ${GLOBAL.SECONDARY_COLOR}; */
+                        width: 100%;
+                        background-color: ${GLOBAL.SECONDARY_COLOR};
                     }
                 }
                 & .imageInputContainer {
@@ -109,6 +111,13 @@ export const SettingsContainer = styled.div`
                     &:hover{
                         opacity: 0.9;
                     }
+                }
+            }
+            & .error{
+                & p{
+                    color: red;
+                    font-size: 0.9em;
+                    font-weight: 500;
                 }
             }
         }

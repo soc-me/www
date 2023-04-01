@@ -1,7 +1,8 @@
 import Link from "next/link";
-import { SkeletonUserContainer, UserElContainer, UserListContainer } from "./UserList.styled";
+import { NothingFoundContainer, SkeletonUserContainer, UserElContainer, UserListContainer } from "./UserList.styled";
 import Image from "next/image";
 import tickIcon from "@/public/tickIcon.png";
+import emptyIcon from "@/public/emptyIcon.png";
 import { GLOBAL } from "@/GLOBAL";
 import { useState } from "react";
 import axios from "@/lib/axios";
@@ -14,15 +15,21 @@ const UserList = ({userObjects, isLoading, updateFn}) => {
             {
                 userObjects
                 ?
-                userObjects.map((userObject, index) => {
+                    userObjects.length!==0
+                    ?
+                    userObjects.map((userObject, index) => {
                     return (
                         <UserEl userObject={userObject} key={index} removeEl={()=>{
                             let newUserObjects = [...userObjects]
                             newUserObjects.splice(index, 1)
                             updateFn(newUserObjects)
                         }}/>
-                    )
-                })
+                    )})
+                    :
+                    <NothingFoundContainer className="emptyContainer">
+                        <Image src={emptyIcon} width={200} height={200} className="image"/>
+                        <p>Nothing To See Here</p>
+                    </NothingFoundContainer>
                 :
                 null
             }

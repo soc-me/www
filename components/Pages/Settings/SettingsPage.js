@@ -11,6 +11,7 @@ const SettingsPage = ({user}) => {
     const [imgSrc, setImgSrc] = useState('');
     const [bio, setBio] = useState('');
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const imageRef = useRef(null);
     const router = useRouter();
     function handleFileChange(e) {
@@ -44,6 +45,7 @@ const SettingsPage = ({user}) => {
             window.location.href = `/account/${user.id}`
         } catch (error) {
             console.log(error)
+            setError(error.response.data.message)
         }finally{
             setLoading(false)
         }
@@ -121,6 +123,14 @@ const SettingsPage = ({user}) => {
                         }
                         </button>
                     </div>
+                    {
+                        !error
+                        ? null
+                        : 
+                        <div className="error">
+                            <p>*{error}</p>
+                        </div>
+                    }
                 </form>
             </div>
             {

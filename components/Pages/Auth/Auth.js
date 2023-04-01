@@ -51,6 +51,7 @@ const Auth = ({isLogin}) => {
                                 <label htmlFor="email">Email</label>
                                 <input type="email" name="email" id="email" ref={emailRef}
                                  onChange={(e)=>{setInputValues(prevState => ({...prevState, email: e.target.value}))}}
+                                 required
                                 />
                             </div>
                         )
@@ -60,12 +61,14 @@ const Auth = ({isLogin}) => {
                         <label htmlFor="username">Username</label>
                         <input type="text" autoComplete="username"to name="username" id="username" ref={nameRef}
                          onChange={(e)=>{setInputValues(prevState => ({...prevState, name: e.target.value}))}}
+                        required
                         />
                     </div>
                     <div className="inputElement password">
                         <label htmlFor="password">Password</label>
                         <input type="password" name="password" id="password"  ref={passwordRef}
                          onChange={(e)=>{setInputValues(prevState => ({...prevState, password: e.target.value}))}}
+                         required
                         />
                     </div>
                     <div className="inputElement submit">
@@ -80,9 +83,12 @@ const Auth = ({isLogin}) => {
                         </button>
                     </div>
                     {
-                        (errors)    
-                        ? <p>{JSON.stringify(errors)}</p>
-                        : null
+                    (errors)    
+                    ? 
+                    <div className="errorContainer">
+                        *{errors.error}
+                    </div>
+                    : null
                     }
                     <div className="alt">
                         <p className="meta">{isLogin ? "Don't have an account?" : "Already have an account?"} <Link href={isLogin ? "/register" : "/login"}>{isLogin ? "Sign Up." : "Login."}</Link></p>

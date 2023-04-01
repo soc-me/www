@@ -27,6 +27,11 @@ export const AuthContainer = styled.div`
         & form{
             margin-top: 30px;
             display: flex; flex-direction: column;
+            & .errorContainer{
+                color: red;
+                font-size: 0.9em;
+                font-weight: 500;
+            }
             & .inputElement{
                 display: flex; flex-direction: column;
                 margin-bottom: 20px;
