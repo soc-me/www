@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import PostEl from "./PostEl/PostEl";
 import { LoadingContainer, PostListContainer } from "./PostList.styled";
 
-const PostList = ({postObjects, isLoading}) => {
+const PostList = ({postObjects, isLoading, user}) => {
     if(!isLoading && postObjects){
         return (
             <PostListContainer>
                 <div className="postListInner">
                 {postObjects.map((postObject) => (
-                    <PostEl key={postObject.id} postObject={postObject}/>
+                    <PostEl key={postObject.id} postObject={postObject} user={user}/>
                 ))}
                 </div>
             </PostListContainer>

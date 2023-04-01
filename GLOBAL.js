@@ -1,5 +1,6 @@
 export const GLOBAL = {
     APP_URL: 'http://localhost:8000',
+    WWW_URL: 'http://localhost:3000',
     PRIMARY_COLOR: '#242526',
     SECONDARY_COLOR: '#18191A',
     ACCENT_COLOR: '#444444',

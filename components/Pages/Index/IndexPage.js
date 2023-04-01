@@ -61,7 +61,7 @@ const IndexPage = ({initialFollowing}) => {
                             </div>
                         )
                     }
-                    <PostList postObjects={postObjects} isLoading={isLoading} />
+                    <PostList postObjects={postObjects} isLoading={isLoading} user={user}/>
                 </div>
             </div>
         </IndexContainer>

@@ -33,7 +33,7 @@ export const PostElContainer = styled.div`
             }
             margin-bottom: 15px;
             display: flex; align-items: center;
-            & *{font-size: 0.8em;}
+            & >*{font-size: 0.8em;}
             & .username{
                 font-weight: 500;
             }
@@ -46,13 +46,16 @@ export const PostElContainer = styled.div`
             & .date{
                 font-weight: 500;
             }
-            & button{
+            & .menuOuter{
                 margin-left: auto;
                 background-color: ${GLOBAL.BUTTON_COLORS[0].PRIMARY};
-                overflow: hidden;
+                overflow: visible;
                 height: 20px; width: 20px;
                 border-radius: 9999px;
                 cursor: pointer;
+                position: relative;
+                z-index: 9;
+                font-size: unset;
                 &:hover{
                     background-color: ${GLOBAL.BUTTON_COLORS[0].SECONDARY};
                 }
@@ -99,4 +102,37 @@ export const PostElContainer = styled.div`
             }
         }
     }   
+`
+
+export const PostMenuContainer = styled.div`
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    z-index: 99;
+    top: 100%;
+    right: 110%;
+    background-color: ${GLOBAL.PRIMARY_COLOR};
+    border-radius: 5px;
+    border: 1px solid ${GLOBAL.ACCENT_COLOR};
+    box-shadow: 0px 0px 10px 0px rgba(21, 21, 21, 0.75);
+    & button, & a{
+        font-size: 0.9em !important;
+        width: 100%;
+        font-weight: 500;
+        box-sizing: border-box;
+        padding-left: 10px;
+        display: flex; align-items: center;
+        text-align:left;
+        background-color: transparent;
+        height: 40px;
+        cursor: pointer;
+        &:hover{
+            background-color: ${GLOBAL.BUTTON_COLORS[0].PRIMARY};
+        }
+        &.delete{
+            color: white;
+        }
+    }
 `
