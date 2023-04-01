@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ['localhost'],
   },
+  devIndicators: {
+    buildActivity: false
+  }
 }
 
 module.exports = nextConfig

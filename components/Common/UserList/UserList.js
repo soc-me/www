@@ -27,8 +27,8 @@ const UserList = ({userObjects, isLoading, updateFn}) => {
                     )})
                     :
                     <NothingFoundContainer className="emptyContainer">
-                        <Image src={emptyIcon} width={200} height={200} className="image"/>
-                        <p>Nothing To See Here</p>
+                        {/* <Image src={emptyIcon} width={100} height={100}/> */}
+                        <p>No Requests Found</p>
                     </NothingFoundContainer>
                 :
                 null

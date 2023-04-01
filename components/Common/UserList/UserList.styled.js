@@ -74,19 +74,21 @@ export const SkeletonUserContainer = styled.div`
 
 export const NothingFoundContainer = styled.div`
     width: 100%;
-    display: flex; flex-direction: column; align-items: center;
-    margin-top: 100px;
-    & .image{
-        height: 40px; width: 40px;
-        margin-bottom: 40px;
+    display: flex; flex-direction: row; align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background: ${GLOBAL.PRIMARY_COLOR};
+    border-radius: 5px;
+    border: 1px solid ${GLOBAL.ACCENT_COLOR};
+    & img{
+        height: 30px; width: 30px;
     }
     & p{
-        display: none;
-        /* background: ${GLOBAL.PRIMARY_COLOR}; */
-        border-radius: 5px;
-        /* border: 1px solid ${GLOBAL.ACCENT_COLOR}; */
+        /* margin-left: auto; */
+        width: fit-content;
         font-weight: 500;
-        font-size: 1.3em;
-        color: #DDDDDD;
+        /* font-size: 1.3em; */
     }
 `

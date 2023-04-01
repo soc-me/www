@@ -5,6 +5,7 @@ export const RequestsPageContainer = styled.div`
     width: clamp(500px, 55%, 1000px);
     margin-top: 30px;
     margin-bottom: 40px;
+    @media (max-width: 1000px) { width: 95%; }
     & .requestsPageInner{
         width:  100%;
         display: flex; 
