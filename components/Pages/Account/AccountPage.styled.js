@@ -7,6 +7,7 @@ export const AccountPageContainer = styled.div`
     display: flex; flex-direction: column;
     margin-bottom: 40px;
     @media (max-width: 1000px) { width: 95%; }
+    /* change */
     & .info{
         width: 100%;
         display: flex; align-items: center;
