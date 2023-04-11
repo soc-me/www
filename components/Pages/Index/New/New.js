@@ -15,7 +15,7 @@ import Placeholder from '@tiptap/extension-placeholder'
 import { TextEditorContainer } from "@/components/Common/TextEditor/TextEditor.styled";
 import { useRouter } from "next/router";
 
-const New = ({uploadToURL, addToList, loggedIn}) => {
+const New = ({uploadToURL, addToList, loggedIn, placeHolder} = {}) => {
     const [text, setText] = useState(null);
     const [loading, setLoading] = useState(null);
     //editor config
@@ -39,7 +39,7 @@ const New = ({uploadToURL, addToList, loggedIn}) => {
             }
           }),
           Placeholder.configure({
-            placeholder: "What's on your mind?",
+            placeholder: placeHolder ? placeHolder : "What's on your mind?",
           }),
         ],
         content: text,

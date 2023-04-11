@@ -91,9 +91,9 @@ const AccountPage = ({minimalUserObject}) => {
             <div className="postListOuter">
                 {
                     (isLoading)
-                    ? <PostList postObjects={null} isLoading={true}/>
+                    ? <PostList postObjects={null} isLoading={true} user={user}/>
                     : (!notAllowed)
-                        ? <PostList postObjects={postObjects} isLoading={false}/>
+                        ? <PostList postObjects={postObjects} isLoading={false} user={user}/>
                         : (
                             <div className="privateError">
                                 <div className="imageContainer">
