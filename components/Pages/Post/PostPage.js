@@ -6,7 +6,7 @@ import Image from "next/image";
 import leftArrowIcon from "@/public/leftArrowIcon.png";
 import { useRouter } from "next/router";
 import New from "../Index/New/New";
-
+//
 const PostPage = ({data}) => {
     const {user}  = useAuth({middleware: "guest"})
     const isPrivate = useRef(data.is_private)
