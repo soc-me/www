@@ -13,7 +13,14 @@ export const PostPageContainer  = styled.div`
             width: 100%;
             display: flex; 
             flex-direction: column;
+            padding-bottom: 20px;
+            border-bottom: 1px solid ${GLOBAL.ACCENT_COLOR};
+            margin-bottom: 20px;
+            & .postEl{
+                margin-bottom: 0 !important;
+            }
             & h2{
+                width: fit-content;
                 display: flex; align-items: center;
                 font-size: 1em;
                 font-weight: 600;
@@ -51,7 +58,7 @@ export const PostPageContainer  = styled.div`
             }
         }
         & .newContainer{
-            margin-bottom: 40px;
+            margin-bottom: 20px;
 
         }
     }

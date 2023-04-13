@@ -26,7 +26,7 @@ const PostList = ({postObjects, isLoading, user}) => {
     }
 }
 
-const SkeletonPost = () => {
+export const SkeletonPost = () => {
     return (
         <div className="loading">
             <div className="row top">

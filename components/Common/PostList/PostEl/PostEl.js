@@ -39,7 +39,7 @@ const PostEl = ({postObject, user}) => {
         editable: false,
     })
     return (
-        <PostElContainer>
+        <PostElContainer className="postEl">
             <div className="content">
                 <div className="meta">
                     <Link href={`/account/${postObject.user_id}`} className="imageContainer">

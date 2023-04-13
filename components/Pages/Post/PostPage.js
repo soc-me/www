@@ -1,20 +1,48 @@
 import { useAuth } from "@/hooks/useAuth";
 import { PostPageContainer } from "./PostPage.styled";
-import { useRef } from "react";
-import PostList from "@/components/Common/PostList/PostList";
+import { useEffect, useRef, useState } from "react";
+import PostList, { SkeletonPost } from "@/components/Common/PostList/PostList";
 import Image from "next/image";
 import leftArrowIcon from "@/public/leftArrowIcon.png";
 import { useRouter } from "next/router";
 import New from "../Index/New/New";
-//
+import axios from "@/lib/axios";
+import { LoadingContainer } from "@/components/Common/PostList/PostList.styled";
+
+/*
+    SEO:
+    To make sure we don't lose any SEO, all public posts will have their data available on initial load.
+    This post data will be loaded to a ghost element which the user cannot see - this data will be replaced
+    with the data from an API call. This is because we cannot make authenticate the user before the page loads.
+*/
+
 const PostPage = ({data}) => {
-    const {user}  = useAuth({middleware: "guest"})
-    const isPrivate = useRef(data.is_private)
+    const [postLoading, setPostLoading] = useState(true)
+    const [commentLoading, setCommentLoading] = useState(true)
+    const [postData, setPostData] = useState(null)
+    const {user} = useAuth({'middleware': data.is_private ? 'auth' : 'guest'})
     const router = useRouter()
-    // if the owners account is public, the post data will be available. if not, we need to make a request
     const navigateBack = () =>{
         router.back()
     }
+    // get post data on user init and change
+    const getPostData = async() => {
+        try{
+            const res = await axios(`/api/post/${data.postObject.id}`)
+            setPostData(res.data.postObject)
+            setPostLoading(false)
+        }
+        catch(err){
+            if(err.response.status === 401){
+                router.push('/')
+            }
+        }
+    }
+    useEffect(()=>{
+        if(user){
+            getPostData()
+        }
+    },[user])
     return (
         <PostPageContainer>
             <div className="postPageInner">
@@ -25,19 +53,26 @@ const PostPage = ({data}) => {
                     </h2>
                     <div className="starterContainer">
                     {
-                        !isPrivate.current  
-                        ? <PostList postObjects={[data.postObject]} isLoading={false} user={user}/>
-                        : 'Loading...'
+                        !postLoading
+                        ? <PostList postObjects={[postData]} isLoading={false} user={user}/>
+                        : <>
+                            <LoadingContainer>
+                                <SkeletonPost/>
+                            </LoadingContainer>
+                          </>
                     }
-                    </div>
-                </div>
-                <div className="comments">
-                    {/* <h2>Comments</h2> */}
-                    <div className="commentsContainer">
                     </div>
                 </div>
                 <div className="newContainer">
                     <New uploadToURL={'/api/comment/create'} addToList={null} loggedIn={user} placeHolder={'Leave a comment.'}/>
+                </div>
+                <div className="comments">
+                    {/* <h2>Comments</h2> */}
+                    <div className="commentsContainer">
+                        <LoadingContainer>
+                            <SkeletonPost/>
+                        </LoadingContainer>
+                    </div>
                 </div>
             </div>
         </PostPageContainer>
