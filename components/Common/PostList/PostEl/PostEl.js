@@ -12,6 +12,7 @@ import LikeButton from "./LikeButton/LikeButton";
 import { PostElContainer, PostMenuContainer } from "./PostEl.styled";
 import { useEffect, useRef, useState } from "react";
 import axios from "@/lib/axios";
+import TipTapImage from "@tiptap/extension-image";
 
 const PostEl = ({postObject, user, isComment} = null) => {
     const [showMenu, setShowMenu] = useState(false);
@@ -33,7 +34,10 @@ const PostEl = ({postObject, user, isComment} = null) => {
             heading:{
               levels: [1],
             }
-          })
+          }),
+          TipTapImage.configure({
+              inline: true,
+          }),
         ],
         content: postObject.content,
         editable: false,

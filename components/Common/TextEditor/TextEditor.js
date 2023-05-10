@@ -52,7 +52,10 @@ export const MenuBar = ({ editor }) => {
         <Image src='/listIcon.png' alt='Bullet List Icon' width={20} height={20}/>
       </button>
       <button
-        onClick={() => editor.chain().focus().setImage({ src: 'https://images.pexels.com/photos/14171377/pexels-photo-14171377.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2' }).run()}
+        onClick={() =>{
+            let imageURL = prompt("Please enter the URL of the image you want to add", "");
+            editor.chain().focus().setImage({ src: imageURL }).run()
+        }}
         className={editor.isActive('bulletList') ? 'is-active' : ''}
       >
         <Image src='/imageIcon.png' alt='Image Icon' width={20} height={20}/>
