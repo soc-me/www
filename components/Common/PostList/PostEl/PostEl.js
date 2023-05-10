@@ -13,7 +13,7 @@ import { PostElContainer, PostMenuContainer } from "./PostEl.styled";
 import { useEffect, useRef, useState } from "react";
 import axios from "@/lib/axios";
 
-const PostEl = ({postObject, user}) => {
+const PostEl = ({postObject, user, isComment} = null) => {
     const [showMenu, setShowMenu] = useState(false);
     const editor = useEditor({
         extensions: [
@@ -54,7 +54,7 @@ const PostEl = ({postObject, user}) => {
                         <div className="image"></div>
                         {
                             showMenu
-                            ? <PostMenu postObject={postObject} setShowMenu={setShowMenu} user={user}/>
+                            ? <PostMenu postObject={postObject} setShowMenu={setShowMenu} user={user} isComment={isComment ? isComment : false}/>
                             : null
                         }
                     </button>
@@ -64,21 +64,27 @@ const PostEl = ({postObject, user}) => {
                         <EditorContent editor={editor}/>
                     </TextEditorContainer>
                 </div>
-                <div className="buttonControls">
-                    <div className="likeOuter item">
-                        <LikeButton initialLikeCount={postObject.likeCount} postID={postObject.id} userLiked={postObject.liked}/>
-                    </div>
-                    <Link className="comment item" href={`/post/${postObject.id}`}>
-                        <div className="image commentIcon"></div>
-                        <span>Comments</span>
-                    </Link>
-                </div>
+                {
+                    !isComment
+                    ? (
+                        <div className="buttonControls">
+                            <div className="likeOuter item">
+                                <LikeButton initialLikeCount={postObject.likeCount} postID={postObject.id} userLiked={postObject.liked} user={user}/>
+                            </div>
+                            <Link className="comment item" href={`/post/${postObject.id}`}>
+                                <div className="image commentIcon"></div>
+                                <span>Comments</span>
+                            </Link>
+                        </div>
+                    )
+                    : null
+                }
             </div>
         </PostElContainer>
     );
 }
 
-export const PostMenu = ({postObject, setShowMenu, user}) => {
+export const PostMenu = ({postObject, setShowMenu, user, isComment} = null) => {
     const [showDelete, setShowDelete] = useState(null);
     const [showDeleteAsAdmin, setShowDeleteAsAdmin] = useState(null);
     const ref = useRef(null);
@@ -113,7 +119,11 @@ export const PostMenu = ({postObject, setShowMenu, user}) => {
         try{
             const formData = new FormData();
             formData.append("asAdmin", asAdmin);
-            const res = await axios.delete(`/api/post/delete/${postObject.id}`)
+            if(isComment){
+                const res = await axios.delete(`/api/comment/delete/${postObject.id}`, {data: formData})
+            }else{
+                const res = await axios.delete(`/api/post/delete/${postObject.id}`, {data: formData})
+            }
         }
         catch (err){
             console.log(err);
@@ -123,7 +133,7 @@ export const PostMenu = ({postObject, setShowMenu, user}) => {
         <PostMenuContainer id={`menuButton_${postObject.id}`} ref={ref}>
             {
                 showDelete
-                ? <button className="delete delete" onClick={()=>deletePost(false)}>Delete Post</button>
+                ? <button className="delete delete" onClick={()=>deletePost(false)}>Delete {isComment ? 'Comment' : 'Post'}</button>
                 : null
             }
             {
@@ -131,7 +141,15 @@ export const PostMenu = ({postObject, setShowMenu, user}) => {
                 ? <button className="deleteAsAdmin delete" onClick={()=>deletePost(true)}>Delete As Admin</button>
                 : null
             }
-            <Link href={`/post/${postObject.id}`}>Go to Post</Link>
+            {
+                !isComment
+                ? (
+                    <>
+                        <Link href={`/post/${postObject.id}`}>Go to Post</Link>
+                    </>
+                )
+                : null
+            }
             <button className="copyURL" onClick={addToClipboard}>Copy URL</button>
         </PostMenuContainer>
     )

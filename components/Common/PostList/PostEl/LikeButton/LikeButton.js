@@ -1,11 +1,17 @@
 import axios from "@/lib/axios";
 import { useState } from "react";
 import { LikeButtonContainer } from "./LikeButton.styled";
+import { useRouter } from "next/router";
 
-const LikeButton = ({initialLikeCount, postID, userLiked}) => {
+const LikeButton = ({initialLikeCount, postID, userLiked, user}) => {
     const [isLiked, setIsLiked] = useState(userLiked);
     const [likeCount, setLikeCount] = useState(initialLikeCount);
+    const router = useRouter();
     const handleLike = async () => {
+        if(!user){
+            router.push('/login')
+            return
+        }
         if(isLiked){
             setIsLiked(false);
             setLikeCount(likeCount-1);
@@ -33,7 +39,7 @@ const LikeButton = ({initialLikeCount, postID, userLiked}) => {
         <LikeButtonContainer onClick={handleLike}>
             {
                 isLiked
-                ? <div className="image likeIcon whyy" style={{backgroundImage: "url('/heartOn.png')"}}></div>
+                ? <div className="image likeIcon" style={{backgroundImage: "url('/heartOn.png')"}}></div>
                 : <div className="image likeIcon" style={{backgroundImage: "url('/heartOff.png')"}}></div>
             }
             <span className="likeCount">{likeCount===0 ? 'Like' : likeCount}</span>

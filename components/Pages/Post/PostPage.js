@@ -20,6 +20,7 @@ const PostPage = ({data}) => {
     const [postLoading, setPostLoading] = useState(true)
     const [commentLoading, setCommentLoading] = useState(true)
     const [postData, setPostData] = useState(null)
+    const [commentData, setCommentData] = useState(null)
     const {user} = useAuth({'middleware': data.is_private ? 'auth' : 'guest'})
     const router = useRouter()
     const navigateBack = () =>{
@@ -37,9 +38,21 @@ const PostPage = ({data}) => {
                 router.push('/')
             }
         }
+        try{
+            const res = await axios(`/api/comment/post/${data.postObject.id}`)
+            setCommentData(res.data.commentObjects)
+            setCommentLoading(false)
+        }
+        catch(err){
+            if (err.response.data.noComments){
+                setCommentData([])
+                setCommentLoading(false)
+            }
+        }
     }
     useEffect(()=>{
-        if(user){
+        console.log(user)
+        if(user!==undefined){
             getPostData()
         }
     },[user])
@@ -64,14 +77,20 @@ const PostPage = ({data}) => {
                     </div>
                 </div>
                 <div className="newContainer">
-                    <New uploadToURL={'/api/comment/create'} addToList={null} loggedIn={user} placeHolder={'Leave a comment.'}/>
+                    <New uploadToURL={`/api/comment/create/${data.postObject.id}`} addToList={null} loggedIn={user} placeHolder={'Leave a comment'}/>
                 </div>
                 <div className="comments">
                     {/* <h2>Comments</h2> */}
                     <div className="commentsContainer">
-                        <LoadingContainer>
-                            <SkeletonPost/>
-                        </LoadingContainer>
+                    {
+                        !commentLoading
+                        ? <PostList postObjects={commentData} isLoading={false} user={user} isCommentList={true}/>
+                        : <>
+                            <LoadingContainer>
+                                <SkeletonPost/>
+                            </LoadingContainer>
+                          </>
+                    }
                     </div>
                 </div>
             </div>

@@ -20,6 +20,7 @@ export const LoadingContainer = styled.div`
         box-sizing: border-box;
         background-color: ${GLOBAL.PRIMARY_COLOR};
         margin-bottom: 20px;
+        &:last-of-type{margin-bottom: 0;}
         padding: 20px;
         /* background:linear-gradient(90deg,${GLOBAL.SECONDARY_COLOR} 8%,#222222 18%,${GLOBAL.SECONDARY_COLOR} 33%);
         background-size: 200% 100%;

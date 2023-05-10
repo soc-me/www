@@ -23,7 +23,6 @@ export async function getServerSideProps(context) {
   //get 'following' params from url
   const urlParams = new URLSearchParams(context.req.url);
   const following = urlParams.get('/?following');
-  console.log(urlParams)
   let isOnlyFollowing;
   if(following == 'true'){
     isOnlyFollowing = true;
