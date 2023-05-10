@@ -50,6 +50,9 @@ const PostPage = ({data}) => {
             }
         }
     }
+    const addToListFn = (postObject) => {
+        setCommentData([...commentData, postObject])
+    }
     useEffect(()=>{
         getPostData()
     },[user])
@@ -74,7 +77,8 @@ const PostPage = ({data}) => {
                     </div>
                 </div>
                 <div className="newContainer">
-                    <New uploadToURL={`/api/comment/create/${data.postObject.id}`} addToList={null} loggedIn={user} placeHolder={'Leave a comment'}/>
+                    <New uploadToURL={`/api/comment/create/${data.postObject.id}`} addToList={addToListFn} loggedIn={user} placeHolder={'Leave a comment'}
+                    />
                 </div>
                 <div className="comments">
                     {/* <h2>Comments</h2> */}

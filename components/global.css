@@ -8,7 +8,11 @@
     font-family: 'Inter', sans-serif;
     color: inherit;
 }
-
+@media (max-width: 500px){
+    *{
+        font-size: 14px;
+    }
+}
 html, body, #__next{
     width: 100%;
 }

@@ -66,7 +66,7 @@ const New = ({uploadToURL, addToList, loggedIn, placeHolder} = {}) => {
         setLoading(true);
         try { 
             const res = await axios.post(uploadToURL, form);
-            addToList(res.data.postObject)
+            addToList(res.data.returnObject)
             editor.commands.clearContent(true);   
         } catch (err) {
             console.log(err);

@@ -15,6 +15,7 @@ import axios from "@/lib/axios";
 import TipTapImage from "@tiptap/extension-image";
 
 const PostEl = ({postObject, user, isComment} = null) => {
+    const [isDeleted, setIsDeleted] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const editor = useEditor({
         extensions: [
@@ -42,6 +43,7 @@ const PostEl = ({postObject, user, isComment} = null) => {
         content: postObject.content,
         editable: false,
     })
+    if (isDeleted) return null;
     return (
         <PostElContainer className="postEl">
             <div className="content">
@@ -58,7 +60,7 @@ const PostEl = ({postObject, user, isComment} = null) => {
                         <div className="image"></div>
                         {
                             showMenu
-                            ? <PostMenu postObject={postObject} setShowMenu={setShowMenu} user={user} isComment={isComment ? isComment : false}/>
+                            ? <PostMenu postObject={postObject} setShowMenu={setShowMenu} user={user} isComment={isComment ? isComment : false} setIsDeleted={setIsDeleted}/>
                             : null
                         }
                     </button>
@@ -88,7 +90,7 @@ const PostEl = ({postObject, user, isComment} = null) => {
     );
 }
 
-export const PostMenu = ({postObject, setShowMenu, user, isComment} = null) => {
+export const PostMenu = ({postObject, setShowMenu, user, isComment, setIsDeleted} = null) => {
     const [showDelete, setShowDelete] = useState(null);
     const [showDeleteAsAdmin, setShowDeleteAsAdmin] = useState(null);
     const ref = useRef(null);
@@ -128,6 +130,7 @@ export const PostMenu = ({postObject, setShowMenu, user, isComment} = null) => {
             }else{
                 const res = await axios.delete(`/api/post/delete/${postObject.id}`, {data: formData})
             }
+            setIsDeleted(true);
         }
         catch (err){
             console.log(err);
