@@ -13,8 +13,9 @@ import { PostElContainer, PostMenuContainer } from "./PostEl.styled";
 import { useEffect, useRef, useState } from "react";
 import axios from "@/lib/axios";
 import TipTapImage from "@tiptap/extension-image";
+import { useRouter } from "next/router";
 
-const PostEl = ({postObject, user, isComment} = null) => {
+const PostEl = ({postObject, user, isComment, parentPost, postPage} = null) => {
     const [isDeleted, setIsDeleted] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
     const editor = useEditor({
@@ -60,7 +61,7 @@ const PostEl = ({postObject, user, isComment} = null) => {
                         <div className="image"></div>
                         {
                             showMenu
-                            ? <PostMenu postObject={postObject} setShowMenu={setShowMenu} user={user} isComment={isComment ? isComment : false} setIsDeleted={setIsDeleted}/>
+                            ? <PostMenu postObject={postObject} postPage={postPage} setShowMenu={setShowMenu} user={user} isComment={isComment ? isComment : false} setIsDeleted={setIsDeleted}  parentPost={parentPost}/>
                             : null
                         }
                     </button>
@@ -90,10 +91,11 @@ const PostEl = ({postObject, user, isComment} = null) => {
     );
 }
 
-export const PostMenu = ({postObject, setShowMenu, user, isComment, setIsDeleted} = null) => {
+export const PostMenu = ({postObject, setShowMenu, user, isComment, setIsDeleted, parentPost, postPage} = null) => {
     const [showDelete, setShowDelete] = useState(null);
     const [showDeleteAsAdmin, setShowDeleteAsAdmin] = useState(null);
     const ref = useRef(null);
+    const router = useRouter();
     useEffect(() => {
         function handleClickOutside(event) {
           if (ref.current && !ref.current.contains(event.target)) {
@@ -108,12 +110,13 @@ export const PostMenu = ({postObject, setShowMenu, user, isComment, setIsDeleted
         };
     }, [ref]);
     const addToClipboard = () => {
-        navigator.clipboard.writeText(`${GLOBAL.WWW_URL}/post/${postObject.id}`)
+        navigator.clipboard.writeText(`${GLOBAL.WWW_URL}/post/${!isComment ? postData.post_id : parentPost.id}`)
         .then(()=>{
             setShowMenu(false);
         })
     }
     useEffect(()=>{
+        if(!user) return;
         if(user.id === postObject.user_id){
             setShowDelete(true);
         }
@@ -123,14 +126,17 @@ export const PostMenu = ({postObject, setShowMenu, user, isComment, setIsDeleted
     }, [user])
     const deletePost = async(asAdmin) => {
         try{
-            const formData = new FormData();
-            formData.append("asAdmin", asAdmin);
+            let formData = new FormData();
             if(isComment){
-                const res = await axios.delete(`/api/comment/delete/${postObject.id}`, {data: formData})
+                const res = await axios.delete(`/api/comment/delete/${postObject.id}/${asAdmin}`)
             }else{
-                const res = await axios.delete(`/api/post/delete/${postObject.id}`, {data: formData})
+                const res = await axios.delete(`/api/post/delete/${postObject.id}/${asAdmin}`)
             }
-            setIsDeleted(true);
+            if(postPage){
+                router.push('/')
+            }else{
+                setIsDeleted(true);
+            }
         }
         catch (err){
             console.log(err);

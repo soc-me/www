@@ -67,7 +67,7 @@ const PostPage = ({data}) => {
                     <div className="starterContainer">
                     {
                         !postLoading
-                        ? <PostList postObjects={[postData]} isLoading={false} user={user}/>
+                        ? <PostList postObjects={[postData]} isLoading={false} user={user} postPage={true}/>
                         : <>
                             <LoadingContainer>
                                 <SkeletonPost/>
@@ -85,7 +85,7 @@ const PostPage = ({data}) => {
                     <div className="commentsContainer">
                     {
                         !commentLoading
-                        ? <PostList postObjects={commentData} isLoading={false} user={user} isCommentList={true}/>
+                        ? <PostList postObjects={commentData} isLoading={false} user={user} isCommentList={true} parentPost={postData}/>
                         : <>
                             <LoadingContainer>
                                 <SkeletonPost/>

@@ -56,7 +56,7 @@ export const MenuBar = ({ editor }) => {
             let imageURL = prompt("Please enter the URL of the image you want to add", "");
             editor.chain().focus().setImage({ src: imageURL }).run()
         }}
-        className={editor.isActive('bulletList') ? 'is-active' : ''}
+        className={editor.isActive('addImage') ? 'is-active' : ''}
       >
         <Image src='/imageIcon.png' alt='Image Icon' width={20} height={20}/>
       </button>
