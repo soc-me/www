@@ -51,10 +51,10 @@ const SettingsPage = ({user}) => {
         }
     }
     // Account privacy
-    const makePrivate = async(changeToPrivate)=>{
+    const makePrivate = async(newPrivacy)=>{
         try{
             const formData  = new FormData();
-            formData.append('is_private', changeToPrivate ? 1 : 0)
+            formData.append('is_private', newPrivacy)
             const res = await axios.post(`/api/user/update/${user.id}`, formData)
             router.push(`/account/${user.id}`)
         }catch(err){
