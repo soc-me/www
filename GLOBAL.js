@@ -1,6 +1,8 @@
+export const PROD = false
+export const FE_URL = PROD ? 'http://34.142.122.8' : 'http://localhost:3000'
 export const GLOBAL = {
-    APP_URL: 'http://localhost:8000',
-    WWW_URL: 'http://localhost:3000',
+    APP_URL: PROD ? 'http://34.142.122.8:3000' : 'http://localhost:8000',
+    WWW_URL: FE_URL,
     PRIMARY_COLOR: '#242526',
     SECONDARY_COLOR: '#18191A',
     ACCENT_COLOR: '#444444',
@@ -22,7 +24,13 @@ export const GLOBAL = {
             SINGLE: (postID)=>{return `/api/post/${postID}`},
         },
         IMAGE:{
-            PROFILE: (APP_URL, imageURL)=>{return `${APP_URL}${imageURL}`},
+            PROFILE: (APP_URL, imageURL)=>{
+                if (imageURL){
+                    return `${APP_URL}${imageURL}`
+                }else{
+                    return `${FE_URL}/userIcon.png`
+                }
+            },
         }
     },
     REPO_LINK: 'https://github.com/orgs/soc-me/repositories'
