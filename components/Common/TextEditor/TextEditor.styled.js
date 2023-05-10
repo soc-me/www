@@ -51,7 +51,10 @@ export const TextEditorContainer = styled.div`
         > * + * {
             margin-top: 0.75em;
         }
-
+        & img{
+            max-width: 100%;
+            border-radius: 10px;
+        }
         ul,
         ol {
             padding: 0 1em;

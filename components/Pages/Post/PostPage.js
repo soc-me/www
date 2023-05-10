@@ -51,10 +51,7 @@ const PostPage = ({data}) => {
         }
     }
     useEffect(()=>{
-        console.log(user)
-        if(user!==undefined){
-            getPostData()
-        }
+        getPostData()
     },[user])
     return (
         <PostPageContainer>

@@ -14,6 +14,7 @@ import React, { useEffect } from 'react'
 import Placeholder from '@tiptap/extension-placeholder'
 import { TextEditorContainer } from "@/components/Common/TextEditor/TextEditor.styled";
 import { useRouter } from "next/router";
+import TipTapImage from '@tiptap/extension-image'
 
 const New = ({uploadToURL, addToList, loggedIn, placeHolder} = {}) => {
     const [text, setText] = useState(null);
@@ -39,7 +40,10 @@ const New = ({uploadToURL, addToList, loggedIn, placeHolder} = {}) => {
             }
           }),
           Placeholder.configure({
-            placeholder: placeHolder ? placeHolder : "What's on your mind?",
+            placeholder: placeHolder ? placeHolder :`What's on your mind?`,
+          }),
+          TipTapImage.configure({
+            inline: true,
           }),
         ],
         content: text,
