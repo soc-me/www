@@ -9,7 +9,7 @@ const FollowButton = ({currUser, compareToUser}) => {
     const [isLoading, setIsLoading] = useState(true);
     const getFollowStatus = async() => {
         try{
-            const {data}  = await axios(`http://localhost:8000/api/follow/status/${compareToUser.id}`);
+            const {data}  = await axios(`/api/follow/status/${compareToUser.id}`);
             console.log(data)
             setStatus(data.response);
         }catch(err){
@@ -22,13 +22,13 @@ const FollowButton = ({currUser, compareToUser}) => {
         try{    
             if(isFollowRequest){
                 setStatus('requested')
-                const {data} = await axios.post(`http://localhost:8000/api/follow/create/${compareToUser.id}`);
+                const {data} = await axios.post(`/api/follow/create/${compareToUser.id}`);
                 console.log(data)
                 setStatus(data.response);
             }
             else{
                 setStatus('null')
-                const {data} = await axios.delete(`http://localhost:8000/api/follow/delete/${compareToUser.id}`);
+                const {data} = await axios.delete(`/api/follow/delete/${compareToUser.id}`);
                 console.log(data)
                 setStatus(data.response);
             }
