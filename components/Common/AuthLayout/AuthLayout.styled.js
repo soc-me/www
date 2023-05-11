@@ -7,17 +7,20 @@ export const AuthLayoutContainer = styled.div`
     height: 100vh;
     min-height: 500px;
     position: fixed; top: 0; left: 0; z-index: 0;
+    background-image: url("/authBg3.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    overflow-y: scroll;
     & .authLayoutInner{
         width: 100%; height: 100%;
-        overflow-y: scroll;
-        display: flex; align-items: center;
-        & .backgroundImage{
+        /* & .backgroundImage{
             height: 100%; 
             width: 20%;
             margin-right: 5%;
             overflow: hidden;
             border-radius: 0 0% 0% 0;
-            /* border-right: 1px solid ${GLOBAL.ACCENT_COLOR}; */
+            border-right: 1px solid ${GLOBAL.ACCENT_COLOR};
             & .image{
                 height: 100%; width: 100%;
                 background-image: url("/authBg.jpg");
@@ -25,6 +28,6 @@ export const AuthLayoutContainer = styled.div`
                 background-position: center center;
                 background-repeat: no-repeat;
             }
-        }
+        } */
     }
 `

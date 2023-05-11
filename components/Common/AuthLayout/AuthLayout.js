@@ -3,13 +3,14 @@ import { AuthLayoutContainer } from "./AuthLayout.styled";
 const AuthLayout = ({children}) => {
     return (
         <AuthLayoutContainer>
-            <div className="authLayoutInner">
-                <div className="backgroundImage">
+            <div className="authLayoutInner center">
+                {/* <div className="backgroundImage">
                     <div className="image"></div>
-                </div>
-                <div className="children">
+                </div> */}
+                {/* <div className="children">
                     {children}
-                </div>
+                </div> */}
+                {children}
             </div>
         </AuthLayoutContainer>
     );

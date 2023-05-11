@@ -13,7 +13,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
             .then(res => res.data)
             .catch(error => {
                 if (error.response.status !== 409) throw error
-
+                
                 router.push('/verify-email')
             }),
     )
@@ -31,7 +31,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
                 setStatus({loading: false})
             })
             .catch(error => {
-                setErrors(error.response.data.errors)
+                setErrors(error.response.data.message)
                 setStatus({loading: false})
             })
     }
@@ -48,6 +48,7 @@ export const useAuth = ({ middleware, redirectIfAuthenticated } = {}) => {
                 setStatus({loading: false})
             })
             .catch(error => {
+                console.log(error)
                 //if (error.response.status !== 422) throw error
                 // order matters as the the user will be shown a logged in screen if the status is set to false before the error is set
                 setErrors(error.response.data.errors)

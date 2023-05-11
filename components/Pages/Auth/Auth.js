@@ -33,6 +33,9 @@ const Auth = ({isLogin}) => {
         }   
         resumeSWR()
     }
+    useEffect(()=>{
+        console.log(errors)
+    },[errors])
     return (
         <AuthContainer>
             <div className="authInner">
@@ -86,7 +89,11 @@ const Auth = ({isLogin}) => {
                     (errors)    
                     ? 
                     <div className="errorContainer">
-                        *{errors.error}
+                        *{
+                            isLogin
+                            ? (errors.error)
+                            : errors
+                        }
                     </div>
                     : null
                     }
