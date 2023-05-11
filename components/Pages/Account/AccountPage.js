@@ -41,35 +41,59 @@ const AccountPage = ({minimalUserObject}) => {
     return (
         <AccountPageContainer>
             <div className="info">
-                <div className="imageOuter center">
-                    {/* This requires us to know the image size beforehand */}
-                    <img src={GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, minimalUserObject.imageURL)} alt="profile picture"/>
-                </div>
-                <div className="meta">
-                    <div className="row top">
-                        <h1 className="username">{minimalUserObject.name}</h1>
-                        <div className="buttons">
-                            {
-                                (user)
-                                ? (
-                                    (user.id === minimalUserObject.id)
+                <div className="row">
+                    <div className="imageOuter center">
+                        {/* This requires us to know the image size beforehand */}
+                        <img src={GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, minimalUserObject.imageURL)} alt="profile picture"/>
+                    </div>
+                    <div className="meta">
+                        <div className="row top">
+                            <h1 className="username">{minimalUserObject.name}</h1>
+                            <div className="buttons">
+                                {
+                                    (user)
                                     ? (
-                                        <Link href='/account/settings' className="button settings center">
-                                            {/* <Image src={settingsIconDark} alt="settings"/> */}
-                                            <span>Edit Profile</span>
-                                        </Link>
+                                        (user.id === minimalUserObject.id)
+                                        ? (
+                                            <Link href='/account/settings' className="button settings center">
+                                                {/* <Image src={settingsIconDark} alt="settings"/> */}
+                                                <span>Edit Profile</span>
+                                            </Link>
+                                        )
+                                        : (
+                                            <div className="followButtonContainer button">
+                                                <FollowButton currUser={user} compareToUser={minimalUserObject}/>
+                                            </div>
+                                        )
                                     )
-                                    : (
-                                        <div className="followButtonContainer button">
-                                            <FollowButton currUser={user} compareToUser={minimalUserObject}/>
-                                        </div>
-                                    )
-                                )
-                                : null
-                            }     
+                                    : null
+                                }     
+                            </div>
+                        </div>
+                        <div className="row followersList">
+                            <div className="posts">
+                                <span className="number">{minimalUserObject.postCount}</span>
+                                <span className="text">post{minimalUserObject.postCount!==1 ? 's' : null}</span>
+                            </div>
+                            <div className="following">
+                                <span className="number">{minimalUserObject.following}</span>
+                                <span className="text">following</span>
+                            </div>
+                            <div className="followers">
+                                <span className="number">{minimalUserObject.followers}</span>
+                                <span className="text">follower{minimalUserObject.followers!==1 ? 's' : null}</span>
+                            </div>
+                        </div>
+                        <div className="row bio">
+                            <p>{minimalUserObject.bio}</p>
                         </div>
                     </div>
-                    <div className="row followersList">
+                </div>
+                <div className="row second">
+                    <div className="innnerRow bio">
+                        <p>{minimalUserObject.bio}</p>
+                    </div>
+                    <div className="innerRow followersList">
                         <div className="posts">
                             <span className="number">{minimalUserObject.postCount}</span>
                             <span className="text">post{minimalUserObject.postCount!==1 ? 's' : null}</span>
@@ -82,9 +106,6 @@ const AccountPage = ({minimalUserObject}) => {
                             <span className="number">{minimalUserObject.followers}</span>
                             <span className="text">follower{minimalUserObject.followers!==1 ? 's' : null}</span>
                         </div>
-                    </div>
-                    <div className="row bio">
-                        <p>{minimalUserObject.bio}</p>
                     </div>
                 </div>
             </div>
