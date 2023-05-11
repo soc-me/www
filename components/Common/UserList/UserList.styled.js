@@ -22,6 +22,7 @@ export const UserElContainer = styled.div`
         height: 60px; width: 60px;
         border-radius: 9999px;
         background-color: ${GLOBAL.SECONDARY_COLOR};
+        flex-shrink: 0;
         overflow: hidden;
         & img{
             height: 100%; width: auto;
@@ -51,6 +52,13 @@ export const UserElContainer = styled.div`
             font-weight: 400;
         }
     }
+    @media all and (max-width: 500px){
+        &.profileList{
+            & .profileButton{
+                display: none;
+            }
+        }
+    }
     & .profileButton{
         margin-left: auto;
         display: flex; align-items: center;
@@ -59,10 +67,12 @@ export const UserElContainer = styled.div`
         justify-content: center;
         border-radius: 5px;
         background-color: ${GLOBAL.LOADER_COLOR};
+        flex-shrink: 0;
         cursor: pointer;
         &:hover{
             opacity: 0.9;
         }
+        font-weight: 500;
     }
 `
 
@@ -96,6 +106,7 @@ export const NothingFoundContainer = styled.div`
     background: ${GLOBAL.PRIMARY_COLOR};
     border-radius: 5px;
     border: 1px solid ${GLOBAL.ACCENT_COLOR};
+    margin-bottom: 30px;
     & img{
         height: 30px; width: 30px;
     }

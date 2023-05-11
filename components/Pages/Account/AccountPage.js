@@ -16,11 +16,11 @@ const AccountPage = ({minimalUserObject}) => {
     const [postObjects, setPostObjects] = useState(null)
     const [notAllowed, setNotAllowed] = useState(null)
     const [isLoading, setIsLoading] = useState(true)
+    const [followerCount, setFollowerCount] = useState(minimalUserObject.followers)
     //getting the complete user object
     const fetchData = async() => {
         try{
             const response = await axios.get(`/api/post/user/${minimalUserObject.id}`)
-            console.log(response.data)
             if(response.data.notAllowed){
                 setNotAllowed(true)
             }else{
@@ -38,6 +38,9 @@ const AccountPage = ({minimalUserObject}) => {
         setIsLoading(true)
         fetchData()
     }, [router.asPath])
+    useEffect(() => {
+        console.log(followerCount)
+    }, [followerCount]) 
     return (
         <AccountPageContainer>
             <div className="info">
@@ -62,7 +65,7 @@ const AccountPage = ({minimalUserObject}) => {
                                         )
                                         : (
                                             <div className="followButtonContainer button">
-                                                <FollowButton currUser={user} compareToUser={minimalUserObject}/>
+                                                <FollowButton currUser={user} compareToUser={minimalUserObject} updateCount={setFollowerCount}/>
                                             </div>
                                         )
                                     )
@@ -85,8 +88,8 @@ const AccountPage = ({minimalUserObject}) => {
                                 <span className="text">following</span>
                             </div>
                             <div className="followers">
-                                <span className="number">{minimalUserObject.followers}</span>
-                                <span className="text">follower{minimalUserObject.followers!==1 ? 's' : null}</span>
+                                <span className="number">{followerCount}</span>
+                                <span className="text">follower{followerCount!==1 ? 's' : null}</span>
                             </div>
                         </div>
                         <div className="row bio">
@@ -108,8 +111,8 @@ const AccountPage = ({minimalUserObject}) => {
                             <span className="text">following</span>
                         </div>
                         <div className="followers">
-                            <span className="number">{minimalUserObject.followers}</span>
-                            <span className="text">follower{minimalUserObject.followers!==1 ? 's' : null}</span>
+                            <span className="number">{followerCount}</span>
+                            <span className="text">follower{followerCount!==1 ? 's' : null}</span>
                         </div>
                     </div>
                 </div>

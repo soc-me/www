@@ -64,7 +64,7 @@ export const UserEl = ({userObject, removeEl, isProfileList} = {}) => {
         }
     }
     return (
-        <UserElContainer className="userEl">
+        <UserElContainer className={`userEl ${isProfileList ? 'profileList' : ''}`}>
             <Link className="imageContainer center" href={`/account/${userObject.id}`}>
                 <img src={GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, userObject.imageURL)}/>
             </Link>

@@ -3,14 +3,13 @@ import { useEffect, useState } from "react";
 import Spinner from "../../Spinner/Spinner";
 import { FollowButtonContainer } from "./FollowButton.styled";
 
-const FollowButton = ({currUser, compareToUser}) => {   
+const FollowButton = ({currUser, compareToUser, updateCount}) => {   
     // Get current follow status
     const [status, setStatus] = useState('null');
     const [isLoading, setIsLoading] = useState(true);
     const getFollowStatus = async() => {
         try{
             const {data}  = await axios(`/api/follow/status/${compareToUser.id}`);
-            console.log(data)
             setStatus(data.response);
         }catch(err){
             console.log(err);
@@ -23,15 +22,16 @@ const FollowButton = ({currUser, compareToUser}) => {
             if(isFollowRequest){
                 setStatus('requested')
                 const {data} = await axios.post(`/api/follow/create/${compareToUser.id}`);
-                console.log(data)
                 setStatus(data.response);
+                updateCount(data.followCount)
             }
             else{
                 setStatus('null')
                 const {data} = await axios.delete(`/api/follow/delete/${compareToUser.id}`);
-                console.log(data)
                 setStatus(data.response);
+                updateCount(data.followCount)
             }
+        
         }catch(err){
             console.log(err);
         }
