@@ -28,7 +28,11 @@ const UserList = ({userObjects, isLoading, updateFn, isProfileList}) => {
                     :
                     <NothingFoundContainer className="emptyContainer">
                         {/* <Image src={emptyIcon} width={100} height={100}/> */}
-                        <p>No Requests Found</p>
+                        {
+                            !isProfileList
+                            ? <p>No Requests Found</p>
+                            : <p>No Users Found</p>
+                        }
                     </NothingFoundContainer>
                 :
                 null

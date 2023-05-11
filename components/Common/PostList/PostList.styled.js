@@ -27,7 +27,8 @@ export const LoadingContainer = styled.div`
         animation: 1.5s shine linear infinite; */
         & .row{
             width: 100%;
-            display: flex; align-items: center;
+            display: flex; align-items: center; 
+            flex-direction: row !important;
             & .skeleton{
                 background: ${GLOBAL.SECONDARY_COLOR};
                 border-radius: 5px;

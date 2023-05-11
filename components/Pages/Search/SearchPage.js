@@ -5,13 +5,16 @@ import { useRouter } from "next/router";
 import axios from "@/lib/axios";
 import { UserListContainer } from "@/components/Common/UserList/UserList.styled";
 import UserList, { SkeletonUser } from "@/components/Common/UserList/UserList";
+import PostList from "@/components/Common/PostList/PostList";
+import { useAuth } from "@/hooks/useAuth";
 
 const SearchPage = () => {
     const router = useRouter()
     const [isAccounts, setIsAccounts] = useState(router.query.category == 'accounts' ? true : false)
     const [query, setQuery] = useState(router.query.query ? router.query.query : '')
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [data, setData] = useState(null)
+    const {user} = useAuth({middleware: 'guest'});
     useEffect(()=>{
         // change router params shallow
         router.push({
@@ -21,6 +24,8 @@ const SearchPage = () => {
         // call search
         if(query){
             searchFn(query, isAccounts)
+        }else{
+            getAll(isAccounts)
         }
     }, [isAccounts, query])
     const searchFn = async(query, isAccounts) => {
@@ -34,6 +39,21 @@ const SearchPage = () => {
             }else{
                 const res  = await axios.post(`/api/post/search`, formData)
                 setData(res.data.objects)
+            }
+            setLoading(false)
+        }catch(err){
+            console.log(err)
+        }
+    }
+    const getAll = async(isAccounts) => {
+        setLoading(true)
+        try{
+            if(isAccounts){
+                const res  = await axios.get(`/api/user/all`)
+                setData(res.data.objects)
+            }else{
+                const res  = await axios.get(`/api/post/all`)
+                setData(res.data.postObjects)
             }
             setLoading(false)
         }catch(err){
@@ -73,10 +93,12 @@ const SearchPage = () => {
                 <div className="bottom">
                     {
                         isAccounts
-                        ? query 
-                            ? <UserList userObjects={data}  isLoading={loading} isProfileList={true}/>
-                            : 'Accounts'
-                        : 'Posts'
+                        ? loading 
+                            ? <UserList userObjects={data}  isLoading={true} isProfileList={true}/>
+                            : <UserList userObjects={data}  isLoading={false} isProfileList={true}/>
+                        : loading
+                            ? <PostList postObjects={data} isLoading={true} user={user}/>
+                            : <PostList postObjects={data} isLoading={false} user={user}/>
                     }
                 </div>
             </div>
