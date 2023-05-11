@@ -3,9 +3,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import PostEl from "./PostEl/PostEl";
 import { LoadingContainer, PostListContainer } from "./PostList.styled";
+import { NothingFoundContainer } from "../UserList/UserList.styled";
 
 const PostList = ({postObjects, isLoading, user, isCommentList, parentPost, postPage}=null) => {
     if(!isLoading && postObjects){
+        if(postObjects.length == 0){
+            return(
+                <NothingFoundContainer className="emptyContainer">
+                    <p>No Posts Found</p>
+                </NothingFoundContainer>
+            )
+        }
         return (
             <PostListContainer>
                 <div className="postListInner">
