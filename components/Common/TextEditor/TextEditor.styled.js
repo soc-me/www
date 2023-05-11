@@ -54,7 +54,6 @@ export const TextEditorContainer = styled.div`
         & img{
             max-width: 100%;
             border-radius: 10px;
-            margin: 10px 0;
         }
         ul,
         ol {

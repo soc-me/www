@@ -11,6 +11,9 @@ export const PostElContainer = styled.div`
     display: flex; align-items: flex-start;
     margin-bottom: 20px;
     /* cursor: pointer; */
+    &.isComment{
+        padding-bottom: 25px !important;
+    }
     & .content{
         width: 100%;
         margin-top: 5px;

@@ -46,7 +46,7 @@ const PostEl = ({postObject, user, isComment, parentPost, postPage} = null) => {
     })
     if (isDeleted) return null;
     return (
-        <PostElContainer className="postEl">
+        <PostElContainer className={`postEl ${isComment ? 'isComment' : ''}`}>
             <div className="content">
                 <div className="meta">
                     <Link href={`/account/${postObject.user_id}`} className="imageContainer">
@@ -110,7 +110,7 @@ export const PostMenu = ({postObject, setShowMenu, user, isComment, setIsDeleted
         };
     }, [ref]);
     const addToClipboard = () => {
-        navigator.clipboard.writeText(`${GLOBAL.WWW_URL}/post/${!isComment ? postData.post_id : parentPost.id}`)
+        navigator.clipboard.writeText(`${GLOBAL.WWW_URL}/post/${!isComment ? postObject.id : parentPost.id}`)
         .then(()=>{
             setShowMenu(false);
         })

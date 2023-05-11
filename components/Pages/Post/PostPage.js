@@ -85,7 +85,7 @@ const PostPage = ({data}) => {
                     <div className="commentsContainer">
                     {
                         !commentLoading
-                        ? <PostList postObjects={commentData} isLoading={false} user={user} isCommentList={true} parentPost={postData}/>
+                        ? <PostList postObjects={commentData} isLoading={false} user={user} isCommentList={true} parentPost={postData} customNotFoundMessage={'No Comments'}/>
                         : <>
                             <LoadingContainer>
                                 <SkeletonPost/>
