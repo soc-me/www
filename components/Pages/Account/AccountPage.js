@@ -66,7 +66,12 @@ const AccountPage = ({minimalUserObject}) => {
                                             </div>
                                         )
                                     )
-                                    : null
+                                    : (
+                                        <Link href='/register' className="button fakeFollow center">
+                                                {/* <Image src={settingsIconDark} alt="settings"/> */}
+                                                <span>Follow</span>
+                                        </Link>
+                                    )
                                 }     
                             </div>
                         </div>

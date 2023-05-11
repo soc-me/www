@@ -95,6 +95,20 @@ export const AccountPageContainer = styled.div`
                                     font-weight: 500;
                                 }
                             }
+                            & .fakeFollow{
+                                border-radius: 5px;
+                                display: flex; align-items: center;
+                                background-color: ${GLOBAL.LOADER_COLOR};
+                                color: white;
+                                cursor: pointer;
+                                &:hover{
+                                    opacity: 0.8;
+                                }
+                                & span{
+                                    font-size: 1em;
+                                    font-weight: 500;
+                                }
+                            }
                         }
                     }
                     &.followersList{
