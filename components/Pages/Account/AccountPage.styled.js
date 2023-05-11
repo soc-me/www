@@ -16,10 +16,16 @@ export const AccountPageContainer = styled.div`
         @media all and (max-width: 500px){
             padding-bottom: 0;
             border-bottom: 0;
+            align-items: center;
         }
         & > .row{
             width: 100%;
             display: flex; align-items: center;
+            @media all and (max-width: 500px){
+                &:first-of-type{
+                    width: 90%;
+                }
+            }
             & .imageOuter{
                 flex-shrink: 0;
                 height: 120px; width: 120px;
@@ -152,9 +158,11 @@ export const AccountPageContainer = styled.div`
                 margin-top: 30px;
                 & .bio{
                     width: 100%;
-                    display: flex; justify-content: flex-start;
-                    /* margin-top: 30px; */
-                    /* margin-bottom: 10px; */
+                    display: flex; justify-content: center;
+                    & p{
+                        width: 90%;
+                    }
+
                 }
                 & .followersList{
                     margin-top: 30px;
