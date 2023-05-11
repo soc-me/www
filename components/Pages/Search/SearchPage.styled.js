@@ -5,7 +5,7 @@ export const SearchPageContainer = styled.div`
     width: 100%;
     width: clamp(500px, 55%, 1000px);
     margin-top: 30px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     @media (max-width: 1000px) { width: 95%; }
     & .searchInner{
         width: 100%;
