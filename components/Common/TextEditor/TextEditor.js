@@ -4,14 +4,15 @@ import TextStyle from '@tiptap/extension-text-style'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Image from 'next/image'
-import React, { useEffect } from 'react'
-import { TextEditorContainer } from './TextEditor.styled'
+import React, { useEffect, useState } from 'react'
+import { ImageModalContainer, TextEditorContainer } from './TextEditor.styled'
 import Placeholder from '@tiptap/extension-placeholder'
 
 export const MenuBar = ({ editor }) => {
   if (!editor) {
     return null
   }
+  const [showImageModal, setShowImageModal] = useState(false)
   return (
     <>
       <button
@@ -53,17 +54,38 @@ export const MenuBar = ({ editor }) => {
       </button>
       <button
         onClick={() =>{
-            let imageURL = prompt("Please enter the URL of the image you want to add", "");
-            editor.chain().focus().setImage({ src: imageURL }).run()
+            setShowImageModal(true)
         }}
         className={editor.isActive('addImage') ? 'is-active' : ''}
       >
         <Image src='/imageIcon.png' alt='Image Icon' width={20} height={20}/>
       </button>
+      {/* Image Modal */}
+        <ImageModal showImageModal={showImageModal} setShowImageModal={setShowImageModal} addFn={(url)=>{editor.chain().focus().setImage({ src: url }).run()}}/>
     </>
   )
 }
 
+const ImageModal = ({showImageModal, setShowImageModal, addFn}) => {
+    if(!showImageModal) return null;
+    const [url, setUrl] = useState(null)
+    const addImage = () => {
+       addFn(url)
+       setShowImageModal(false)
+    }
+    return (
+        <ImageModalContainer>
+            <div className="modal">
+                <h3>Insert Image</h3>
+                <input type="text" placeholder='Image/GIF URL' onChange={(e)=>{setUrl(e.target.value)}}/>
+                <div className="controls">
+                    <button className="submit" onClick={addImage}>Add</button>
+                    <button className="cancel" onClick={()=>setShowImageModal(false)}>Cancel</button>
+                </div>
+            </div>
+        </ImageModalContainer>
+    )
+}
 
 // deprecated
 const TextEditor = ({text, setText, isEditable, placeholder, clearEditor}) => {

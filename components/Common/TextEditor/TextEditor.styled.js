@@ -115,3 +115,55 @@ export const TextEditorContainer = styled.div`
         }
     }
 `
+
+export const ImageModalContainer = styled.div`
+    position: fixed;
+    width: 100vw; height: 100vh;
+    top: 0; left: 0;
+    background-color: rgba(0,0,0,0.3);
+    z-index: 999;
+    display: flex; align-items: center; justify-content: center;
+    & .modal{
+        background-color: ${GLOBAL.PRIMARY_COLOR};
+        width: 300px;
+        border-radius: 10px;
+        border: 1px solid ${GLOBAL.ACCENT_COLOR};
+        box-shadow: 0 0 5px black ;
+        padding: 20px;
+        box-sizing: border-box;
+        & h3{
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+        & input{
+            width: 100%;
+            padding: 10px 10px;
+            border-radius: 5px;
+            border: 1px solid ${GLOBAL.ACCENT_COLOR};
+            box-sizing: border-box;
+            margin-bottom: 20px;
+            background-color: transparent;
+            outline:0;
+            &:focus{
+                border: 1px solid ${GLOBAL.LOADER_COLOR};
+            }
+        }
+        & .controls{
+            display: flex; align-items: center; 
+            & button{
+                background-color: ${GLOBAL.ACCENT_COLOR};
+                padding: 10px 20px;
+                border-radius: 5px;
+                cursor: pointer;
+                &.submit{
+                    margin-right: 10px;
+                    background-color: ${GLOBAL.LOADER_COLOR};
+                }
+                &:hover{
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+`
