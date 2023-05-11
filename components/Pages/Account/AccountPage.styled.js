@@ -43,15 +43,19 @@ export const AccountPageContainer = styled.div`
                 flex-direction: column;
                 @media all and (max-width: 500px){
                     flex-grow: 0;
-                    margin-left: 20px;
+                    margin-left: 10vw;
                 }
                 & .row{
                     width: 100%;
                     display: flex; align-items: center;
                     @media all and (max-width: 500px){
+                        flex-direction: column;
+                        align-items: flex-start;
+                    }
+                    @media all and (max-width: 500px){
                         width: fit-content;
-                        & .button{
-                            margin-left: 20px !important;
+                        & .buttons .button{
+                            margin-left: 0px !important;
                         }
                     }
                     &.top{
@@ -59,6 +63,7 @@ export const AccountPageContainer = styled.div`
                             font-size: 1.3em;
                             @media all and (max-width: 500px){
                                 font-size: 1.1em;
+                                margin-bottom: 10px;
                             }
                             font-weight: 500;
                             width: fit-content;
@@ -156,7 +161,7 @@ export const AccountPageContainer = styled.div`
                             margin-bottom: 10px;
                         }
                         & .text{
-                            font-size: 0.8em;
+                            font-size: 0.9em;
                             color: #DDDDDD;
                         }
                         margin-right: 15vw;
