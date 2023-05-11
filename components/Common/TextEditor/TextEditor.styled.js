@@ -49,7 +49,7 @@ export const TextEditorContainer = styled.div`
             list-style: unset;
         }
         > * + * {
-            margin-top: 0.75em;
+            margin-top: 10px;
         }
         & img{
             max-width: 100%;

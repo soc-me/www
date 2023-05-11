@@ -55,7 +55,11 @@ const Header = () => {
                                 </li>
                                 </>
                             )
-                            : null
+                            : (
+                                <li className="loginLink">
+                                    <Link href='/register' aria-label="Link to register page">Join</Link>
+                                </li>
+                            )
                         )}
                     </ul>
                 </NavContainer>

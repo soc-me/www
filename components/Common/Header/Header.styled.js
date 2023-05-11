@@ -102,6 +102,19 @@ export const NavContainer = styled.nav`
                     border-color: ${GLOBAL.LOADER_COLOR};
                 }
             }
+            &.loginLink a{
+                width: auto;
+                padding: 0 20px;
+                border-radius: 10px;
+                background-color: ${GLOBAL.LOADER_COLOR};
+                color: white;
+                font-weight: 500;
+                border: 0;
+                &:hover{
+                    opacity: 0.8;
+                    cursor: pointer;
+                }
+            }
         }
     }
 `
