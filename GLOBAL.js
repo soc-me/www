@@ -1,7 +1,7 @@
 export const PROD = false
-export const FE_URL = PROD ? 'http://34.142.122.8' : 'http://localhost:3000'
+export const FE_URL = PROD ? 'https://socme.thenu-k.com' : 'http://localhost:3000'
 export const GLOBAL = {
-    APP_URL: PROD ? 'http://34.142.122.8:8000' : 'http://localhost:8000',
+    APP_URL: PROD ? 'http://thenu-k.com' : 'http://localhost:8000',
     WWW_URL: FE_URL,
     PRIMARY_COLOR: '#242526',
     SECONDARY_COLOR: '#18191A',
