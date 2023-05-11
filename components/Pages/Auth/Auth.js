@@ -105,6 +105,7 @@ const Auth = ({isLogin}) => {
                 }
                 
             </div>
+            <div className="bgImage"></div>
         </AuthContainer>
     );
 }

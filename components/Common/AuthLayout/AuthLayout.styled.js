@@ -6,12 +6,17 @@ export const AuthLayoutContainer = styled.div`
     width: 100vw;
     height: 100vh;
     min-height: 500px;
-    position: fixed; top: 0; left: 0; z-index: 0;
+    /* position: fixed; top: 0; left: 0; z-index: 0; */
     background-image: url("/authBg3.jpg");
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    overflow-y: scroll;
+    @media (max-width: 650px){
+        background-image: unset;
+        width: 100%;
+        height: fit-content;
+        position: unset;
+    }
     & .authLayoutInner{
         width: 100%; height: 100%;
         /* & .backgroundImage{

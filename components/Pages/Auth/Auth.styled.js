@@ -8,9 +8,36 @@ export const AuthContainer = styled.div`
     padding: 50px 50px;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
+    /* min-height: 100vh; */
+    @media (max-width: 650px){
+        width: 100%;
+        max-width: 400px;
+        box-shadow: none;
+        padding: 0;
+        margin-top: 60px;
+        display: flex; flex-direction: column;
+        align-items: center;
+    }
+    & .bgImage{
+        width: 100%;
+        height: 100px;
+        display: none;
+        @media (max-width: 650px){
+            margin-top: auto;
+            display: none;
+        }
+        background-image: url("/authBg3.jpg");
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
     & .authInner {
         display: flex; flex-direction: column;
         align-items: flex-start;
+        @media (max-width: 650px){
+            width: 80%;
+            /* margin-bottom: 30px; */
+        }
         & h1{
             font-size: 1.3em;
             font-weight: 500;
