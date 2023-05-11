@@ -35,7 +35,7 @@ const Header = () => {
                             <Link href='/' aria-label="Link to home page"><div className="image"></div></Link>
                         </li>
                         <li className="accountsLink">
-                            <Link href='/accounts' aria-label="Link to account search"><div className="image"></div></Link>
+                            <Link href='/search' aria-label="Link to account search"><div className="image"></div></Link>
                         </li>
                         {(
                             (user) 
