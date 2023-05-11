@@ -14,6 +14,7 @@ export const UserElContainer = styled.div`
     width: 100%;
     display: flex; align-items: center;
     padding: 20px;
+    box-sizing: border-box;
     border-radius: 5px;
     background-color: ${GLOBAL.PRIMARY_COLOR};
     border: 1px solid ${GLOBAL.ACCENT_COLOR};
@@ -48,6 +49,19 @@ export const UserElContainer = styled.div`
         }
         & span{
             font-weight: 400;
+        }
+    }
+    & .profileButton{
+        margin-left: auto;
+        display: flex; align-items: center;
+        width: 120px;
+        height: 40px;
+        justify-content: center;
+        border-radius: 5px;
+        background-color: ${GLOBAL.LOADER_COLOR};
+        cursor: pointer;
+        &:hover{
+            opacity: 0.9;
         }
     }
 `

@@ -8,7 +8,7 @@ import { useState } from "react";
 import axios from "@/lib/axios";
 import Spinner from "../Spinner/Spinner";
 
-const UserList = ({userObjects, isLoading, updateFn}) => {
+const UserList = ({userObjects, isLoading, updateFn, isProfileList}) => {
     if(!isLoading){
     return (
         <UserListContainer>
@@ -19,7 +19,7 @@ const UserList = ({userObjects, isLoading, updateFn}) => {
                     ?
                     userObjects.map((userObject, index) => {
                     return (
-                        <UserEl userObject={userObject} key={index} removeEl={()=>{
+                        <UserEl userObject={userObject} key={index} isProfileList={isProfileList} removeEl={()=>{
                             let newUserObjects = [...userObjects]
                             newUserObjects.splice(index, 1)
                             updateFn(newUserObjects)
@@ -47,7 +47,7 @@ const UserList = ({userObjects, isLoading, updateFn}) => {
     }
 }
 
-export const UserEl = ({userObject, removeEl} = {}) => {
+export const UserEl = ({userObject, removeEl, isProfileList} = {}) => {
     const [isLoading, setIsLoading] = useState(null)
     const acceptRequest = async() => {
         setIsLoading(true)
@@ -65,17 +65,23 @@ export const UserEl = ({userObject, removeEl} = {}) => {
                 <img src={GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, userObject.imageURL)}/>
             </Link>
             <Link className="username" href={`/account/${userObject.id}`}>{userObject.name}</Link>
-            <button className="accept" onClick={acceptRequest}>
-                {
-                    isLoading
-                    ?
-                    <Spinner size={20} border={3}/>
-                    :(<>
-                        <Image src={tickIcon} width={20} height={20}/>
-                        <span>Accept</span>
-                    </>)
-                }
-            </button>
+            {
+                isProfileList
+                ? <Link className="profileButton" href={`/account/${userObject.id}`}>Profile</Link>
+                : (
+                    <button className="accept" onClick={acceptRequest}>
+                    {
+                        isLoading
+                        ?
+                        <Spinner size={20} border={3}/>
+                        :(<>
+                            <Image src={tickIcon} width={20} height={20}/>
+                            <span>Accept</span>
+                        </>)
+                    }
+                    </button>
+                )
+            }
         </UserElContainer>
     )
 }

@@ -3,12 +3,15 @@ import { SearchPageContainer } from "./SearchPage.styled";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "@/lib/axios";
+import { UserListContainer } from "@/components/Common/UserList/UserList.styled";
+import UserList, { SkeletonUser } from "@/components/Common/UserList/UserList";
 
 const SearchPage = () => {
     const router = useRouter()
     const [isAccounts, setIsAccounts] = useState(router.query.category == 'accounts' ? true : false)
     const [query, setQuery] = useState(router.query.query ? router.query.query : '')
     const [loading, setLoading] = useState(false)
+    const [data, setData] = useState(null)
     useEffect(()=>{
         // change router params shallow
         router.push({
@@ -23,12 +26,16 @@ const SearchPage = () => {
     const searchFn = async(query, isAccounts) => {
         setLoading(true)
         try{
+            const formData = new FormData()
+            formData.append('query', query)
             if(isAccounts){
-                const res  = await axios.get(`/api/account/search/${query}`)
+                const res  = await axios.post(`/api/user/search`, formData)
+                setData(res.data.objects)
             }else{
-                const res  = await axios.get(`/api/post/search/${query}`)
+                const res  = await axios.post(`/api/post/search`, formData)
+                setData(res.data.objects)
             }
-            console.log(res.data)
+            setLoading(false)
         }catch(err){
             console.log(err)
         }
@@ -65,9 +72,11 @@ const SearchPage = () => {
                 </div>
                 <div className="bottom">
                     {
-                        query
-                        ? <h1>Search Results for "{query}"</h1>
-                        : <h1>Search</h1>
+                        isAccounts
+                        ? query 
+                            ? <UserList userObjects={data}  isLoading={loading} isProfileList={true}/>
+                            : 'Accounts'
+                        : 'Posts'
                     }
                 </div>
             </div>
