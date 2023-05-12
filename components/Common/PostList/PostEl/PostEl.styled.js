@@ -51,6 +51,7 @@ export const PostElContainer = styled.div`
             }
             & .menuOuter{
                 margin-left: auto;
+                flex-shrink: 0;
                 background-color: ${GLOBAL.BUTTON_COLORS[0].PRIMARY};
                 overflow: visible;
                 height: 20px; width: 20px;

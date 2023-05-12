@@ -36,6 +36,14 @@ export async function getServerSideProps({params}){
                     permanent: false
                 }
             }
+        }else{
+            console.log(err.data)
+            return{
+                redirect: {
+                    destination: '/500',
+                    permanent: false
+                }
+            }
         }
     }
 }
