@@ -41,11 +41,13 @@ const NotificationElemement = ({notificationObject}) => {
             <div className="imageContainer center" href={`/account/${notificationObject.notification_from_user_id}`}>
                 <img src={GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, notificationObject.imageURL)}/>
             </div>
-            <p>
-                {notificationObject.message}
-            </p>
-            <div className="time">
-                {parseTime(notificationObject.created_at)}
+            <div className="text">
+                <p>
+                    {notificationObject.message}
+                </p>
+                <div className="time">
+                    {parseTime(notificationObject.created_at)}
+                </div>
             </div>
         </NotificationElementContainer>
     );

@@ -32,12 +32,25 @@ export const NotificationElementContainer = styled.div`
             height: 100%; width: auto;
         }
     }
-    & p{
+    & .text{
+        flex-grow: 1;
+        display: flex;
+        @media all and (max-width: 600px){
+            flex-direction: column;
+            align-items: flex-start;
+            & .time{
+                margin-top: 10px;
+                margin-left: 0 !important;
+                font-weight: 400 !important;
+            }
+        }
         margin-left: 20px;
-        font-weight: 500;
-    }
-    & .time{
-        margin-left: auto;
-        font-weight: 500;
+        & p{
+            font-weight: 500;
+        }
+        & .time{
+            margin-left: auto;
+            font-weight: 500;
+        }
     }
 `

@@ -17,6 +17,9 @@ export const SettingsContainer = styled.div`
         /* margin-bottom: 80px; */
         /* padding:  40px; */
         padding: 40px 40px;
+        @media all and (max-width: 500px){
+            padding: 20px 20px;
+        }
         display: flex; flex-direction: column; align-items: flex-start;
         & h1{
             font-size: 1.3em;
@@ -26,6 +29,9 @@ export const SettingsContainer = styled.div`
         }
         & .editProfile{
             margin-top: 20px;
+            @media all and (max-width: 500px){
+                margin-top: 0;
+            }
             width: 100%;
             display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
             & .formEl{
@@ -91,7 +97,10 @@ export const SettingsContainer = styled.div`
                     }
                 }
                 &.submit{
-                    margin-top: 20px;
+                    margin-top:10px;
+                    @media all and (max-width: 500px){
+                        margin-top: 0;
+                    }
                 }
                 & button{
                     width: 120px;
@@ -132,27 +141,42 @@ export const SettingsContainer = styled.div`
         /* min-height: 200px; */
         box-sizing: border-box;
         padding: 40px 40px;
+        @media all and (max-width: 500px){
+            padding: 20px 20px;
+        }
         display: flex; flex-direction: column; align-items: flex-start;
         & h1{
             font-size: 1.3em;
             font-weight: 600;
             width: fit-content;
             margin-bottom: 40px;
+            @media all and (max-width: 500px){
+                margin-bottom: 20px;
+            }
         }
         & .el{
             width: 100%;
             display: flex; flex-direction: column;
             align-items: flex-start;
             margin-bottom: 40px;
+            @media all and (max-width: 500px){
+                margin-bottom: 20px;
+            }
             &:last-of-type{margin-bottom: 0}
             & h3{
                 font-size: 1.1em;
                 font-weight: 500;
                 margin-bottom: 20px;
+                @media all and (max-width: 500px){
+                    margin-bottom: 10px;
+                }
             }
             & p{
                 width: fit-content;
                 margin-bottom: 30px;
+                @media all and (max-width: 500px){
+                    margin-bottom: 20px;
+                }
             }
             & button{
                 width: 120px;
