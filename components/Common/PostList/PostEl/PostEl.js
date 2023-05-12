@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 const PostEl = ({postObject, user, isComment, parentPost, postPage} = null) => {
     const [isDeleted, setIsDeleted] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
+    console.log(postObject)
     const editor = useEditor({
         extensions: [
           Color.configure({ types: [TextStyle.name, ListItem.name] }),
@@ -80,7 +81,13 @@ const PostEl = ({postObject, user, isComment, parentPost, postPage} = null) => {
                             </div>
                             <Link className="comment item" href={`/post/${postObject.id}`}>
                                 <div className="image commentIcon"></div>
-                                <span>Comments</span>
+                                <span>{postObject.commentCount>0 ? postObject.commentCount : null} Comment{
+                                    postObject.commentCount>1
+                                    ? 's'
+                                    : postObject.commentCount === 0
+                                        ? 's'
+                                        : null
+                                }</span>
                             </Link>
                         </div>
                     )
