@@ -14,6 +14,7 @@ export const IndexContainer = styled.div`
         width: 100%;
         display: flex; align-items: flex-start;
         justify-content: center;
+        margin-bottom: 20px;
         & .postsOuter{
             width: 100%;
             display: flex; flex-direction: column;
