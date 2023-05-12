@@ -8,6 +8,9 @@ export const PostElContainer = styled.div`
     border: 1px solid ${GLOBAL.ACCENT_COLOR};
     box-sizing: border-box;
     padding: 20px;
+    @media all and (max-width: 500px){
+        padding: 15px;
+    }
     display: flex; align-items: flex-start;
     margin-bottom: 20px;
     /* cursor: pointer; */
@@ -35,8 +38,16 @@ export const PostElContainer = styled.div`
                 }
             }
             margin-bottom: 15px;
+            @media all and (max-width: 500px){
+                margin-bottom: 15px;
+            }
             display: flex; align-items: center;
-            & >*{font-size: 0.8em;}
+            & >*{
+                font-size: 0.8em;
+                @media all and (max-width: 500px){
+                    font-size: 0.9em;
+                }
+            }
             & .username{
                 font-weight: 500;
             }
@@ -82,6 +93,9 @@ export const PostElContainer = styled.div`
             //border-top: 1px solid ${GLOBAL.ACCENT_COLOR};
             display: flex; align-items: center;
             margin-top: 10px;
+            @media all and (max-width: 500px){
+                margin-top: 5px;
+            }
             & .item{
                 display: flex; align-items: center;
                 color: #DDDDDD;

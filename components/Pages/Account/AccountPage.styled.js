@@ -170,7 +170,7 @@ export const AccountPageContainer = styled.div`
                     border-bottom: 1px  solid ${GLOBAL.ACCENT_COLOR};
                 }
                 width: 100%;
-                margin-top: 25px;
+                margin-top: 20px;
                 & .bio{
                     width: 100%;
                     display: flex; justify-content: center;
@@ -178,7 +178,7 @@ export const AccountPageContainer = styled.div`
                         width: 100%;
                     }
                     @media all and (max-width: 500px){
-                        margin-bottom: 20px;
+                        margin-bottom: 15px;
                     }
                 }
                 & .followersList{
@@ -193,7 +193,7 @@ export const AccountPageContainer = styled.div`
                         box-shadow: 0px 0px 10px 0px rgb(12, 12, 12);
                     }
                     margin-top: 0px;
-                    margin-bottom: 25px;
+                    margin-bottom: 20px;
                     /* width: 100vw;
                     transform: translateX(-5vw); */
                     /* position: absolute; */
@@ -208,14 +208,16 @@ export const AccountPageContainer = styled.div`
                             font-size: 1em;
                             font-weight: 500;
                             margin-right: 10px;
+                            font-weight: 500;
                         }
                         & .text{
                             font-size: 1em;
                             color: white;
+                            font-weight: 500;
                         }
                         margin-right: 10vw;
                         @media all and (max-width: 500px){
-                            margin-right: 8vw;
+                            margin-right: 10vw;
                         }
                         /* @media all and (max-width: 350px){
                             margin-right: 4vw;

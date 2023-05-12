@@ -8,6 +8,9 @@ export const NewContainer = styled.form`
     border: 1px solid ${GLOBAL.ACCENT_COLOR};
     box-sizing: border-box;
     padding: 20px;
+    @media all and (max-width: 500px){
+        padding: 15px;
+    }
     display: flex; align-items: flex-end;
     justify-content: space-between;
     & textarea{

@@ -6,6 +6,9 @@ export const TextEditorContainer = styled.div`
     display: flex; flex-direction: column;
     & .menuBar{
         margin-top: 20px;
+        @media all and (max-width: 500px){
+            margin-top: 15px;
+        }
         width: 100%;
         display: flex; flex-wrap: wrap;
         & button{
@@ -23,6 +26,9 @@ export const TextEditorContainer = styled.div`
             width: fit-content; height: fit-content;
             padding: 5px 5px;
             margin-right: 10px;
+            @media all and (max-width: 500px){
+                margin-right: 5px;
+            }
             & img{
                 height: 20px; width: 20px;
                 @media all and (max-width: 500px){
