@@ -10,34 +10,27 @@ const Header = () => {
     const { user } = useAuth({middleware: 'guest'});
     const [requestCount, setRequestCount] = useState(null);
     const getReqeustCount = async () => {        
-        //get follow request count
+        if(!user) return;
         try{
             const res = await axios(`/api/follow/followrequests_count/${user.id}`);
+            console.log(res.data)
             setRequestCount(res.data.requestCount);
         }catch(err){
             console.log(err);
         }
     }
     useEffect(()=>{
-        if(user&&user.is_private){
-            getReqeustCount();
+        if(user){
+            if(user.is_private){
+                getReqeustCount();
+            }
         }
-        // getUnreadCount();
     },[user])
-    // const getUnreadCount = async () => {
-    //     try{
-    //         const res = await axios(`/api/notification/unread_count`);
-    //         setUnreadCount(res.data.unreadCount);
-    //     }catch(err){
-    //         console.log(err);
-    //     }
-    // }
     const { data: data, error, mutate } = useSWR(`/api/notification/unread_count`, () =>
     axios
         .get(`/api/notification/unread_count`)
         .then(res => res.data)
     ,{refreshInterval: 2000})
-    console.log(data);
     return (
         <HeaderContainer className="center">
             <div className="headerInner">
@@ -62,6 +55,18 @@ const Header = () => {
                                     ? (
                                         <li className="requestsLink">
                                             <Link href={`/account/requests`} aria-label="Link to follow requests"><div className="image"></div></Link>
+                                            {
+                                                requestCount
+                                                ? 
+                                                    requestCount > 0
+                                                    ? (
+                                                        <div className="requestCount center">
+                                                            {requestCount}
+                                                        </div>
+                                                    )
+                                                    : null
+                                                : null
+                                            }
                                         </li>
                                     )
                                     : null

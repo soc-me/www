@@ -94,6 +94,19 @@ export const NavContainer = styled.nav`
             &.requestsLink a .image{
                 background-image: url('/accountsIcon.png');
             }
+            &.requestsLink{
+                position: relative;
+                & .requestCount{
+                    position: absolute;
+                    top: 10%; right: 0;
+                    height: 20px; width: 20px;
+                    border-radius: 9999px;
+                    background-color: red;
+                    color: white;
+                    font-weight: 500;
+                    font-size: 0.8em;
+                }
+            }
             &.profileLink a{
                 & .image{
                     height: 100%; width: 100%;
