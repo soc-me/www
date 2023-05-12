@@ -13,7 +13,7 @@ export const AccountPageContainer = styled.div`
         padding-bottom: 30px;
         border-bottom: 1px solid ${GLOBAL.ACCENT_COLOR};
         display: flex; flex-direction: column;
-        @media all and (max-width:400px){
+        @media all and (max-width:500px){
             padding-bottom: 0;
             border-bottom: 0;
             align-items: center;
@@ -125,7 +125,12 @@ export const AccountPageContainer = styled.div`
                     &.followersList{
                         margin-top: 30px;
                         display: flex; align-items: center; flex-direction: row;
-                        @media all and (max-width: 400px){
+                        padding: 10px 20px;
+                        background-color: ${GLOBAL.PRIMARY_COLOR};
+                        width: fit-content;
+                        border-radius: 5px;
+                        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+                        @media all and (max-width: 500px){
                             display: none;
                         }
                         & > div{
@@ -158,8 +163,7 @@ export const AccountPageContainer = styled.div`
                 display: none;
                 @media all and (max-width: 500px){
                     display: flex; flex-direction: column; align-items: flex-start;
-                }
-                @media all and (max-width: 400px){
+                    padding-bottom: 10px;
                     border-bottom: 1px  solid ${GLOBAL.ACCENT_COLOR};
                 }
                 width: 100%;
@@ -170,14 +174,20 @@ export const AccountPageContainer = styled.div`
                     & p{
                         width: 100%;
                     }
-                    @media all and (max-width: 400px){
+                    @media all and (max-width: 500px){
                         margin-bottom: 20px;
                     }
                 }
                 & .followersList{
                     display: none;
-                    @media all and (max-width: 400px){
-                        display: flex; flex-direction: row; align-items: center;
+                    @media all and (max-width: 500px){
+                        display: flex; flex-direction: row; align-items: center; justify-content: center;
+                        padding: 10px 20px;
+                        background-color: ${GLOBAL.PRIMARY_COLOR};
+                        width: 100%;
+                        box-sizing: border-box;
+                        border-radius: 5px;
+                        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
                     }
                     margin-top: 0px;
                     margin-bottom: 25px;
