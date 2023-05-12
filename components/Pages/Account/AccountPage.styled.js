@@ -73,7 +73,7 @@ export const AccountPageContainer = styled.div`
                                 margin-right: 20px;
                             }
                             @media all and (max-width: 400px){
-                                font-size: 1em;
+                                font-size: 1.2em;
                                 margin-bottom: 10px;
                             }
                             font-weight: 500;
@@ -129,7 +129,7 @@ export const AccountPageContainer = styled.div`
                         background-color: ${GLOBAL.PRIMARY_COLOR};
                         width: fit-content;
                         border-radius: 5px;
-                        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+                        box-shadow: 0px 0px 10px 0px rgb(12, 12, 12);
                         @media all and (max-width: 500px){
                             display: none;
                         }
@@ -140,6 +140,9 @@ export const AccountPageContainer = styled.div`
                                 margin-right: 5px;
                             }
                             margin-right:30px;
+                            @media all and (max-width: 600px){
+                                margin-right: 15px;
+                            }
                             &:last-of-type{
                                 margin-right: 0;
                             }
@@ -187,7 +190,7 @@ export const AccountPageContainer = styled.div`
                         width: 100%;
                         box-sizing: border-box;
                         border-radius: 5px;
-                        box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+                        box-shadow: 0px 0px 10px 0px rgb(12, 12, 12);
                     }
                     margin-top: 0px;
                     margin-bottom: 25px;
@@ -211,6 +214,12 @@ export const AccountPageContainer = styled.div`
                             color: white;
                         }
                         margin-right: 10vw;
+                        @media all and (max-width: 400px){
+                            margin-right: 8vw;
+                        }
+                        @media all and (max-width: 350px){
+                            margin-right: 4vw;
+                        }
                         &:last-of-type{
                             margin-right: 0;
                         }
