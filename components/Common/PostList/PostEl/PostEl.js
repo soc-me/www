@@ -57,6 +57,13 @@ const PostEl = ({postObject, user, isComment, parentPost, postPage} = null) => {
                     <Link href={`/account/${postObject.user_id}`} className="username">{postObject.name}</Link>
                     <div className="seperator"></div>
                     <span className="date">{parseTime(postObject.created_at)}</span>
+                    {
+                        !isComment&&postObject.privateStatus
+                        ? (
+                            <span className="privateStatus">(Private)</span>
+                        )
+                        : null
+                    }
                     <button className="menuOuter center" onClick={()=>setShowMenu(true)}>
                         <div className="image"></div>
                         {

@@ -57,6 +57,10 @@ export const PostElContainer = styled.div`
                 background-color: ${GLOBAL.BUTTON_COLORS[0].SECONDARY};
                 margin: 0 10px;
             }
+            & .privateStatus{
+                margin-left: 10px;
+                /* color: ${GLOBAL.LOADER_COLOR}; */
+            }
             & .date{
                 font-weight: 500;
             }

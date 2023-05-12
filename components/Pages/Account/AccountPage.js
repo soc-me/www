@@ -38,9 +38,6 @@ const AccountPage = ({minimalUserObject}) => {
         setIsLoading(true)
         fetchData()
     }, [router.asPath])
-    useEffect(() => {
-        console.log(followerCount)
-    }, [followerCount]) 
     return (
         <AccountPageContainer>
             <div className="info">
