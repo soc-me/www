@@ -6,12 +6,14 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { IndexContainer } from "./IndexPage.styled";
 import New from "./New/New";
+import axios from "@/lib/axios";
 
 const IndexPage = ({initialFollowing}) => {
     const {user} = useAuth({middleware: 'guest'});
     const router = useRouter();
     const [onlyFollowing, setOnlyFollowing] = useState(initialFollowing);
     const {postObjects, isLoading, error, refreshList, addToPostObjects} = useFetchPosts({onlyFollowing, router});
+    const [pinnedPosts, setPinnedPosts] = useState(null);
     const toggleFollowing = async(currState) =>{
         setOnlyFollowing(!currState);
         router.push({
@@ -28,8 +30,18 @@ const IndexPage = ({initialFollowing}) => {
             setOnlyFollowing(true);
         }else{
             setOnlyFollowing(false);
+            // getPinnedPosts();
         }
     }, [router.query])
+    // get pinned posts
+    const getPinnedPosts = async() => {
+        try{
+            const response = await axios.get('/api/pinned_post/posts');
+            setPinnedPosts(response.data.objects);
+        }catch(error){
+            console.log(error);
+        }
+    }
     return (
         <IndexContainer className="center">
             <div className="indexInner">
