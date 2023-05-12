@@ -45,6 +45,7 @@ export const NewContainer = styled.form`
         }
         @media all and (max-width: 500px){
             width: 25px; height: 25px;
+            margin-bottom: 2.5px;
         }
         box-sizing: content-box;
         & span{
