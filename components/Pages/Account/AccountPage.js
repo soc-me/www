@@ -98,9 +98,6 @@ const AccountPage = ({minimalUserObject}) => {
                     </div>
                 </div>
                 <div className="row second">
-                    <div className="innnerRow bio">
-                        <p>{minimalUserObject.bio}</p>
-                    </div>
                     <div className="innerRow followersList">
                         <div className="posts">
                             <span className="number">{minimalUserObject.postCount}</span>
@@ -114,6 +111,9 @@ const AccountPage = ({minimalUserObject}) => {
                             <span className="number">{followerCount}</span>
                             <span className="text">follower{followerCount!==1 ? 's' : null}</span>
                         </div>
+                    </div>
+                    <div className="innnerRow bio">
+                        <p>{minimalUserObject.bio}</p>
                     </div>
                 </div>
             </div>

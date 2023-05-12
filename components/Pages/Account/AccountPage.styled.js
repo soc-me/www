@@ -13,7 +13,7 @@ export const AccountPageContainer = styled.div`
         padding-bottom: 30px;
         border-bottom: 1px solid ${GLOBAL.ACCENT_COLOR};
         display: flex; flex-direction: column;
-        @media all and (max-width: 500px){
+        @media all and (max-width:400px){
             padding-bottom: 0;
             border-bottom: 0;
             align-items: center;
@@ -23,7 +23,7 @@ export const AccountPageContainer = styled.div`
             display: flex; align-items: center;
             @media all and (max-width: 500px){
                 &:first-of-type{
-                    width: 90%;
+                    width: 100%;
                 }
             }
             & .imageOuter{
@@ -49,12 +49,12 @@ export const AccountPageContainer = styled.div`
                 flex-direction: column;
                 @media all and (max-width: 500px){
                     flex-grow: 0;
-                    margin-left: 10vw;
+                    margin-left: 20px;
                 }
                 & .row{
                     width: 100%;
                     display: flex; align-items: center;
-                    @media all and (max-width: 500px){
+                    @media all and (max-width: 400px){
                         flex-direction: column;
                         align-items: flex-start;
                     }
@@ -68,7 +68,12 @@ export const AccountPageContainer = styled.div`
                         & .username{
                             font-size: 1.3em;
                             @media all and (max-width: 500px){
-                                font-size: 1.1em;
+                                font-size: 1.2em;
+                                margin-bottom: 0;
+                                margin-right: 20px;
+                            }
+                            @media all and (max-width: 400px){
+                                font-size: 1em;
                                 margin-bottom: 10px;
                             }
                             font-weight: 500;
@@ -119,8 +124,8 @@ export const AccountPageContainer = styled.div`
                     }
                     &.followersList{
                         margin-top: 30px;
-                        display: flex; align-items: center;
-                        @media all and (max-width: 500px){
+                        display: flex; align-items: center; flex-direction: row;
+                        @media all and (max-width: 400px){
                             display: none;
                         }
                         & > div{
@@ -154,39 +159,48 @@ export const AccountPageContainer = styled.div`
                 @media all and (max-width: 500px){
                     display: flex; flex-direction: column; align-items: flex-start;
                 }
+                @media all and (max-width: 400px){
+                    border-bottom: 1px  solid ${GLOBAL.ACCENT_COLOR};
+                }
                 width: 100%;
-                margin-top: 30px;
+                margin-top: 25px;
                 & .bio{
                     width: 100%;
                     display: flex; justify-content: center;
                     & p{
-                        width: 90%;
+                        width: 100%;
                     }
-
+                    @media all and (max-width: 400px){
+                        margin-bottom: 20px;
+                    }
                 }
                 & .followersList{
-                    margin-top: 30px;
-                    width: 100vw;
-                    transform: translateX(-5vw);
+                    display: none;
+                    @media all and (max-width: 400px){
+                        display: flex; flex-direction: row; align-items: center;
+                    }
+                    margin-top: 0px;
+                    margin-bottom: 25px;
+                    /* width: 100vw;
+                    transform: translateX(-5vw); */
                     /* position: absolute; */
                     left: 0;
-                    display: flex; align-items: center; justify-content: center;
-                    border-top: 1px  solid ${GLOBAL.ACCENT_COLOR};
-                    border-bottom: 1px  solid ${GLOBAL.ACCENT_COLOR};
-                    padding: 10px 0;
+                    /* border-top: 1px  solid ${GLOBAL.ACCENT_COLOR}; */
+                    /* border-bottom: 1px  solid ${GLOBAL.ACCENT_COLOR}; */
+                    /* padding: 10px 0; */
                     & > div{
                         display: flex; align-items: center;
-                        flex-direction: column;
+                        flex-direction: row;
                         & .number{
-                            font-size: 1.1em;
+                            font-size: 1em;
                             font-weight: 500;
-                            margin-bottom: 10px;
+                            margin-right: 10px;
                         }
                         & .text{
-                            font-size: 0.9em;
-                            color: #DDDDDD;
+                            font-size: 1em;
+                            color: white;
                         }
-                        margin-right: 15vw;
+                        margin-right: 10vw;
                         &:last-of-type{
                             margin-right: 0;
                         }
