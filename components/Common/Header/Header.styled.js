@@ -105,6 +105,19 @@ export const NavContainer = styled.nav`
             &.notificationsLink a .image{
                 background-image: url('/notificationsIcon.png');
             }
+            &.notificationsLink{
+                position: relative;
+                & .unreadCount{
+                    position: absolute;
+                    top: 10%; right: 0;
+                    height: 20px; width: 20px;
+                    border-radius: 9999px;
+                    background-color: red;
+                    color: white;
+                    font-weight: 500;
+                    font-size: 0.8em;
+                }
+            }
             &.loginLink a{
                 width: auto;
                 padding: 0 20px;

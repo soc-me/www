@@ -4,6 +4,7 @@ import { GLOBAL } from "@/GLOBAL";
 import { useAuth } from "@/hooks/useAuth";
 import axios from "@/lib/axios";
 import { useEffect, useState } from "react";
+import useSWR from "swr";
 
 const Header = () => {
     const { user } = useAuth({middleware: 'guest'});
@@ -21,7 +22,22 @@ const Header = () => {
         if(user&&user.is_private){
             getReqeustCount();
         }
+        // getUnreadCount();
     },[user])
+    // const getUnreadCount = async () => {
+    //     try{
+    //         const res = await axios(`/api/notification/unread_count`);
+    //         setUnreadCount(res.data.unreadCount);
+    //     }catch(err){
+    //         console.log(err);
+    //     }
+    // }
+    const { data: data, error, mutate } = useSWR(`/api/notification/unread_count`, () =>
+    axios
+        .get(`/api/notification/unread_count`)
+        .then(res => res.data)
+    ,{refreshInterval: 2000})
+    console.log(data);
     return (
         <HeaderContainer className="center">
             <div className="headerInner">
@@ -52,6 +68,18 @@ const Header = () => {
                                 }
                                 <li className="notificationsLink">
                                     <Link href={`/notifications`} aria-label="Link to notifications"><div className="image"></div></Link>
+                                    {
+                                        data
+                                        ? 
+                                            data.unreadCount > 0
+                                            ? (
+                                                <div className="unreadCount center">
+                                                    {data.unreadCount}
+                                                </div>
+                                            )
+                                            : null
+                                        : null
+                                    }
                                 </li>
                                 <li className="profileLink">
                                     <Link href={`/account/${user.id}`} aria-label="Link to profile page" className="profContainer"><div className="image" style={{backgroundImage: `url('${GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, user.imageURL)}')`}}></div></Link>
