@@ -185,7 +185,7 @@ export const AccountPageContainer = styled.div`
                     display: none;
                     @media all and (max-width: 500px){
                         display: flex; flex-direction: row; align-items: center; justify-content: center;
-                        padding: 10px 20px;
+                        padding: 12px 20px;
                         background-color: ${GLOBAL.PRIMARY_COLOR};
                         width: 100%;
                         box-sizing: border-box;
@@ -217,7 +217,7 @@ export const AccountPageContainer = styled.div`
                         }
                         margin-right: 10vw;
                         @media all and (max-width: 500px){
-                            margin-right: 10vw;
+                            margin-right: 8vw;
                         }
                         /* @media all and (max-width: 350px){
                             margin-right: 4vw;
