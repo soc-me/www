@@ -43,6 +43,9 @@ export const NewContainer = styled.form`
         @media all and (max-width: 600px){
             width: 30px; height: 30px;
         }
+        @media all and (max-width: 500px){
+            width: 25px; height: 25px;
+        }
         box-sizing: content-box;
         & span{
             font-weight: 500;

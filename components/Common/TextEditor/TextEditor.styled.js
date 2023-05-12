@@ -32,7 +32,7 @@ export const TextEditorContainer = styled.div`
             & img{
                 height: 20px; width: 20px;
                 @media all and (max-width: 500px){
-                    height: 15px; width: 15px;
+                    height: 20px; width: 20px;
                 }
             }
             border-radius: 3px;

@@ -77,7 +77,7 @@ const PostPage = ({data}) => {
                     </div>
                 </div>
                 <div className="newContainer">
-                    <New uploadToURL={`/api/comment/create/${data.postObject.id}`} addToList={addToListFn} loggedIn={user} placeHolder={'Leave a comment'}
+                    <New uploadToURL={`/api/comment/create/${data.postObject.id}`} addToList={addToListFn} loggedIn={user} placeHolder={'Leave a comment on this post.'}
                     />
                 </div>
                 <div className="comments">
