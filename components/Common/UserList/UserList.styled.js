@@ -78,7 +78,7 @@ export const UserElContainer = styled.div`
 
 export const SkeletonUserContainer = styled.div`
     width: 100%;
-    display: flex; align-items: center;
+    display: flex; align-items: center; 
     padding: 20px;
     border-radius: 5px;
     background-color: ${GLOBAL.PRIMARY_COLOR};
@@ -90,7 +90,7 @@ export const SkeletonUserContainer = styled.div`
     }
     & .skeletonName{
         margin-left: 20px;
-        height: 40px; width: 100px;
+        height: 40px; width: 40%;
         border-radius: 5px;
         background-color: ${GLOBAL.SECONDARY_COLOR};
     }

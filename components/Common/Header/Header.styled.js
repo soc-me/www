@@ -102,6 +102,9 @@ export const NavContainer = styled.nav`
                     border-color: ${GLOBAL.LOADER_COLOR};
                 }
             }
+            &.notificationsLink a .image{
+                background-image: url('/notificationsIcon.png');
+            }
             &.loginLink a{
                 width: auto;
                 padding: 0 20px;

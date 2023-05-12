@@ -18,7 +18,6 @@ import { useRouter } from "next/router";
 const PostEl = ({postObject, user, isComment, parentPost, postPage} = null) => {
     const [isDeleted, setIsDeleted] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
-    console.log(postObject)
     const editor = useEditor({
         extensions: [
           Color.configure({ types: [TextStyle.name, ListItem.name] }),

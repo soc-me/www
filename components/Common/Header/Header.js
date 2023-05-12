@@ -50,6 +50,9 @@ const Header = () => {
                                     )
                                     : null
                                 }
+                                <li className="notificationsLink">
+                                    <Link href={`/notifications`} aria-label="Link to notifications"><div className="image"></div></Link>
+                                </li>
                                 <li className="profileLink">
                                     <Link href={`/account/${user.id}`} aria-label="Link to profile page" className="profContainer"><div className="image" style={{backgroundImage: `url('${GLOBAL.RESOURCE.IMAGE.PROFILE(GLOBAL.APP_URL, user.imageURL)}')`}}></div></Link>
                                 </li>
