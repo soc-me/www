@@ -214,12 +214,12 @@ export const AccountPageContainer = styled.div`
                             color: white;
                         }
                         margin-right: 10vw;
-                        @media all and (max-width: 400px){
+                        @media all and (max-width: 500px){
                             margin-right: 8vw;
                         }
-                        @media all and (max-width: 350px){
+                        /* @media all and (max-width: 350px){
                             margin-right: 4vw;
-                        }
+                        } */
                         &:last-of-type{
                             margin-right: 0;
                         }
