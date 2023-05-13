@@ -75,8 +75,8 @@ const SettingsPage = ({user}) => {
         try{
             const res = await axios.delete(`/delete_account`)
             window.location.href = '/'
-        }catch{
-            console.log(err)
+        }catch(err){
+            // console.log(err)
         }
     }
     return (
@@ -161,7 +161,7 @@ const SettingsPage = ({user}) => {
                 </div>
                 <div className="el delete">
                     <h3>Delete Account</h3>
-                    <p>Permantly delete your entire account. This will delete also delete your posts, your comments and your likes. This action is permanent and cannot be reversed.</p>
+                    <p>{user ? user.name==='GUEST' ? 'The GUEST account cannot be deleted.' : 'This action is permanent and cannot be reversed.' : null}</p>
                     <button className="delete center" onClick={deleteAccount}>Delete</button>
                 </div>
             </div>
