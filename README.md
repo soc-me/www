@@ -3,11 +3,11 @@
 <br/>
 This repo contains the code for the frotend of socme. You can find the site at <a href='https://socme.thenu-k.com'>socme.thenu-k.com</a>.<br/>
 Stack used for this project:<br/>
-```
+<pre>
  - NextJS
  - Styled-Components
  - SWR
  - TipTapJS
  - Axios
-```
+</pre>
 
