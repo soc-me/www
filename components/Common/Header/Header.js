@@ -13,7 +13,6 @@ const Header = () => {
         if(!user) return;
         try{
             const res = await axios(`/api/follow/followrequests_count/${user.id}`);
-            console.log(res.data)
             setRequestCount(res.data.requestCount);
         }catch(err){
             console.log(err);

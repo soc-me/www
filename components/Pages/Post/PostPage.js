@@ -32,6 +32,16 @@ const PostPage = ({data}) => {
             const res = await axios(`/api/post/${data.postObject.id}`)
             setPostData(res.data.postObject)
             setPostLoading(false)
+            //Updating the page title
+            if(data.is_private){
+                try{
+                    const title_res = await axios(`/api/post/page_title/${data.postObject.id}`)
+                    console.log(title_res.data.pageTitle)
+                    document.title = title_res.data.pageTitle
+                }catch(err){
+                    console.log(err)
+                }
+            }
         }
         catch(err){
             if(err.response.status === 401){
