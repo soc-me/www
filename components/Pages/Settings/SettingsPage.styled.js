@@ -16,39 +16,40 @@ export const SettingsContainer = styled.div`
         box-sizing: border-box;
         /* margin-bottom: 80px; */
         /* padding:  40px; */
-        padding: 40px 40px;
+        padding: 20px;
         @media all and (max-width: 500px){
-            padding: 20px 20px;
+            padding: 15px;
         }
         display: flex; flex-direction: column; align-items: flex-start;
         & h1{
-            font-size: 1.3em;
+            width: 100%;
+            font-size: 1.1em;
             font-weight: 600;
-            width: fit-content;
             margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid ${GLOBAL.ACCENT_COLOR};
         }
         & .editProfile{
-            margin-top: 20px;
-            @media all and (max-width: 500px){
-                margin-top: 0;
-            }
             width: 100%;
             display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start;
             & .formEl{
                 width: 100%;
-                margin-bottom: 20px;
+                margin-bottom: 10px;
                 &:last-of-type{margin-bottom: 0}
                 display: flex; flex-direction: column;
-                & label{
-                    margin-bottom: 20px;
+                & h3{
+                    font-size: 1em;
                     font-weight: 500;
+                    margin-bottom: 10px;
                 }
-                & input.username, & textarea{
+                & label{
+                    margin-bottom: 10px;
+                    font-weight: 400;
+                    color: #DDDDDD;
+                }
+                & input.username, & input{
                     width: 100%;
-                    height: 30px;
                     border: 1px solid ${GLOBAL.ACCENT_COLOR};
-                    background-color: ${GLOBAL.PRIMARY_COLOR};
-                    padding: 20px 10px;
                     border-radius: 5px;
                     box-sizing: border-box;
                     &:focus{
@@ -56,16 +57,20 @@ export const SettingsContainer = styled.div`
                         border: 1px solid ${GLOBAL.LOADER_COLOR};
                     }
                     &.bioInput{
-                        min-height: 80px;
                         resize: vertical;
-                        padding: 20px 10px;
-                        width: 300px;
+                        outline: none;
                         width: 100%;
-                        background-color: ${GLOBAL.SECONDARY_COLOR};
+                        background-color: transparent;
+                        color: white;
+                        border: 1px solid ${GLOBAL.ACCENT_COLOR};
+                        padding: 10px;
+                        &:focus{
+                            border: 1px solid ${GLOBAL.LOADER_COLOR};
+                        }
                     }
                 }
                 & .imageInputContainer {
-                    width: 150px; height: 150px;
+                    width: 80px; height: 80px;
                     border-radius: 9999px;
                     position: relative;
                     background-color: ${GLOBAL.SECONDARY_COLOR};
@@ -97,16 +102,14 @@ export const SettingsContainer = styled.div`
                     }
                 }
                 &.submit{
-                    margin-top:10px;
-                    @media all and (max-width: 500px){
-                        margin-top: 0;
-                    }
+                    margin-top:20px;
                 }
                 & button{
-                    width: 120px;
-                    height: 40px;
+                    height: 2em;
+                    width: 70px;
                     border-radius: 5px;
-                    font-size: 0.9em;
+                    font-weight: 500;
+                    font-size: 1em;
                     background-color: ${GLOBAL.LOADER_COLOR};
                     cursor: pointer;
                     font-weight: 500;
@@ -140,50 +143,40 @@ export const SettingsContainer = styled.div`
         border: 1px solid ${GLOBAL.ACCENT_COLOR};
         /* min-height: 200px; */
         box-sizing: border-box;
-        padding: 40px 40px;
+        padding: 20px;
         @media all and (max-width: 500px){
-            padding: 20px 20px;
+            padding: 15px;
         }
         display: flex; flex-direction: column; align-items: flex-start;
         & h1{
-            font-size: 1.3em;
+            width: 100%;
+            font-size: 1.1em;
             font-weight: 600;
-            width: fit-content;
-            margin-bottom: 40px;
-            @media all and (max-width: 500px){
-                margin-bottom: 20px;
-            }
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid ${GLOBAL.ACCENT_COLOR};
         }
         & .el{
             width: 100%;
             display: flex; flex-direction: column;
             align-items: flex-start;
-            margin-bottom: 40px;
-            @media all and (max-width: 500px){
-                margin-bottom: 20px;
-            }
+            margin-bottom: 20px;
             &:last-of-type{margin-bottom: 0}
             & h3{
-                font-size: 1.1em;
+                font-size: 1em;
                 font-weight: 500;
-                margin-bottom: 20px;
-                @media all and (max-width: 500px){
-                    margin-bottom: 10px;
-                }
+                margin-bottom: 10px;
             }
             & p{
                 width: fit-content;
-                margin-bottom: 30px;
-                @media all and (max-width: 500px){
-                    margin-bottom: 20px;
-                }
+                margin-bottom: 20px;
             }
             & button{
-                width: 120px;
-                height: 40px;
+                height: 2em;
+                width: 100px;
                 border-radius: 5px;
                 font-weight: 500;
-                font-size: 0.9em;
+                font-size: 1em;
                 cursor: pointer;
                 &.delete{
                     background-color: #ba0000;

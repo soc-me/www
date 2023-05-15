@@ -152,6 +152,20 @@ export const NavContainer = styled.nav`
                     cursor: pointer;
                 }
             }
+            &.communitiesLink{
+                position: relative;
+                & .notice{
+                    position: absolute;
+                    top: 10%; right: -30%;
+                    height: fit-content; width: fit-content;
+                    font-size: 0.5em;
+                    font-weight: 500;
+                    color: white;
+                    background-color: red;
+                    padding: 2.5px 2.5px;
+                    border-radius: 3px;
+                }
+            }
         }
     }
 `

@@ -85,7 +85,8 @@ const SettingsPage = ({user}) => {
                 <h1>Account Details</h1>
                 <form className="editProfile" onSubmit={(e)=> handleAccountUpdate(e)}>
                     <div className="formEl profPic">
-                        <label htmlFor="profPic">Click on the image to change your profile picture</label>
+                        <h3>Profile Picture</h3>
+                        <label htmlFor="profPic">Click on the image to change your profile picture.</label>
                         <div className="imageInputContainer center">
                             {
                                 user
@@ -104,11 +105,12 @@ const SettingsPage = ({user}) => {
                         </div>
                     </div>
                     <div className="formEl bio">
-                        <label htmlFor="bio">Write something about yourself</label>
+                        <h3>Bio</h3>
+                        <label htmlFor="bio">Write something about yourself.</label>
                         {
                             user
-                            ? <textarea className="bioInput" type="text" id="bio" required onChange={(e)=>setBio(e.target.value)} defaultValue={user.bio} placeholder='About'/>
-                            : <textarea className="bioInput" type="text" id="bio" disabled/>
+                            ? <input className="bioInput" type="text" id="bio" required onChange={(e)=>setBio(e.target.value)} defaultValue={user.bio} placeholder='About'/>
+                            : <input className="bioInput" type="text" id="bio" disabled/>
                         }
                     </div>
                     <div className="formEl submit">

@@ -44,6 +44,9 @@ const Header = () => {
                         </li>
                         <li className="communitiesLink">
                             <Link href='/communities' aria-label="Link to communities"><div className="image"></div></Link>
+                            <span className="notice">
+                                New
+                            </span>
                         </li>
                         <li className="accountsLink">
                             <Link href='/search?category=accounts' aria-label="Link to account search"><div className="image"></div></Link>
