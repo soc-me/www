@@ -40,6 +40,10 @@ export const HeaderContainer = styled.header`
                 padding: 0 10px;
                 height: 35px;
                 border-radius: 5px;
+                @media all and (max-width: 500px){
+                    font-size: 1.1em;
+                    padding: 0 5px;
+                }
             }
         }
     }
@@ -57,6 +61,9 @@ export const NavContainer = styled.nav`
             &:last-of-type{margin-right: 0px;}
             & a{
                 height: 40px; width: 40px;
+                @media all and (max-width: 500px){
+                    height: 35px; width: 35px;
+                }
                 background-color: ${GLOBAL.BUTTON_COLORS[0].PRIMARY};
                 border-radius: 9999px;
                 display: flex; align-items: center; justify-content: center;
@@ -87,6 +94,7 @@ export const NavContainer = styled.nav`
                 }
             }
             &.homeLink a .image{background-image: url('/homeIcon.png');}
+            &.communitiesLink a .image{background-image: url('/communityIcon.png');}
             &.accountsLink a .image{
                 background-image: url('/searchIcon.png');
                 height: 60%; width: 60%;

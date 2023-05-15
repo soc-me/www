@@ -42,6 +42,9 @@ const Header = () => {
                         <li className="homeLink">
                             <Link href='/' aria-label="Link to home page"><div className="image"></div></Link>
                         </li>
+                        <li className="communitiesLink">
+                            <Link href='/communities' aria-label="Link to communities"><div className="image"></div></Link>
+                        </li>
                         <li className="accountsLink">
                             <Link href='/search?category=accounts' aria-label="Link to account search"><div className="image"></div></Link>
                         </li>
