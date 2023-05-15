@@ -7,7 +7,7 @@ const Community = ({initialObject}) => {
     return (
         <Layout>
             <Head>
-                <title>{initialObject.community_name} | Community</title>
+                <title>{`${initialObject.community_name} | Community`}</title>
                 <meta name="description" content={`${initialObject.community_description}`} />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />

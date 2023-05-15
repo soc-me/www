@@ -18,6 +18,7 @@ const CommunityPage = ({communityInfo}) => {
     const router = useRouter();
     const [editLoading, setEditLoading] = useState(false)
     const [editError, setEditError] = useState(null)
+    const [generalError, setGeneralError] = useState(null)
     useEffect(()=>{
         fetchPosts()
     },[])
@@ -67,6 +68,26 @@ const CommunityPage = ({communityInfo}) => {
             setEditLoading(false)
         }
     }
+    const changeVisbility = async() => {
+        setGeneralError(null)
+        const formData = new FormData()
+        formData.append('hide_posts_from_home', communityInfo.hide_posts_from_home ? 'false' : 'true')
+        try{
+            const response = await axios.post(`/api/community/update/${communityInfo.id}`, formData)
+            router.reload()
+        }catch(error){
+            setGeneralError(error.response.data.message)
+        }
+    }
+    const deleteCommunity = async() => {
+        setGeneralError(null)
+        try{
+            const response = await axios.delete(`/api/community/delete/${communityInfo.id}`)
+            router.push('/communities')
+        }catch(error){
+            setGeneralError(error.response.data.message)
+        }
+    }
     return (
         <CommunityPageContainer>
             <div className="communityInner">
@@ -80,7 +101,7 @@ const CommunityPage = ({communityInfo}) => {
                         ></div>
                         <h1>{communityInfo.community_name}</h1>
                         {
-                            user && (user.id == communityInfo.community_owner_id  || user.isAdmin || user.name==='GUEST')
+                            user && (user.id == communityInfo.owner_user_id  || user.isAdmin || user.name==='GUEST')
                             ? <button onClick={()=>{setDisplayEditForm(!displayEditForm)}} className="communityControls">
                                 <div className="settingsIcon"></div>
                                 <span>Edit</span>
@@ -105,17 +126,22 @@ const CommunityPage = ({communityInfo}) => {
                                 <div className="formEl visibility">
                                     <h3>Community Visbility</h3>
                                     <label>Change your visbility - hidden posts do not appear on the home page.</label>   
-                                    <button className="visibility">
+                                    <button className="visibility" onClick={changeVisbility}>
                                         {
                                             communityInfo.hide_posts_from_home ? 'Unhide' : 'Hide'
                                         }
                                     </button>
                                 </div>
-                                <div className="formEl delete">
+                                <div className="formEl delete" onClick={deleteCommunity}>
                                     <h3>Delete community</h3>
                                     <label>This action is permanent and cannot be reversed.</label>   
                                     <button className="delete">Delete</button>
                                 </div>
+                                {
+                                    generalError
+                                    ? <div className="error general">{generalError}</div>
+                                    : null
+                                }
                             </form>
                             <form className="appearance" onSubmit={(e)=>{
                                 e.preventDefault()

@@ -52,9 +52,12 @@ export const CommunityPageContainer = styled.div`
                 & .communityControls{
                     flex-shrink: 0;
                     margin-left: auto;
-                    display: flex; flex-direction: row; align-items: center;
-                    padding: 10px 10px;
+                    display: flex; flex-direction: row; align-items: center; justify-content: center;
+                    height: 2em;
+                    width: 70px;
                     border-radius: 5px;
+                    font-weight: 500;
+                    font-size: 0.9em;
                     background-color: ${GLOBAL.BUTTON_COLORS[0].PRIMARY};
                     cursor: pointer;
                     &:hover{
@@ -209,6 +212,10 @@ export const CommunityPageContainer = styled.div`
                     font-size: 0.9em;
                     font-weight: 500;
                     margin-top: 15px;
+                    &.general{
+                        margin-top: 0;
+                        margin-bottom: 20px;
+                    }
                 }
                 & .controls{
                     margin-top: 20px;

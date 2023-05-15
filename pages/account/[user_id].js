@@ -8,7 +8,7 @@ const Account = ({user_id, minimalUserObject}) => {
     return (
         <Layout>
             <Head>
-            <title>{minimalUserObject.name} | Profile</title>
+            <title>{`${minimalUserObject.name} | Profile`}</title>
             <meta name="description" content="Profile Page." />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
