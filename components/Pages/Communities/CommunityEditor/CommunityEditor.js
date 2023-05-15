@@ -73,7 +73,7 @@ const CommunityEditor = ({edit, setVisibility, user}) => {
                             : "Create"
                         }
                     </button>
-                    <button type="button" className="cancel" onClick={()=>{setVisibility(false)}}>Cancel</button>
+                    <button type="button" className="cancel center" onClick={()=>{setVisibility(false)}}>Cancel</button>
                 </div>
             </div>
         </CommunityEditorContainer>

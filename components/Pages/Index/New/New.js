@@ -95,13 +95,15 @@ const New = ({uploadToURL, addToList, loggedIn, placeHolder, communityID} = {}) 
                     </div>
                 </TextEditorContainer>
             </div>
-            <button onClick={(e)=>{handleSubmit(e)}}>
-                {
-                    loading
-                    ? <Spinner size={20} border={3}/>
-                    : <div className="image center"><Image src={createIcon} alt='Create Icon'/></div>
-                }
-            </button>
+            <div className="buttonContainer">
+                <button onClick={(e)=>{handleSubmit(e)}}>
+                    {
+                        loading
+                        ? <Spinner size={15} border={3}/>
+                        : <div className="image center"><Image src={createIcon} alt='Create Icon'/></div>
+                    }
+                </button>
+            </div>
         </NewContainer>
     );
 }

@@ -32,7 +32,13 @@ export const NewContainer = styled.form`
         width: 90%;
         margin-top: 10px;
     }
-    &> button{
+    & .buttonContainer{
+        @media all and (max-width: 500px){
+            height: 30px;
+            display: flex; align-items: center;
+        }
+    }
+    & button{
         display: flex; align-items: center; justify-content: center;
         flex-direction: row-reverse;
         background-color: ${GLOBAL.LOADER_COLOR};
@@ -40,13 +46,14 @@ export const NewContainer = styled.form`
         cursor:pointer;
         height: 1em; 
         width: 30px; height: 30px;
-        @media all and (max-width: 600px){
-            width: 30px; height: 30px;
-        }
         @media all and (max-width: 500px){
+            width: 25px; height: 20px;
+            border-radius: 3px;
+        }
+        /* @media all and (max-width: 500px){
             width: 25px; height: 25px;
             margin-bottom: 2.5px;
-        }
+        } */
         box-sizing: content-box;
         & span{
             font-weight: 500;

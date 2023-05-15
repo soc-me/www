@@ -63,7 +63,6 @@ export const CommunityEditorContainer = styled.form`
             align-items: center;
             & button{
                 margin-right: 10px;
-                width: 100px;
                 &:last-of-type{
                     margin-right: 0;
                 }
@@ -73,6 +72,9 @@ export const CommunityEditorContainer = styled.form`
                 cursor: pointer;
                 font-size: 0.9em;
                 font-weight: 500;
+                height: 2em;
+                width: 70px;
+                border-radius: 5px;
                 &.create{
                     background-color: ${GLOBAL.LOADER_COLOR};
                     color: white;

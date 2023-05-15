@@ -3,6 +3,7 @@ import { CommunityListContainer, SkeletonCommunityElementContainer } from "./Com
 import { parseTime } from "@/hooks/general";
 import { useRouter } from "next/router";
 import { NothingFoundContainer } from "@/components/Common/UserList/UserList.styled";
+import { GLOBAL } from "@/GLOBAL";
 
 const CommunityList = ({communityObjects, loading}) => {
     const router = useRouter();
@@ -33,7 +34,7 @@ const CommunityList = ({communityObjects, loading}) => {
                 return (
                     <div key={index} className="listEl" onClick={()=>redirectToCommunity(object.id)}>
                         <Link className="communityImage" href={`/community/${object.id}`}
-                            style={{backgroundImage: `url(${object.community_image_url ? object.community_image_url : "/communityGenericImage.png"})`}}
+                            style={{backgroundImage: `url(${object.community_icon_image_url!=null && object.community_icon_image_url!=='null' ? `${GLOBAL.APP_URL}${object.community_icon_image_url}` : "/communityGenericImage.png"})`}}
                         ></Link>
                         <div className="text">
                             <Link className="nameContainer" href={`/community/${object.id}`}>

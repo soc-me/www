@@ -36,9 +36,11 @@ export const CommunitiesPageContainer = styled.div`
             }
             & button.createCommunity {
                 background-color: ${GLOBAL.LOADER_COLOR};
+                height: 2em;
+                width: 70px;
+                border-radius: 5px;
                 font-weight: 500;
-                border-radius: 5px;;
-                padding: 10px 15px;
+                font-size: 0.9em;
                 border: none;
                 color: white;
                 cursor: pointer;

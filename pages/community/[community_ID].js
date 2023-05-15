@@ -28,7 +28,7 @@ export async function getServerSideProps(context){
             }
         }
     }catch(err){
-        if(err.response.status === 404){e
+        if(err.response.status === 404){
             return {
                 redirect: {
                     destination: "/404",
