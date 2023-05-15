@@ -47,8 +47,17 @@ export const CommunityPageContainer = styled.div`
                     width: 50px;
                     height: 50px;
                     border-radius: 9999px;
-                    margin-right: 20px;
+                    margin-right: 1em;
                     background-color: ${GLOBAL.SECONDARY_COLOR};
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+                & .hiddenMessage{
+                    height: 20px;
+                    margin-left: 1em;
+                    width: 20px;
+                    background-image: url('/hiddenIcon.png');
                     background-size: cover;
                     background-position: center;
                     background-repeat: no-repeat;

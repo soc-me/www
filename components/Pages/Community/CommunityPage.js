@@ -101,6 +101,11 @@ const CommunityPage = ({communityInfo}) => {
                         ></div>
                         <h1>{communityInfo.community_name}</h1>
                         {
+                            communityInfo.hide_posts_from_home
+                            ? <span className="hiddenMessage"></span>
+                            : null
+                        }
+                        {
                             user && (user.id == communityInfo.owner_user_id  || user.isAdmin || user.name==='GUEST')
                             ? <button onClick={()=>{setDisplayEditForm(!displayEditForm)}} className="communityControls">
                                 <div className="settingsIcon"></div>
