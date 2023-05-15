@@ -25,6 +25,7 @@ export const SearchPageContainer = styled.div`
                     width: 100%;
                     height: 40px;
                     padding: 10px 20px;
+                    @media (max-width: 500px) { padding: 10px 15px; }
                     background-color: transparent;
                     border: none;
                     outline: none;
@@ -73,6 +74,7 @@ export const SearchPageContainer = styled.div`
                     cursor: pointer;
                     &:hover{
                         background-color: ${GLOBAL.PRIMARY_COLOR};
+                        @media (max-width: 500px) { background-color: transparent; }
                         &:first-of-type{
                             border-radius: 5px 0 0 0;
                         }

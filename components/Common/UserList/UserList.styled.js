@@ -14,12 +14,18 @@ export const UserElContainer = styled.div`
     width: 100%;
     display: flex; align-items: center;
     padding: 20px;
+    @media all and (max-width: 500px){
+        padding: 15px;
+    }
     box-sizing: border-box;
     border-radius: 5px;
     background-color: ${GLOBAL.PRIMARY_COLOR};
     border: 1px solid ${GLOBAL.ACCENT_COLOR};
     & .imageContainer{
         height: 60px; width: 60px;
+        @media all and (max-width: 500px){
+            height: 40px; width: 40px;
+        }
         border-radius: 9999px;
         background-color: ${GLOBAL.SECONDARY_COLOR};
         flex-shrink: 0;
@@ -68,6 +74,12 @@ export const UserElContainer = styled.div`
         border-radius: 5px;
         background-color: ${GLOBAL.LOADER_COLOR};
         flex-shrink: 0;
+        height: 2em;
+        width: 70px;
+        border-radius: 5px;
+        margin-right: 10px;
+        font-weight: 500;
+        font-size: 0.9em;
         cursor: pointer;
         &:hover{
             opacity: 0.9;
@@ -80,17 +92,27 @@ export const SkeletonUserContainer = styled.div`
     /* width: 100%; */
     display: flex; align-items: center; 
     padding: 20px;
+    @media all and (max-width: 500px){
+        padding: 15px;
+    }
     border-radius: 5px;
     background-color: ${GLOBAL.PRIMARY_COLOR};
     border: 1px solid ${GLOBAL.ACCENT_COLOR};
     & .skeletonImage{
+        flex-shrink: 0;
         height: 60px; width: 60px;
+        @media all and (max-width: 500px){
+            height: 40px; width: 40px;
+        }
         border-radius: 9999px;
         background-color: ${GLOBAL.SECONDARY_COLOR};
     }
     & .skeletonName{
         margin-left: 20px;
-        height: 40px; width: 60%;
+        height: 40px; width: 100%;
+        @media all and (max-width: 500px){
+            height: 30px;
+        }
         flex-shrink: 1;
         border-radius: 5px;
         background-color: ${GLOBAL.SECONDARY_COLOR};
