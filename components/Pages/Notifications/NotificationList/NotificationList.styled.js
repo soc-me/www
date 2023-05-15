@@ -14,14 +14,14 @@ export const NotificationElementContainer = styled.div`
     width: 100%;
     display: flex; align-items: center;
     padding: 20px;
+    @media all and (max-width: 500px){
+        paddding: 15px;
+    }
     box-sizing: border-box;
     border-radius: 5px;
     background-color: ${GLOBAL.PRIMARY_COLOR};
     border: 1px solid ${GLOBAL.ACCENT_COLOR};
     cursor: pointer;
-    &:hover{
-        opacity: 0.9;
-    }
     & .imageContainer{
         height: 60px; width: 60px;
         border-radius: 9999px;
@@ -46,11 +46,13 @@ export const NotificationElementContainer = styled.div`
         }
         margin-left: 20px;
         & p{
-            font-weight: 500;
+            font-weight: 400;
         }
         & .time{
             margin-left: auto;
-            font-weight: 500;
+            font-weight: 400;
+            font-size: 0.9em;
+            color: #DDDDDD;
         }
     }
 `
