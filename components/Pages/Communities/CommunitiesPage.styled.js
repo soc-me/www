@@ -6,7 +6,7 @@ export const CommunitiesPageContainer = styled.div`
     width: clamp(500px, 55%, 1000px);
     margin-top: 30px;
     margin-bottom: 40px;
-    @media (max-width: 1000px) { width: 100%; }
+    @media (max-width: 1000px) { width: 97.5%; }
     display: flex; flex-direction: column;
     .top {
         width: 100%;

@@ -6,7 +6,7 @@ export const AccountPageContainer = styled.div`
     margin-top: 30px;
     display: flex; flex-direction: column;
     margin-bottom: 40px;
-    @media (max-width: 1000px) { width: 100%; }
+    @media (max-width: 1000px) { width: 97.5%; }
     /* change */
     & .info{
         width: 100%;
@@ -207,7 +207,7 @@ export const AccountPageContainer = styled.div`
                         & .number{
                             font-size: 1em;
                             font-weight: 500;
-                            margin-right: 10px;
+                            margin-right: 5px;
                             font-weight: 500;
                         }
                         & .text{
