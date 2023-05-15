@@ -47,7 +47,7 @@ export const NewContainer = styled.form`
         height: 1em; 
         width: 30px; height: 30px;
         @media all and (max-width: 500px){
-            width: 25px; height: 20px;
+            width: 20px; height: 20px;
             border-radius: 3px;
         }
         /* @media all and (max-width: 500px){

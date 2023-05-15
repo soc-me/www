@@ -6,7 +6,7 @@ export const CommunityEditorContainer = styled.form`
     position: fixed; top: 0; left: 0;
     height: 100vh;
     background-color: rgba(0,0,0,0.5);
-    z-index: 9999;
+    z-index: 999;
     & .modal{
         background-color: ${GLOBAL.PRIMARY_COLOR};
         border-radius: 10px;
@@ -14,8 +14,13 @@ export const CommunityEditorContainer = styled.form`
         display: flex;
         flex-direction: column;
         padding: 20px;
+        position: absolute;
+        @media all and (max-width: 500px){
+            top: 20%;
+            padding: 15px;
+        }
         width: clamp(400px, 30%, 500px);
-        @media (max-width: 600px) { width: 95%; }
+        @media (max-width: 600px) { width: 75%; }
         & .title{
             width: 100%;
             & h2{

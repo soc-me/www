@@ -8,6 +8,9 @@ export const CommunityListContainer = styled.div`
         height: 80px;
         width: 100%;
         padding: 20px 20px;
+        @media all and (max-width: 500px){
+            padding: 15px;
+        }
         box-sizing: border-box;
         border: 1px solid ${GLOBAL.ACCENT_COLOR};
         border-radius: 5px;
@@ -52,6 +55,9 @@ export const SkeletonCommunityElementContainer = styled.div`
     height: 80px;
     width: 100%;
     padding: 20px 20px;
+    @media all and (max-width: 500px){
+        padding: 15px;
+    }
     box-sizing: border-box;
     border: 1px solid ${GLOBAL.ACCENT_COLOR};
     border-radius: 5px;

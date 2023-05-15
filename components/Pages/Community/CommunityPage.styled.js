@@ -33,6 +33,10 @@ export const CommunityPageContainer = styled.div`
                 box-sizing: border-box;
                 display: flex; flex-direction: row; align-items: center;
                 padding: 20px 20px;
+                @media all and (max-width: 500px){
+                    padding: 15px;
+                    padding-bottom: 5px;
+                }
                 padding-bottom: 0;
                 & h1{
                     font-size: 1em;
@@ -82,6 +86,10 @@ export const CommunityPageContainer = styled.div`
                 width: 100%;
                 box-sizing: border-box;
                 padding: 20px;
+                @media all and (max-width: 500px){
+                    padding: 15px;
+                    padding-top: 5px;
+                }
                 margin-bottom: 10px;
                 /* padding-left: 90px; */
                 /* margin-top: 20px; */
@@ -114,6 +122,9 @@ export const CommunityPageContainer = styled.div`
             border: 1px solid ${GLOBAL.ACCENT_COLOR};
             box-sizing: border-box;
             padding: 20px;
+            @media all and (max-width: 500px){
+                padding: 15px;
+            }
             & form{
                 width: 100%;
                 display: flex; flex-direction: column;
