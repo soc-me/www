@@ -10,6 +10,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { GLOBAL } from "@/GLOBAL";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { NothingFoundContainer } from "@/components/Common/UserList/UserList.styled";
 
 const AccountPage = ({minimalUserObject}) => {
     const {user} = useAuth({middleware: 'guest'})
@@ -121,15 +122,9 @@ const AccountPage = ({minimalUserObject}) => {
                     : (!notAllowed)
                         ? <PostList postObjects={postObjects} isLoading={false} user={user}/>
                         : (
-                            <div className="privateError">
-                                <div className="imageContainer">
-                                    <img src="/privateIcon2.png" alt="" />
-                                </div>
-                                <div className="text">
-                                    <h3>This Account Is Private</h3>
-                                    <p>You must follow this account to see its posts</p>
-                                </div>
-                            </div>
+                            <NothingFoundContainer>
+                                <p>This is a private account - follow them to see their posts.</p>
+                            </NothingFoundContainer>
                         )
                 }
             </div>
