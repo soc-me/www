@@ -16,7 +16,7 @@ export const CommunityEditorContainer = styled.form`
         padding: 20px;
         position: absolute;
         @media all and (max-width: 500px){
-            top: 20%;
+            top: 10%;
             padding: 15px;
         }
         width: clamp(400px, 30%, 500px);
