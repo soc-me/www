@@ -39,7 +39,7 @@ export const NewContainer = styled.form`
         border-radius: 5px;
         cursor:pointer;
         height: 1em; 
-        width: 40px; height: 40px;
+        width: 30px; height: 30px;
         @media all and (max-width: 600px){
             width: 30px; height: 30px;
         }

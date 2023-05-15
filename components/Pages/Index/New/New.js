@@ -16,7 +16,7 @@ import { TextEditorContainer } from "@/components/Common/TextEditor/TextEditor.s
 import { useRouter } from "next/router";
 import TipTapImage from '@tiptap/extension-image'
 
-const New = ({uploadToURL, addToList, loggedIn, placeHolder} = {}) => {
+const New = ({uploadToURL, addToList, loggedIn, placeHolder, communityID} = {}) => {
     const [text, setText] = useState(null);
     const [loading, setLoading] = useState(null);
     //editor config
@@ -61,8 +61,17 @@ const New = ({uploadToURL, addToList, loggedIn, placeHolder} = {}) => {
         }
         e.preventDefault();
         if(!text) return;
+        //parse html to text
+        const parser = new DOMParser();
+        const parsed_text = parser.parseFromString(text, 'text/html');
+        if(!parsed_text.body.innerText.length) return;
         const form = new FormData();
         form.append('content', text);
+        if(communityID){
+            form.append('community_id', communityID);
+        }else{
+            form.append('community_id', null);
+        }
         setLoading(true);
         try { 
             const res = await axios.post(uploadToURL, form);
