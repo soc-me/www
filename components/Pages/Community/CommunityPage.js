@@ -157,7 +157,10 @@ const CommunityPage = ({communityInfo}) => {
                                     <h3>Community Banner</h3>
                                     <label htmlFor="community_banner_image_url">Change your community banner.</label>
                                     <div className="bannerContainer center imageContainer">
-                                        <img src={bannerImageSrc} alt="Community Banner"/>
+                                        {/* <img src={bannerImageSrc} alt="Community Banner"/> */}
+                                        <div className="imageDisplay"
+                                            style={{backgroundImage: `url(${bannerImageSrc})`}}
+                                        ></div>
                                         <input type="file" name="community_banner_image_url" id="community_banner_image_url" onChange={(e)=>{handleBannerFileChange(e)}}/>
                                     </div>
                                 </div>
@@ -165,7 +168,10 @@ const CommunityPage = ({communityInfo}) => {
                                     <h3>Community Icon</h3>
                                     <label htmlFor="community_icon_image_url">Change your community icon.</label>
                                     <div className="iconContainer center imageContainer">
-                                        <img src={iconImageSrc} alt="Community Icon"/>
+                                        <div className="imageDisplay"
+                                            style={{backgroundImage: `url(${iconImageSrc})`}}
+                                        ></div>
+                                        {/* <img src={iconImageSrc} alt="Community Icon"/> */}
                                         <input type="file" name="community_icon_image_url" id="community_icon_image_url" onChange={(e)=>{handleIconFileChange(e)}}/>
                                     </div>
                                 </div>

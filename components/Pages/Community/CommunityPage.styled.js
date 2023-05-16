@@ -210,6 +210,14 @@ export const CommunityPageContainer = styled.div`
                             z-index: 1;
                             width: 100%; height: auto;
                         }
+                        & .imageDisplay{
+                            width: 100%; height: 100%;
+                            position: absolute;
+                            z-index: 1;
+                            background-size: cover;
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
                         & input{
                             width: 100%; height: 100%;
                             position: absolute;
