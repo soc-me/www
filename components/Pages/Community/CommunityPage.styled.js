@@ -27,6 +27,9 @@ export const CommunityPageContainer = styled.div`
                 background-repeat: no-repeat;
                 border-radius: 10px 10px 0 0;
                 border-bottom: 1px solid ${GLOBAL.ACCENT_COLOR};
+                @media all and (max-width: 500px){
+                    height: 150px;
+                }
             }
             .title {
                 width: 100%;
@@ -41,6 +44,9 @@ export const CommunityPageContainer = styled.div`
                 & h1{
                     font-size: 1em;
                     font-weight: 600;
+                    @media all and (max-width: 500px){
+                        font-size: 1.2em;
+                    }
                 }
                 & .communityLogo {
                     flex-shrink: 0;
@@ -55,7 +61,7 @@ export const CommunityPageContainer = styled.div`
                 }
                 & .hiddenMessage{
                     height: 20px;
-                    margin-left: 1em;
+                    margin-left: auto;
                     width: 20px;
                     background-image: url('/hiddenIcon.png');
                     background-size: cover;
@@ -64,7 +70,7 @@ export const CommunityPageContainer = styled.div`
                 }
                 & .communityControls{
                     flex-shrink: 0;
-                    margin-left: auto;
+                    margin-left: 1em;
                     display: flex; flex-direction: row; align-items: center; justify-content: center;
                     height: 2em;
                     width: 70px;
@@ -98,6 +104,7 @@ export const CommunityPageContainer = styled.div`
                 @media all and (max-width: 500px){
                     padding: 15px;
                     padding-top: 5px;
+                    margin-top: 10px;
                 }
                 margin-bottom: 10px;
                 /* padding-left: 90px; */
